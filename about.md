@@ -9,7 +9,7 @@ title: About Me
 我是一個程式人，從 2016 年 6 月開始寫技術文章還有自己的學習心得，文章內容如果有誤的請大家寄信跟我說，如果想跟我討論什麼東西也可以寄信給我，我很喜歡跟別人討論~
 </p>
 
-## 我的專長是:
+## 專長:
 
 - C/C++
 - Nodejs
@@ -17,11 +17,11 @@ title: About Me
 - Data Structor and Algorithm
 
 
-## 這些是我做過的作品:
+## 我做過的作品:
 
 - [Facebook chat bot](https://github.com/Larry850806/facebook-chat-bot) - 可以設定關鍵字的 FB 聊天機器人
 - [Cool Slide](https://github.com/CoolSlide/cool-slide) - 用 markdown 語法寫出很酷的投影片
 
 
-### github : [Larry850806](https://github.com/Larry850806)
+### github : [GitHub](https://github.com/Larry850806)
 ### email : [pudding850806@gmail.com](mailto:pudding850806@gmail.com)
