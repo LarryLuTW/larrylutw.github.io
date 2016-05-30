@@ -1,0 +1,21 @@
+.
+├── about.md              # 你可以用 markdown 來寫，他會自動幫你轉為 html
+├── _config.yml           # 關於設定的檔案，全站變數、資料夾架構
+├── css                   # 這裡是會產生出來的 css 檔資料夾
+│   └── main.scss
+├── feed.xml              # 這個是給你的讀者訂閱的 rss 的 xml 檔
+├── _includes             # 用來 include 的檔案們所在的資料夾
+│   ├── footer.html
+│   ├── header.html
+│   └── head.html
+├── index.html
+├── _layouts              # 這裡是放要套用的版型的地方
+│   ├── default.html
+│   ├── page.html
+│   └── post.html
+├── _posts                # 預設的文章放置處，
+│   └── 2015-07-11-welcome-to-jekyll.markdown
+└── _sass                 # 會被 include 的 sass 檔們所在的資料夾
+├── _base.scss
+├── _layout.scss
+└── _syntax-highlighting.scss
