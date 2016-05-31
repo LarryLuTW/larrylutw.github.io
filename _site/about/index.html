@@ -33,10 +33,21 @@
   <body>
 
     <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=50% style="display: none;">
+
+            <script>
+                console.log(screen.width);
+                console.log(screen.height);
+                if(screen.width > screen.height){
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
       <h1>
-        <img src="http://i.imgur.com/ZF2xXSG.jpg" width=170>
         <a style="font-family: serif;" href="https://github.com/Larry850806">
             Larry
         </a>
