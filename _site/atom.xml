@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-05-31T14:14:45+08:00</updated>
+ <updated>2016-05-31T14:19:00+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -17,49 +17,52 @@
    <link href="http://larry850806.github.io/2016/05/31/async/"/>
    <updated>2016-05-31T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/05/31/async</id>
-   <content type="html">&lt;h1&gt;&lt;a href=&quot;https://github.com/caolan/async&quot;&gt;async&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;async 是一個 Node.js module&lt;br&gt;
-也可以在前端的 javascript 中直接使用&lt;br&gt;
+   <content type="html">&lt;h1 id=&quot;asynchttpsgithubcomcaolanasync&quot;&gt;&lt;a href=&quot;https://github.com/caolan/async&quot;&gt;async&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;async 是一個 Node.js module&lt;br /&gt;
+也可以在前端的 javascript 中直接使用&lt;br /&gt;
 讓 code 更好看也更好 debug&lt;/p&gt;
 
-&lt;h3&gt;在 Node.js 中&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;npm install async
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;async&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;在前端 javascript 中&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://rawgit.com/caolan/async/master/dist/async.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;hr&gt;
+&lt;h3 id=&quot;nodejs-&quot;&gt;在 Node.js 中&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install async
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;async&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h2&gt;callback&lt;/h2&gt;
+&lt;h3 id=&quot;javascript-&quot;&gt;在前端 javascript 中&lt;/h3&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://rawgit.com/caolan/async/master/dist/async.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;因為 javascript 特有的 callback&lt;br&gt;
-callback 用多了你的 code 就會長這樣&lt;br&gt;
-&lt;img src=&quot;https://pbs.twimg.com/media/CbHuC7nWIAUOiOS.png&quot; alt=&quot;&quot;&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;callback&quot;&gt;callback&lt;/h2&gt;
+&lt;p&gt;因為 javascript 特有的 callback&lt;br /&gt;
+callback 用多了你的 code 就會長這樣&lt;br /&gt;
+&lt;img src=&quot;https://pbs.twimg.com/media/CbHuC7nWIAUOiOS.png&quot; alt=&quot;&quot; /&gt;
 &lt;a href=&quot;https://www.google.com.tw/search?tbm=isch&amp;amp;sa=1&amp;amp;q=callback+%E5%9C%B0%E7%8D%84&quot;&gt;Google Callback 地獄&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3&gt;缺點:&lt;/h3&gt;
-
+&lt;h3 id=&quot;section&quot;&gt;缺點:&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;code 落落長長得很醜&lt;/li&gt;
-&lt;li&gt;很難 debug&lt;/li&gt;
-&lt;li&gt;要看很久才能看懂&lt;/li&gt;
+  &lt;li&gt;code 落落長長得很醜&lt;/li&gt;
+  &lt;li&gt;很難 debug&lt;/li&gt;
+  &lt;li&gt;要看很久才能看懂&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;所以就有了 async&lt;br&gt;
-專門在處理這些 asynchronous 的 callback&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;所以就有了 async&lt;br /&gt;
+專門在處理這些 asynchronous 的 callback&lt;br /&gt;&lt;/p&gt;
 
-&lt;hr&gt;
+&lt;hr /&gt;
 
-&lt;h2&gt;async.waterfall&lt;/h2&gt;
+&lt;h2 id=&quot;asyncwaterfall&quot;&gt;async.waterfall&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br /&gt;
+fun2 需要 fun1 callback 的資料&lt;br /&gt;
+fun3 又需要 fun2 callback 的資料&lt;br /&gt;
+最後的結果又需要 fun3 callback 的資料&lt;br /&gt;
+如果 function 更多的話會再疊上去&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br&gt;
-fun2 需要 fun1 callback 的資料&lt;br&gt;
-fun3 又需要 fun2 callback 的資料&lt;br&gt;
-最後的結果又需要 fun3 callback 的資料&lt;br&gt;
-如果 function 更多的話會再疊上去&lt;br&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;func1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;func1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;nx&quot;&gt;func2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
@@ -72,9 +75,12 @@ fun3 又需要 fun2 callback 的資料&lt;br&gt;
         &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果用 async&lt;br&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// waterfall 會按照順序執行 function&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果用 async&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// waterfall 會按照順序執行 function&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// 而且可以傳參數&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;waterfall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
@@ -101,20 +107,22 @@ fun3 又需要 fun2 callback 的資料&lt;br&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 匯集 err1 err2 err3&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 收到的 rst = 上面的 result4&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;用 waterfall 不會讓你的 callback 越疊越高&lt;br&gt;
-而且可以匯集 error 一併處理&lt;br&gt;
-不用在每個 callback 內確認 error&lt;br&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;hr&gt;
+&lt;p&gt;用 waterfall 不會讓你的 callback 越疊越高&lt;br /&gt;
+而且可以匯集 error 一併處理&lt;br /&gt;
+不用在每個 callback 內確認 error&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;async.series&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br&gt;
-fun2 不需要 fun1 callback 的資料&lt;br&gt;
-fun3 也不需要 fun2 callback 的資料&lt;br&gt;
-但最後的結果要把 fun1 fun2 fun3 的資料整合起來&lt;br&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// new array&lt;/span&gt;
+&lt;h2 id=&quot;asyncseries&quot;&gt;async.series&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br /&gt;
+fun2 不需要 fun1 callback 的資料&lt;br /&gt;
+fun3 也不需要 fun2 callback 的資料&lt;br /&gt;
+但最後的結果要把 fun1 fun2 fun3 的資料整合起來&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// new array&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;func1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;allResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -132,9 +140,12 @@ fun3 也不需要 fun2 callback 的資料&lt;br&gt;
         &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果用 async&lt;br&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// series 會按照順序執行 function&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果用 async&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// series 會按照順序執行 function&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// 而且可以把結果全部彙整起來&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
@@ -156,21 +167,23 @@ fun3 也不需要 fun2 callback 的資料&lt;br&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;errs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// errs = [err1, err2, err3]&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// results = [result1, result2, result3]&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;可以很方便的彙整資料&lt;br&gt;
-也不用多宣告一個 results&lt;br&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;hr&gt;
+&lt;p&gt;可以很方便的彙整資料&lt;br /&gt;
+也不用多宣告一個 results&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;async.parallel&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br&gt;
-fun1, fun2, fun3 平行執行&lt;br&gt;
-將執行的結果整合起來&lt;br&gt;
-與 series 不同的是&lt;br&gt;
-parallel 的多個 function 會同時執行&lt;br&gt;
-所以不能互相衝突(存取相同檔案...等等)&lt;br&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parallel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+&lt;h2 id=&quot;asyncparallel&quot;&gt;async.parallel&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;使用時機:&lt;/b&gt;&lt;br /&gt;
+fun1, fun2, fun3 平行執行&lt;br /&gt;
+將執行的結果整合起來&lt;br /&gt;
+與 series 不同的是&lt;br /&gt;
+parallel 的多個 function 會同時執行&lt;br /&gt;
+所以不能互相衝突(存取相同檔案…等等)&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parallel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;finish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;fun1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rst1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
             &lt;span class=&quot;nx&quot;&gt;finish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rst1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -191,20 +204,23 @@ parallel 的多個 function 會同時執行&lt;br&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;errs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// errs = [err1, err2, err3]&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// results = [result1, result2, result3]&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;parallel 跟 series 滿像的都是把結果整合起來&lt;br&gt;
-但因為是平行效率比較高&lt;br&gt;
-但是要小心不要衝突&lt;br&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;hr&gt;
+&lt;p&gt;parallel 跟 series 滿像的都是把結果整合起來&lt;br /&gt;
+但因為是平行效率比較高&lt;br /&gt;
+但是要小心不要衝突&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;基本的 async 介紹就到這裡&lt;br&gt;
-希望大家看完這篇有比較了解 async 在幹嘛~&lt;br&gt;
-如果想要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br&gt;
-或是內容有誤或是有疑問的可以寫信跟我說&lt;br&gt;&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;&lt;a href=&quot;mailto:pudding850806@gmail.com&quot;&gt;Email : pudding850806@gmail.com&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://github.com/Larry850806&quot;&gt;GitHub : Larry850806&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;基本的 async 介紹就到這裡&lt;br /&gt;
+希望大家看完這篇有比較了解 async 在幹嘛~&lt;br /&gt;
+如果想要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;
+或是內容有誤或是有疑問的可以寫信跟我說&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#112;&amp;#117;&amp;#100;&amp;#100;&amp;#105;&amp;#110;&amp;#103;&amp;#056;&amp;#053;&amp;#048;&amp;#056;&amp;#048;&amp;#054;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;Email : pudding850806@gmail.com&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/Larry850806&quot;&gt;GitHub : Larry850806&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
 </content>
  </entry>
  
