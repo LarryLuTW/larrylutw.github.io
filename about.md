@@ -27,3 +27,4 @@ title: About Me
 
 - [Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>
 - [GitHub : Larry850806](https://github.com/Larry850806)<br>
+- [FaceBook : 盧承億](https://www.facebook.com/Larry850806)<br>
