@@ -23,5 +23,7 @@ title: About Me
 - [Cool Slide](https://github.com/CoolSlide/cool-slide) - 用 markdown 語法寫出很酷的投影片
 
 
-[Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>
-[GitHub : Larry850806](https://github.com/Larry850806)<br>
+### 聯絡資訊:
+
+- [Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>
+- [GitHub : Larry850806](https://github.com/Larry850806)<br>
