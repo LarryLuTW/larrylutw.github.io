@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-01T11:53:44+08:00</updated>
+ <updated>2016-06-01T11:57:58+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -471,7 +471,9 @@ parallel 的多個 function 會同時執行&lt;br /&gt;
 希望大家看完這篇有比較了解 async 在幹嘛 ~&lt;br /&gt;
 如果想要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;之後可能會再寫一篇進階篇&lt;br /&gt;
+&lt;p&gt;這是第二篇&lt;br /&gt;
+&lt;a href=&quot;../../../../2016/06/01/async2/&quot;&gt;[JavaScript] 如何用 async 控制流程 (二)&lt;/a&gt;&lt;br /&gt;
+會介紹一些比較難的流程控制&lt;br /&gt;
 如果內容有誤或是有疑問的可以寫信跟我說&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
