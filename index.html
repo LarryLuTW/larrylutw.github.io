@@ -5,10 +5,11 @@ title: Home
 
 <div class="posts">
   {% for post in paginator.posts %}
-  <div class="post" style="height: 40px;">
+  <div class="post" style="height: 80px;margin-bottom: 30px;">
 
-    <span class="post-date">{{ post.date | date_to_string }}
-        <h1 class="post-title">
+    <span class="post-date">
+        {{ post.date | date_to_string }}
+        <h1 class="post-title" style="font-size: 170%;">
           <a href="{{ post.url }}">
             {{ post.title }}
           </a>
