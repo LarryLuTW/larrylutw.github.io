@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-01T11:50:35+08:00</updated>
+ <updated>2016-06-01T11:51:28+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -267,7 +267,7 @@ code 大概長這樣&lt;br /&gt;&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>[JavaScript] 如何用 async 控制流程</title>
+   <title>[JavaScript] 如何用 async 控制流程 (一)</title>
    <link href="http://larry850806.github.io/2016/05/31/async/"/>
    <updated>2016-05-31T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/05/31/async</id>
