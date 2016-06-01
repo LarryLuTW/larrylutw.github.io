@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      [JavaScript] 如何用 async 控制流程 (二) &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=170 style="display: none;">
+
+            <script>
+                console.log(screen.width);
+                console.log(screen.height);
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+              <a class="sidebar-nav-item" href="/">Articles</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[JavaScript] 如何用 async 控制流程 (二)</h1>
+  <span class="post-date">01 Jun 2016</span>
+  <p>這篇是如何用 async 控制流程的第二篇<br />
+還沒看過第一篇的可以先看<a href="../../../../2016/05/31/async/">這裡</a><br /><br /></p>
+
+<h2 id="section">這篇要介紹的有 :</h2>
+<ul>
+  <li>
+    <p>async.forever : 一直做某件事，直到發生錯誤</p>
+  </li>
+  <li>
+    <p>async.queue : 按照順序做事情</p>
+  </li>
+  <li>
+    <p>async.auto : 用來處理有依賴關係的多個任務</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="asyncforever">async.forever</h2>
+<p><b>使用時機 :</b><br />
+一直做某件事情<br />
+直到發生錯誤<br /></p>
+
+<p><b>用法 :</b><br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// forever(fn, [errback])</span>
+
+<span class="c1">// 原本的 func1 是這樣用</span>
+<span class="c1">// func1(function(err){</span>
+<span class="c1">//     if(err) throw err;</span>
+<span class="c1">// });</span>
+
+<span class="c1">// 重複執行 func1</span>
+<span class="nx">forever</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">next</span><span class="p">){</span>
+
+    <span class="nx">func1</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>  <span class="c1">// 如果有 err 就停止然後跳到下面</span>
+    <span class="p">});</span>             <span class="c1">// 沒 err 就繼續執行</span>
+
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>   <span class="c1">// &lt;-- 有 err 的話跑到這裡</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+</div>
+
+<p>但是這樣會一直執行<br />
+如果想要 10 秒執行一次的話可以設個 timeout<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">forever</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">next</span><span class="p">){</span>
+
+    <span class="nx">func1</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span> <span class="c1">// 執行完之後過 10 秒再 call next</span>
+            <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>                <span class="c1">// 這樣就可以間隔 10 秒</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+</div>
+
+<p>forever 可以用在一些例行公事上<br />
+我有寫一個自動抓天氣的 FB Bot<br />
+每過三個小時會回報天氣給他的好友<br />
+他叫做<a href="https://www.facebook.com/profile.php?id=100011531653577">卜浦麟</a>(布丁狗的英文XD)<br />
+大家如果想要天氣也可以加他<br />
+code 大概長這樣<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">forever</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">next</span><span class="p">){</span>
+
+    <span class="nx">sendFBNotification</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// 三個小時一次</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'error!!!'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>用 async.forever 可以很簡單重複一件事情<br />
+如果單純用 while 一直執行就沒辦法 setTimeout<br />
+也沒辦法處理 asynchronous 的 function<br /></p>
+
+<hr />
+
+<h2 id="asyncqueue">async.queue</h2>
+<p><b>使用時機 :</b><br />
+要按照順序做一些事情<br /></p>
+
+<p><b>用法 :</b><br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 建一個 queue</span>
+<span class="c1">// queue(worker, [concurrency])</span>
+<span class="c1">// concurrency 預設是 1</span>
+<span class="c1">// 可以設置大於零的整數</span>
+<span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">queue</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="nx">finish</span><span class="p">){</span>
+    <span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>     <span class="c1">// 執行任務</span>
+    <span class="nx">finish</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>   <span class="c1">// 完成所有任務，回傳是否有錯誤</span>
+<span class="p">},</span> <span class="mi">2</span><span class="p">);</span>              <span class="c1">// 有兩個工人，最多同時執行兩個任務</span>
+                    <span class="c1">// 任務太多就要先等前面的執行完</span>
+
+
+<span class="c1">// 增加一個新任務</span>
+<span class="kd">var</span> <span class="nx">task</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'t1'</span><span class="p">,</span>
+    <span class="na">run</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'t1 is running'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">callback</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'finish t1'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 把任務加進 queue</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="nx">task</span><span class="p">.</span><span class="nx">callback</span><span class="p">);</span>    
+<span class="c1">// 如果有多的工人就會馬上執行</span>
+<span class="c1">// 沒有的話就要等前面的任務結束</span>
+
+
+<span class="c1">// 也可以用匿名物件新增任務</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s1">'t2'</span><span class="p">,</span> <span class="na">run</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'t2 is running'</span><span class="p">);</span>
+
+<span class="p">}},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'finish t2'</span><span class="p">);</span>
+
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>也可以設定一些狀態改變時的 callback<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">q</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>   <span class="c1">// 暫停</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">resume</span><span class="p">();</span>  <span class="c1">// 繼續</span>
+
+<span class="c1">// 呼叫暫停的時候</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">paused</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'queue is paused'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 當最後一個任務也開始執行，沒有任務在等待</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">empty</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'no more tasks waiting'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 當所有工人都在忙，如果有新的 task 進去就要先等</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">saturated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'all workers are used'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 當所有的任務都執行完了</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">drain</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'all tasks have been processed'</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>用 async.queue 有個好處是<br />
+不用自己去安排執行的細節<br />
+只要把任務放進 queue 就好了<br />
+但是壞處是不知道什麼時候會執行完<br />
+尤其是任務太多的時候<br /></p>
+
+<hr />
+
+<h2 id="asyncauto">async.auto</h2>
+<p><b>使用時機 :</b><br />
+用來處理有依賴關係的多個任務<br /></p>
+
+<p><b>用法 :</b><br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// fun1, fun2 互相獨立可以平行執行</span>
+<span class="c1">// fun3 要等 fun1, fun2 完成</span>
+<span class="c1">// fun4 要等 fun1 完成</span>
+
+<span class="nx">async</span><span class="p">.</span><span class="nx">auto</span><span class="p">({</span>
+    <span class="c1">// fun1 可以自己開始執行</span>
+    <span class="na">fun1</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">finish</span><span class="p">){</span>
+        <span class="nx">finish</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">,</span> <span class="s1">'one'</span><span class="p">);</span>   <span class="c1">// 會傳到 results</span>
+    <span class="p">},</span>
+
+    <span class="c1">// fun2 可以自己開始執行</span>
+    <span class="na">fun2</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">finish</span><span class="p">){</span>
+        <span class="nx">finish</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="c1">// fun3 要等 fun1, fun2 完成</span>
+    <span class="na">fun3</span><span class="p">:</span> <span class="p">[</span><span class="s1">'fun1'</span><span class="p">,</span> <span class="s1">'fun2'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nx">finish</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="s1">'fun1'</span><span class="p">]);</span>   <span class="c1">// ['1', 'one']</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="s1">'fun2'</span><span class="p">]);</span>   <span class="c1">// ['2', 'two']</span>
+        <span class="nx">finish</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">,</span> <span class="s1">'three'</span><span class="p">);</span>
+    <span class="p">}],</span>
+
+    <span class="c1">// fun4 要等 fun1 完成</span>
+    <span class="na">fun4</span><span class="p">:</span> <span class="p">[</span><span class="s1">'fun1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nx">finish</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="s1">'fun1'</span><span class="p">]);</span>   <span class="c1">// ['1', 'one']</span>
+        <span class="nx">finish</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">'4'</span><span class="p">,</span> <span class="s1">'four'</span><span class="p">);</span>
+    <span class="p">}]</span>
+
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">){</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+
+    <span class="c1">// results = { </span>
+    <span class="c1">//     fun1: ['1', 'one'],</span>
+    <span class="c1">//     fun2: ['2', 'two'],</span>
+    <span class="c1">//     fun4: ['4', 'four'],</span>
+    <span class="c1">//     fun3: ['3', 'three'] </span>
+    <span class="c1">// }</span>
+
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>我覺得 async.auto 還滿強大的XD<br />
+雖然用 waterfall 跟 parallel 跟以做出一樣的功能<br />
+但是用 auto 可以讓相互關係更清楚<br />
+而且要增加任務也很簡單<br /></p>
+
+<hr />
+
+<p>以上是比較進階的 async 介紹<br />
+雖然有些不太常用XD<br />
+不過這三個是我覺得比較常用的<br />
+所以想介紹給大家<br />
+如果想要看更詳細可以到他們的 <a href="https://github.com/caolan/async">GitHub</a><br /><br />
+如果內容有誤或是有疑問的也可以寫信跟我說<br /></p>
+
+<ul>
+  <li><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#112;&#117;&#100;&#100;&#105;&#110;&#103;&#056;&#053;&#048;&#056;&#048;&#054;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Email : pudding850806@gmail.com</a><br /></li>
+  <li><a href="https://github.com/Larry850806">GitHub : Larry850806</a><br /></li>
+  <li><a href="https://www.facebook.com/Larry850806">FaceBook : 盧承億</a><br /></li>
+</ul>
+
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/05/31/async/">
+            [JavaScript] 如何用 async 控制流程
+            <small>31 May 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
