@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[JavaScript] 介紹 CoffeeScript'
+title: '[JavaScript] CoffeeScript 基本介紹'
 published: true
 ---
 

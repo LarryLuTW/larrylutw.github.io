@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-05T10:48:00+08:00</updated>
+ <updated>2016-06-05T10:50:35+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>[JavaScript] 介紹 CoffeeScript</title>
+   <title>[JavaScript] CoffeeScript 基本介紹</title>
    <link href="http://larry850806.github.io/2016/06/04/coffeeScript/"/>
    <updated>2016-06-04T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/06/04/coffeeScript</id>
