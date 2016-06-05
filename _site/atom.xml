@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-06T02:00:41+08:00</updated>
+ <updated>2016-06-06T02:01:53+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>[JQuery] 用 JQuery 做出卡片翻動的效果</title>
-   <link href="http://larry850806.github.io/2016/06/05/jquery-flip/"/>
-   <updated>2016-06-05T00:00:00+08:00</updated>
-   <id>http://larry850806.github.io/2016/06/05/jquery-flip</id>
+   <link href="http://larry850806.github.io/2016/06/06/jquery-flip/"/>
+   <updated>2016-06-06T00:00:00+08:00</updated>
+   <id>http://larry850806.github.io/2016/06/06/jquery-flip</id>
    <content type="html">&lt;p&gt;前陣子在做網頁的想要做卡片翻動的效果&lt;br /&gt;
 就去查了一下怎麼做&lt;br /&gt;
 發現有一個 JQuery 的 plugin 可以做出不錯的翻動&lt;br /&gt;
