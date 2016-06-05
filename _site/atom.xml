@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-05T10:40:18+08:00</updated>
+ <updated>2016-06-05T10:41:54+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -234,8 +234,7 @@ coffee -o js/ -c coffee/            &lt;span class=&quot;c&quot;&gt;# 編譯整�
 &lt;hr /&gt;
 
 &lt;p&gt;以上是基本的 CoffeeScript 介紹&lt;br /&gt;
-我個人滿喜歡 CoffeeScript &lt;br /&gt;
-而且也有很多優點&lt;br /&gt;
+CoffeeScript 有很多優點&lt;br /&gt;
 不過缺點就是可能要再學一些新的語法&lt;br /&gt;
 但如果是學過 Python 或是 Ruby 應該不會太難上手&lt;br /&gt;
 要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;

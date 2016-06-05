@@ -219,8 +219,7 @@ larry.say_hi();     // My name is Larry, I am 19.
 ---
 
 以上是基本的 CoffeeScript 介紹<br>
-我個人滿喜歡 CoffeeScript <br>
-而且也有很多優點<br>
+CoffeeScript 有很多優點<br>
 不過缺點就是可能要再學一些新的語法<br>
 但如果是學過 Python 或是 Ruby 應該不會太難上手<br>
 要看更詳細的可以到<a href="http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22" target="_blank">他們的網站</a><br>
