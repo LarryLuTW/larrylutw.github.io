@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[JQuery] 用 JQuery 做出翻動卡片的效果'
+title: '[JQuery] 用 JQuery 做出卡片翻動的效果'
 published: true
 ---
 
