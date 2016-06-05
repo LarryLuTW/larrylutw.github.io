@@ -5,7 +5,7 @@ published: true
 ---
 
 可能有些人還沒聽過 CoffeeScript 是什麼<br>
-(因為我也是幾天前才知道的XD)
+(因為我也是幾天前才知道的XD)<br>
 其實 CoffeeScript 就是 Javascript<br>
 只是他的語法比較簡潔易懂<br>
 寫完 CoffeeScript 之後可以把它編譯成 Javascript<br>
