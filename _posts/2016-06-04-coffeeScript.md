@@ -67,7 +67,7 @@ greet = "Hello, " + name;
 ```
 
 ### Function
-CoffeeScript 的 function 語法也跟 Ruby 滿像的
+function 的語法也跟 Ruby 滿像的
 
 ```coffeescript
 bigger = (a, b) ->

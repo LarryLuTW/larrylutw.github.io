@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-05T10:41:54+08:00</updated>
+ <updated>2016-06-05T10:43:09+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -82,7 +82,7 @@ coffee -o js/ -c coffee/            &lt;span class=&quot;c&quot;&gt;# 編譯整�
 &lt;/div&gt;
 
 &lt;h3 id=&quot;function&quot;&gt;Function&lt;/h3&gt;
-&lt;p&gt;CoffeeScript 的 function 語法也跟 Ruby 滿像的&lt;/p&gt;
+&lt;p&gt;function 的語法也跟 Ruby 滿像的&lt;/p&gt;
 
 &lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;bigger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;
