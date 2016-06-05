@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-05T10:38:17+08:00</updated>
+ <updated>2016-06-05T10:40:18+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -238,7 +238,7 @@ coffee -o js/ -c coffee/            &lt;span class=&quot;c&quot;&gt;# 編譯整�
 而且也有很多優點&lt;br /&gt;
 不過缺點就是可能要再學一些新的語法&lt;br /&gt;
 但如果是學過 Python 或是 Ruby 應該不會太難上手&lt;br /&gt;
-如果想要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;
+要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;
 如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
 或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
 
@@ -493,7 +493,7 @@ code 大概長這樣&lt;br /&gt;&lt;/p&gt;
 雖然有些不太常用XD&lt;br /&gt;
 不過這三個是我覺得比較常用的&lt;br /&gt;
 所以想介紹給大家&lt;br /&gt;
-要想要看更詳細可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;
+要想要看更詳細可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;
 如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
 或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
 
@@ -709,7 +709,7 @@ parallel 的多個 function 會同時執行&lt;br /&gt;
 
 &lt;p&gt;基本的 async 介紹就到這裡&lt;br /&gt;
 希望大家看完這篇有比較了解 async 在幹嘛 ~&lt;br /&gt;
-要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;
+要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;
 如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
 或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
 
