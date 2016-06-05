@@ -225,6 +225,7 @@ larry.say_hi();     // My name is Larry, I am 19.
 但如果是學過 Python 或是 Ruby 應該不會太難上手<br>
 如果想要看更詳細的可以到<a href="http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22" target="_blank">他們的網站</a><br>
 如果內容有誤或是有疑問的也可以透過[粉專](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)跟我說<br>
+或是也可以跟我討論<br>
 
 ---
 這是我在 FB 上的粉專<br>
