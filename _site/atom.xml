@@ -4,13 +4,143 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-05T10:50:35+08:00</updated>
+ <updated>2016-06-06T01:44:29+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>[JQuery] 用 JQuery 做出翻動卡片的效果</title>
+   <link href="http://larry850806.github.io/2016/06/06/jquery-flip/"/>
+   <updated>2016-06-06T00:00:00+08:00</updated>
+   <id>http://larry850806.github.io/2016/06/06/jquery-flip</id>
+   <content type="html">&lt;p&gt;前陣子在做網頁的想要做卡片翻動的效果&lt;br /&gt;
+就去查了一下怎麼做&lt;br /&gt;
+發現有一個 JQuery 的 plugin 可以做出不錯的翻動&lt;br /&gt;
+效果大概像這樣 :&lt;br /&gt;&lt;/p&gt;
+&lt;div id=&quot;photo&quot; style=&quot;width: 160px;height: 160px;border: 3px; background-color: #77FFEE;&quot;&gt; 
+    &lt;div class=&quot;front&quot; align=&quot;center&quot;&gt;
+        &lt;h2 style=&quot;margin-top: 61px;&quot;&gt; 點我 &lt;/h2&gt;
+    &lt;/div&gt; 
+    &lt;div class=&quot;back&quot;&gt;
+        &lt;img src=&quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;amp;s=160&quot; /&gt;
+    &lt;/div&gt; 
+
+    &lt;script src=&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        $(function($) {
+            $(&quot;#photo&quot;).flip(); 
+        });
+    &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;最基本只有文字的效果 :&lt;/h2&gt;
+&lt;div id=&quot;card&quot; style=&quot;width: 117px; background-color: #black;&quot;&gt; 
+    &lt;div class=&quot;front&quot;&gt; 
+        Click Me
+    &lt;/div&gt; 
+    &lt;div class=&quot;back&quot;&gt;
+        Hello World
+    &lt;/div&gt; 
+
+    &lt;script src=&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        $(function($) {
+            $(&quot;#card&quot;).flip(); 
+        });
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;card&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width: 117px; background-color: black;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;front&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+        Click Me
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;back&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        Hello World
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#card&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;註解&lt;/h3&gt;
+&lt;p&gt;class=”card”  是整張卡，包刮正面和背面&lt;br /&gt;
+class=”front”  是正面的內容&lt;br /&gt;
+class=”back”  是背面的內容&lt;br /&gt;
+&lt;br /&gt;
+裡面也可以放圖片或其他東西&lt;br /&gt;
+不一定要放文字&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;其他參數 :&lt;/h2&gt;
+&lt;p&gt;也可以加一些參數在 flip 裡面&lt;br /&gt;
+做出不一樣的效果&lt;br /&gt;
+還滿有趣的&lt;br /&gt;&lt;/p&gt;
+&lt;div id=&quot;card2&quot; style=&quot;width: 117px; background-color: #black;&quot;&gt; 
+    &lt;div class=&quot;front&quot;&gt; 
+        Click Me
+    &lt;/div&gt; 
+    &lt;div class=&quot;back&quot;&gt;
+        Hello World
+    &lt;/div&gt; 
+
+    &lt;script src=&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        $(&quot;#card2&quot;).flip({
+            axis: &#39;x&#39;,
+            trigger: &#39;hover&#39;
+        });
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#card2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;x&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 繞 x 軸翻轉&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;trigger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;hover&#39;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 游標進出&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;想要看更詳細的可以到&lt;a href=&quot;http://nnattawat.github.io/flip/&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;
+也有更多其他的用法&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
+如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
+&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
+如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>[JavaScript] CoffeeScript 基本介紹</title>
@@ -238,15 +368,14 @@ coffee -o js/ -c coffee/            &lt;span class=&quot;c&quot;&gt;# 編譯整�
 CoffeeScript 有很多優點&lt;br /&gt;
 不過缺點就是可能要再學一些新的語法&lt;br /&gt;
 但如果是學過 Python 或是 Ruby 應該不會太難上手&lt;br /&gt;
-要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
-或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
+要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
+
 &lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
 如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-大家可以追蹤它&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
+如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
 
 </content>
  </entry>
@@ -493,15 +622,14 @@ code 大概長這樣&lt;br /&gt;&lt;/p&gt;
 雖然有些不太常用XD&lt;br /&gt;
 不過這三個是我覺得比較常用的&lt;br /&gt;
 所以想介紹給大家&lt;br /&gt;
-要想要看更詳細可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
-或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
+要想要看更詳細可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
+
 &lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
 如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-大家可以追蹤它&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
+如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
 
 </content>
  </entry>
@@ -709,19 +837,18 @@ parallel 的多個 function 會同時執行&lt;br /&gt;
 
 &lt;p&gt;基本的 async 介紹就到這裡&lt;br /&gt;
 希望大家看完這篇有比較了解 async 在幹嘛 ~&lt;br /&gt;
-要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;粉專&lt;/a&gt;跟我說&lt;br /&gt;
-或是也可以跟我討論&lt;br /&gt;&lt;/p&gt;
+要看更進階的功能可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;這是第二篇&lt;br /&gt;
 &lt;a href=&quot;../../../../2016/06/01/async2/&quot;&gt;[JavaScript] 如何用 async 控制流程 (二)&lt;/a&gt;&lt;br /&gt;
 會介紹一些比較難的流程控制&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
+
 &lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
 如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-大家可以追蹤它&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
+如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
 
 </content>
  </entry>

@@ -224,14 +224,13 @@ CoffeeScript 有很多優點<br>
 不過缺點就是可能要再學一些新的語法<br>
 但如果是學過 Python 或是 Ruby 應該不會太難上手<br>
 要看更詳細的可以到<a href="http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22" target="_blank">他們的網站</a><br>
-如果內容有誤或是有疑問的也可以透過[粉專](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)跟我說<br>
-或是也可以跟我討論<br>
 
 ---
+
 這是我在 FB 上的粉專<br>
 如果有新文章或是看到好的文章都會分享在這裡<br>
-大家可以追蹤它<br>
 [賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
+如果內容有誤或是有疑問的也可以透過粉專跟我說<br>
 
 
 
