@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-06T10:14:05+08:00</updated>
+ <updated>2016-06-06T12:19:44+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -26,15 +26,25 @@
         &lt;h2 style=&quot;margin-top: 61px;&quot;&gt; 點我 &lt;/h2&gt;
     &lt;/div&gt; 
     &lt;div class=&quot;back&quot;&gt;
-        &lt;img src=&quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;amp;s=160&quot; /&gt;
+        &lt;img id=&quot;img&quot; src=&quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;amp;s=160&quot; /&gt;
     &lt;/div&gt; 
 
     &lt;script src=&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js&quot;&gt;&lt;/script&gt;
 
     &lt;script&gt;
+        var i = 0;
         $(function($) {
             $(&quot;#photo&quot;).flip(); 
+
+            $(&quot;#photo&quot;).on(&#39;flip:done&#39;,function(){
+                i++;
+                if(i % 4 == 2){
+                    $(&quot;#img&quot;).attr(&quot;src&quot;, &quot;http://imgur.com/qo8vP3J.png&quot;);
+                } else if (i % 4 == 0){
+                    $(&quot;#img&quot;).attr(&quot;src&quot;, &quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;s=160&quot;);
+                }
+            });
         });
     &lt;/script&gt;
 &lt;/div&gt;

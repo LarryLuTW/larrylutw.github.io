@@ -106,15 +106,25 @@
         <h2 style="margin-top: 61px;"> 點我 </h2>
     </div> 
     <div class="back">
-        <img src="https://avatars0.githubusercontent.com/u/10403741?v=3&amp;s=160" />
+        <img id="img" src="https://avatars0.githubusercontent.com/u/10403741?v=3&amp;s=160" />
     </div> 
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
     <script>
+        var i = 0;
         $(function($) {
             $("#photo").flip(); 
+
+            $("#photo").on('flip:done',function(){
+                i++;
+                if(i % 4 == 2){
+                    $("#img").attr("src", "http://imgur.com/qo8vP3J.png");
+                } else if (i % 4 == 0){
+                    $("#img").attr("src", "https://avatars0.githubusercontent.com/u/10403741?v=3&s=160");
+                }
+            });
         });
     </script>
 </div>
