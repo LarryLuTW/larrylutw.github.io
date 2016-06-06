@@ -22,14 +22,15 @@ published: true
     <script>
         var i = 0;
         $(function($) {
+            var $img = $("#img");
             $("#photo").flip(); 
 
             $("#photo").on('flip:done',function(){
                 i++;
                 if(i % 4 == 2){
-                    $("#img").attr("src", "http://imgur.com/qo8vP3J.png");
+                    $img.attr("src", "http://imgur.com/qo8vP3J.png");
                 } else if (i % 4 == 0){
-                    $("#img").attr("src", "https://avatars0.githubusercontent.com/u/10403741?v=3&s=160");
+                    $img.attr("src", "https://avatars0.githubusercontent.com/u/10403741?v=3&s=160");
                 }
             });
         });

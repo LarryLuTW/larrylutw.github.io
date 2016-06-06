@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-06T12:19:44+08:00</updated>
+ <updated>2016-06-06T14:39:13+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -35,14 +35,15 @@
     &lt;script&gt;
         var i = 0;
         $(function($) {
+            var $img = $(&quot;#img&quot;);
             $(&quot;#photo&quot;).flip(); 
 
             $(&quot;#photo&quot;).on(&#39;flip:done&#39;,function(){
                 i++;
                 if(i % 4 == 2){
-                    $(&quot;#img&quot;).attr(&quot;src&quot;, &quot;http://imgur.com/qo8vP3J.png&quot;);
+                    $img.attr(&quot;src&quot;, &quot;http://imgur.com/qo8vP3J.png&quot;);
                 } else if (i % 4 == 0){
-                    $(&quot;#img&quot;).attr(&quot;src&quot;, &quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;s=160&quot;);
+                    $img.attr(&quot;src&quot;, &quot;https://avatars0.githubusercontent.com/u/10403741?v=3&amp;s=160&quot;);
                 }
             });
         });
