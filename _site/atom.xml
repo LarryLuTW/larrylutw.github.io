@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-06T17:00:44+08:00</updated>
+ <updated>2016-06-06T21:30:31+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -154,7 +154,7 @@ class=”back”  是背面的內容&lt;br /&gt;
  </entry>
  
  <entry>
-   <title>[C++] STL 容器介紹 (二)</title>
+   <title>[C++] STL 容器(二) - Iterator</title>
    <link href="http://larry850806.github.io/2016/06/06/STL2/"/>
    <updated>2016-06-06T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/06/06/STL2</id>
@@ -333,7 +333,7 @@ iterator 像是一個比較聰明的 pointer&lt;br /&gt;
  </entry>
  
  <entry>
-   <title>[C++] STL 容器介紹 (一)</title>
+   <title>[C++] STL 容器(一) - 基本介紹</title>
    <link href="http://larry850806.github.io/2016/06/06/STL1/"/>
    <updated>2016-06-06T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/06/06/STL1</id>
