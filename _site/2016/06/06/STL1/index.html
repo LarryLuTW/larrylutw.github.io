@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      [C++] STL 容器介紹 (一) &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+              <a class="sidebar-nav-item" href="/">Articles</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[C++] STL 容器介紹 (一)</h1>
+  <span class="post-date">06 Jun 2016</span>
+  <p>STL 是 C++ 提供的一套標準模板函式庫<br />
+全名是 Standard Template Library<br />
+因為是用 Template 實作的<br />
+所以裡面什麼都可以裝<br /></p>
+
+<hr />
+
+<h2 id="section">內容索引(可以直接點)</h2>
+<ul>
+  <li><a href="#vector">Vector</a></li>
+  <li><a href="#queue">Queue</a></li>
+  <li><a href="#stack">Stack</a></li>
+  <li><a href="#set">Set</a></li>
+  <li><a href="#map">Map</a></li>
+</ul>
+
+<hr />
+
+<p><a name="vector"></a></p>
+
+<h2 id="vector">Vector</h2>
+<p>Vector 可以看成是一個動態陣列<br />
+<img src="http://imgur.com/YpSpyuh.png" alt="" /><br /></p>
+
+<h3 id="section-1">用法跟陣列很像，基本功能有 :</h3>
+<ul>
+  <li>push_back: 把一個值加到尾巴</li>
+  <li>pop_back: 把尾巴的值移除掉</li>
+  <li>size: 得到目前長度</li>
+  <li>[]: 得到某一個位置的值</li>
+</ul>
+
+<h3 id="section-2">範例 1</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;vector&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>    <span class="c1">// 宣告一個裝 int 的 vector
+</span>                        <span class="c1">// 現在 vec 是空的
+</span>    <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>  <span class="c1">// 經過三次 push_back
+</span>    <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>  <span class="c1">// vec 是 [10, 20, 30]
+</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>        <span class="c1">// length = 3
+</span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">length</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     <span class="c1">// 輸出 10, 20, 30
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-3">範例 2</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+       <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>       <span class="c1">// [0, 10, 20, 30, 40]
+</span>    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     <span class="c1">// 輸出 0, 10, 20, 30, 40
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-4">範例 3</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+       <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>       <span class="c1">// [0, 10, 20, 30, 40]
+</span>    <span class="p">}</span>
+
+    <span class="n">vec</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>     <span class="c1">// 移除 40
+</span>    <span class="n">vec</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>     <span class="c1">// 移除 30
+</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>  <span class="c1">// vec.size() = 3
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>         <span class="c1">// 輸出 0, 10, 20
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="vector-">Vector 的優點</h3>
+<ul>
+  <li>宣告時可以不用確定大小</li>
+  <li>可以 Random Access</li>
+</ul>
+
+<h3 id="vector--1">Vector 的缺點</h3>
+<ul>
+  <li>在內部進行刪除時效率很低</li>
+</ul>
+
+<hr />
+
+<p><a name="queue"></a></p>
+
+<h2 id="queue">Queue</h2>
+<p>Queue 就像是排隊買東西<br />
+只能往尾巴排，然後從頭出來<br />
+<img src="http://blog.hqc.sk.ca/wp-content/uploads/2012/12/Queue-2012-12-11.jpg" alt="" /></p>
+
+<h3 id="section-5">基本功能有:</h3>
+<ul>
+  <li>push: 把一個值加到尾巴</li>
+  <li>pop: 把第一個值移除掉</li>
+  <li>back: 得到尾巴的值</li>
+  <li>front: 得到頭的值</li>
+</ul>
+
+<h3 id="section-6">範例 1</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;queue&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>   <span class="c1">// 一個空的 queue
+</span>    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>     <span class="c1">// [10, 20, 30]
+</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 10
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>   <span class="c1">// 30
+</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>                    <span class="c1">// [20, 30]
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>   <span class="c1">// 2
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-7">範例 2</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>       <span class="c1">// 一個空的 queue
+</span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="p">}</span>                   <span class="c1">// [0, 10, 20, 30, 40]
+</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>                   <span class="c1">// 依序輸出 0 10 20 30 40
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="queue-">Queue 的優點</h3>
+<ul>
+  <li>可以快速的把頭的值拿掉</li>
+</ul>
+
+<h3 id="queue--1">Queue 的缺點</h3>
+<ul>
+  <li>只能操作頭跟尾</li>
+</ul>
+
+<hr />
+
+<p><a name="stack"></a></p>
+
+<h2 id="stack">Stack</h2>
+<p>Stack 就是一疊盤子<br />
+只能拿走最上面的<br />
+或是繼續往上疊<br />
+<img src="http://imgur.com/rhIdBYm.png" alt="" /></p>
+
+<h3 id="section-8">基本功能有:</h3>
+<ul>
+  <li>top: 得到最上面的值</li>
+  <li>push: 再拿一個盤子往上疊</li>
+  <li>pop: 拿掉最上面的盤子</li>
+</ul>
+
+<h3 id="section-9">範例</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
+    
+    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>     <span class="c1">//  | 30 |
+</span>    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>     <span class="c1">//  | 20 |   疊三個盤子
+</span>    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>     <span class="c1">//  |_10_|   10 在最下面
+</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>    <span class="c1">// s.size() = 3
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>                                   <span class="c1">// 輸出 30, 20, 10
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="stack-">Stack 的優點</h3>
+<ul>
+  <li>操作很簡單(只有疊上去跟拿下來XD)</li>
+</ul>
+
+<h3 id="stack--1">Stack 的缺點</h3>
+<ul>
+  <li>只能操作最上面的那個值</li>
+</ul>
+
+<hr />
+
+<p><a name="set"></a></p>
+
+<h2 id="set">Set</h2>
+<p>set 就是集合<br />
+<img src="http://imgur.com/HIeaLY4.png" alt="" /></p>
+
+<h3 id="section-10">基本功能有:</h3>
+<ul>
+  <li>insert: 把一個數字放進集合</li>
+  <li>erase: 把某個數字從集合中移除</li>
+  <li>count: 檢查某個數是否有在集合中</li>
+</ul>
+
+<h3 id="section-11">範例</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;set&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">mySet</span><span class="p">;</span>
+    <span class="n">mySet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>   <span class="c1">// mySet = {20}
+</span>    <span class="n">mySet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>   <span class="c1">// mySet = {10, 20}
+</span>    <span class="n">mySet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>   <span class="c1">// mySet = {10, 20, 30}
+</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">mySet</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>    <span class="c1">// 存在 -&gt; 1
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">mySet</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>   <span class="c1">// 不存在 -&gt; 0
+</span>
+    <span class="n">mySet</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>                    <span class="c1">// mySet = {10, 30}
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">mySet</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>    <span class="c1">// 0
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="set-">Set 的優點</h3>
+<ul>
+  <li>操作很簡單</li>
+  <li>可以快速檢查裡面有沒有某個元素</li>
+</ul>
+
+<h3 id="set--1">Set 的缺點</h3>
+<ul>
+  <li>當 Set 裡面東西太多時會拖慢速度</li>
+</ul>
+
+<hr />
+
+<p><a name="map"></a></p>
+
+<h2 id="map">Map</h2>
+<p>map 就像是一個對應表<br />
+<img src="http://www.boost.org/doc/libs/1_44_0/libs/bimap/doc/html/images/bimap/standard.mapping.framework.png" alt="" /></p>
+
+<h3 id="section-12">基本功能有:</h3>
+<ul>
+  <li>[]: 得到對應的值</li>
+  <li>count: 檢查某個值是否有對應值</li>
+</ul>
+
+<h3 id="section-13">範例 1</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;map&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>     <span class="c1">// 從 string 對應到 int
+</span>
+                        <span class="c1">// 設定對應的值
+</span>    <span class="n">m</span><span class="p">[</span><span class="s">"one"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="c1">// "one" -&gt; 1
+</span>    <span class="n">m</span><span class="p">[</span><span class="s">"two"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>       <span class="c1">// "two" -&gt; 2
+</span>    <span class="n">m</span><span class="p">[</span><span class="s">"three"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>     <span class="c1">// "three" -&gt; 3
+</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">"two"</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     <span class="c1">// 1 -&gt; 有對應
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">"ten"</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     <span class="c1">// 0 -&gt; 沒有對應
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-14">範例 2</h3>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;map&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>     <span class="c1">// 從 string 對應到 int
+</span>
+    <span class="n">m</span><span class="p">[</span><span class="s">"one"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="c1">// "one" -&gt; 1
+</span>    <span class="n">m</span><span class="p">[</span><span class="s">"two"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>       <span class="c1">// "two" -&gt; 2
+</span>    <span class="n">m</span><span class="p">[</span><span class="s">"three"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>     <span class="c1">// "three" -&gt; 3
+</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">"one"</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>       <span class="c1">// 1
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">"three"</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     <span class="c1">// 3
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">"ten"</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>       <span class="c1">// 0 (無對應值)
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="map-">Map 的優點</h3>
+<ul>
+  <li>設定對應值很簡單</li>
+  <li>用很高的效率找到對應值</li>
+</ul>
+
+<h3 id="map--1">Map 的缺點</h3>
+<ul>
+  <li>對應值越多會越慢</li>
+</ul>
+
+<hr />
+
+<p>以上是基本的 STL 介紹<br />
+STL 有很多優點<br />
+但是要練到活用也要花一段時間<br />
+但是會了之後真的很好用<br /></p>
+
+<hr />
+
+<p>這是我在 FB 上的粉專<br />
+如果有新文章或是看到好的文章都會分享在這裡<br />
+<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br />
+如果內容有誤或是有疑問的也可以透過粉專跟我說<br /></p>
+
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/06/06/jquery-flip/">
+            [JQuery] 用 JQuery 做出卡片翻動的效果
+            <small>06 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/04/coffeeScript/">
+            [JavaScript] CoffeeScript 基本介紹
+            <small>04 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/01/async2/">
+            [JavaScript] 如何用 async 控制流程 (二)
+            <small>01 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
