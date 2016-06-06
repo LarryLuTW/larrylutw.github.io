@@ -1,6 +1,7 @@
 ---
 layout: post
 title: '[JavaScript] CoffeeScript 基本介紹'
+keywords: CoffeeScript, ES5, ES6, JavaScript
 published: true
 ---
 
