@@ -17,7 +17,7 @@ author:
   name:           'Larry Lu'
   url:            https://facebook.com/Larry850806
 
-paginate:         5
+paginate:         10
 
 # Custom vars
 version:          2.1.0
