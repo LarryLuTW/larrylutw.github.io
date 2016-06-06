@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-07T00:28:05+08:00</updated>
+ <updated>2016-06-07T00:29:11+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>[Node.js] 用 cheerio 抓取即時天氣</title>
+   <title>[Node.js] request 搭配 cheerio 抓取即時天氣</title>
    <link href="http://larry850806.github.io/2016/06/07/cheerio-weather/"/>
    <updated>2016-06-07T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/06/07/cheerio-weather</id>
