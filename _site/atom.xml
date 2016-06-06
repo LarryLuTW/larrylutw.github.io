@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-06T15:35:53+08:00</updated>
+ <updated>2016-06-06T15:38:19+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -371,7 +371,7 @@ class=”back”  是背面的內容&lt;br /&gt;
 &lt;p&gt;&lt;a name=&quot;set&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;set&quot;&gt;Set&lt;/h2&gt;
-&lt;p&gt;set 就是集合&lt;br /&gt;
+&lt;p&gt;Set 就是集合&lt;br /&gt;
 &lt;img src=&quot;http://imgur.com/HIeaLY4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-10&quot;&gt;基本功能有:&lt;/h3&gt;
@@ -417,7 +417,7 @@ class=”back”  是背面的內容&lt;br /&gt;
 &lt;p&gt;&lt;a name=&quot;map&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;map&quot;&gt;Map&lt;/h2&gt;
-&lt;p&gt;map 就像是一個對應表&lt;br /&gt;
+&lt;p&gt;Map 就像是一個對應表&lt;br /&gt;
 &lt;img src=&quot;http://www.boost.org/doc/libs/1_44_0/libs/bimap/doc/html/images/bimap/standard.mapping.framework.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-12&quot;&gt;基本功能有:&lt;/h3&gt;
