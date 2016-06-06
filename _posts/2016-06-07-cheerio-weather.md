@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Node.js] 用 cheerio 抓取即時天氣'
-keywords: request, Node.js, Nodejs, module, cheerio
+keywords: request, Node.js, Nodejs, module, cheerio, node
 published: true
 ---
 
