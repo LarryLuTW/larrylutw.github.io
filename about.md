@@ -19,12 +19,21 @@ title: About Me
 
 ## 我做過的作品:
 
-- [Facebook chat bot](https://github.com/Larry850806/facebook-chat-bot) - 可以設定關鍵字的 FB 聊天機器人
+- [Facebook chat bot](https://github.com/Larry850806/facebook-chat-bot)<br>
+可以設定關鍵字的 FB 聊天機器人<br>
 
-- [Cool Slide](https://github.com/CoolSlide/cool-slide) - 用 markdown 語法寫出很酷的投影片<br><br>[這是 Cool Slide 的 Demo](http://coolslide.github.io)<br>
+
+- [Dcard API](https://github.com/Larry850806/Dcard-API)<br>
+這是一個 Nodejs module<br>
+提供登入、取得好友、今日抽卡等等的 API<br>
+目前還在持續新增中<br>
+如果需要什麼 API 也可以開個 Issue 讓我知道<br>
+
+
+- [Cool Slide](https://github.com/CoolSlide/cool-slide)<br>用 markdown 語法寫出很酷的投影片<br>
+[這是 Cool Slide 的 Demo](http://coolslide.github.io)<br>
 這個專案目前還在進行中<br>
 需要懂前端的人來幫忙<br>
-有興趣的人可以聯絡我~<br>
 
 
 ### 聯絡資訊:
