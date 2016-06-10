@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <meta name="keywords" content="Java, 線程, 執行緒, 多工, parallel, 平行, Thread, Runnable">
+  
+
+  <title>
+    
+      [Java] 執行緒(Thread) 入門 &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+              <a class="sidebar-nav-item" href="/">Articles</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[Java] 執行緒(Thread) 入門</h1>
+  <span class="post-date">10 Jun 2016</span>
+  <h3 id="program-process-thread-br">在開始之前先來談談 Program, Process, Thread 的不同<br /></h3>
+
+<ul>
+  <li>
+    <h3 id="programbr">Program(程式)：<br /></h3>
+    <p>寫出來的程式<br />
+簡單來說就是那堆程式碼<br />
+他們以資料的形式被存放在硬碟中<br />
+還沒有跑起來<br /></p>
+  </li>
+  <li>
+    <h3 id="processbr">Process(程序)：<br /></h3>
+    <p>跑起來的程式<br />
+你寫出來的 Program 可以讓他同時跑在很多地方<br />
+這樣就可以產生很多 Process<br /></p>
+  </li>
+  <li>
+    <h3 id="threadbr">Thread(執行緒)：<br /></h3>
+    <p>一個 Process 裡面會有至少一個 Thread<br />
+在 Java 中預設只有 main 一個<br />
+可以建立很多 Thread 讓他們同時運作<br /></p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="section">單執行緒程式</h2>
+
+<p>平常的程式如果沒有建其他 Thread 的話都是單執行緒<br />
+在 Java 中就是 main<br />
+從 main 的頭開始跑<br />
+main 跑完了整個程式就結束<br />
+整個程式就只有 main 所在的那個 Thread<br />
+我們通常把 main 所在的那個 Thread 稱為 main Thread<br /></p>
+
+<hr />
+
+<h2 id="thread">如何產生 Thread</h2>
+
+<p>Java 的 Thread 被定義在 java.lang.Thread<br />
+因為是在 java.lang 裡面所以不用特別 import<br />
+直接使用就可以了<br />
+<br />
+Thread 的 Constructor 有兩種：<br /></p>
+
+<ol>
+  <li>Thread()</li>
+  <li>Thread(Runnable)</li>
+</ol>
+
+<p>這篇只介紹比較簡單的第一種<br /></p>
+
+<hr />
+
+<h2 id="section-1">進入點</h2>
+
+<p>使用 Thread() 產生的 Thread<br />
+他會從 Thread 裡的 run() 開始執行<br />
+執行完了那個 Thread 就結束<br />
+就像 main() 一樣<br />
+<br />
+先來看一段簡單的 code<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Example.java</span>
+
+<span class="c1">// 一個新的 Thread class</span>
+<span class="c1">// 進入點為 run()</span>
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World in MyThread"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>   <span class="c1">// 建一個新的 Thread t1</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>                   <span class="c1">// 讓 t1 開始執行</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World in main Thread"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * Hello World in main Thread
+ * Hello World in MyThread
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>有些人的輸出結果可能會跟我不太一樣<br />
+因為有多個 Thread 同時在跑時系統會自動分配<br />
+就像範例中 MyThread 跟 main Thread 都要輸出<br />
+系統就會幫他們排優先順序<br />
+不過通常是 main Thread 最大除非有調整優先度<br />
+<br />
+來看看另外一個範例<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Example2.java</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">x</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
+        <span class="c1">// turn to string</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello I'm "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        
+        <span class="c1">// 新增 5 個 thread，看最後會輸出什麼</span>
+
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t3</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t4</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t5</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * Hello I'm 1
+ * Hello I'm 5
+ * Hello I'm 3
+ * Hello I'm 4
+ * Hello I'm 2
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>這個範例有 5 個 thread<br />
+系統會自己排誰優先執行<br />
+所以每次輸出都會不太一樣<br /></p>
+
+<hr />
+
+<h2 id="section-2">優先權</h2>
+
+<p>可以用<code class="highlighter-rouge">Thread.setPriority(int)</code>來設定優先權<br />
+<code class="highlighter-rouge">priority</code>可以設定 1 ~ 10<br />
+預設值是 5<br />
+數字越大優先權越高<br />
+用跟上面一樣的範例<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Example2.java</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">x</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
+        <span class="c1">// turn to string</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello I'm "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">Thread</span> <span class="n">t5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+
+        <span class="n">t1</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">t3</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">t4</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">t5</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t3</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t4</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t5</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * Hello I'm 1
+ * Hello I'm 5
+ * Hello I'm 4
+ * Hello I'm 3
+ * Hello I'm 2
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>有比較照順序一點<br />
+不過可能因為是 t1 先 start<br />
+所以 t1 還是排在前面<br />
+<br />
+優先權低不代表一定比較晚執行<br />
+只是代表他們同時競爭相同資源時<br />
+會先給優先權大的<br />
+譬如說同時要輸出或是存取某個檔案<br /></p>
+
+<hr />
+
+<h2 id="section-3">其他改變優先權的方法</h2>
+
+<p>接下來這邊會介紹 sleep, yield, join 三個函式<br />
+用來等待其他 thread 或是先讓其他 thread 執行<br /></p>
+
+<h3 id="sleep">sleep</h3>
+
+<p>顧名思義就是睡覺<br />
+先睡一下等別人<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+            <span class="c1">// 因為 sleep 有可能被中斷</span>
+            <span class="c1">// 所以要 catch InterruptedException</span>
+            <span class="c1">// 不然過不了編譯</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm t1"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sleep</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm main thread"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * I'm main thread
+ * I'm t1
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>上面的 code 會先跑進 t1<br />
+但是因為 t1 sleep 兩秒<br />
+所以會先出現<code class="highlighter-rouge">I'm main thread</code><br />
+然後過一下子才出現<code class="highlighter-rouge">I'm t1</code><br /></p>
+
+<hr />
+
+<h3 id="join">join</h3>
+
+<p>等某個 thread 結束之後才繼續執行<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm t1"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sleep</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">t1</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>
+            <span class="c1">// 呼叫 t1.join() 的 thread 要等 t1 跑完</span>
+            <span class="c1">// 所以 main thread 要等 t1 跑完才會跑下面</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm main thread"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * I'm t1
+ * I'm main thread
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>因為 t1 先 sleep 兩秒<br />
+main thread 又在等 t1 完成<br />
+所以整個程式會先閒置兩秒<br />
+然後再輸出 t1, main thread<br /></p>
+
+<hr />
+
+<h3 id="yield">yield</h3>
+
+<p>輪到自己的時候先放棄<br />
+等下次輪到自己再繼續<br /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm t1"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sleep</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="n">Thread</span><span class="o">.</span><span class="na">yield</span><span class="o">();</span>
+        <span class="c1">// main thread 執行 yield 先讓別人跑</span>
+        <span class="c1">// 但因為 t1 還在 sleep</span>
+        <span class="c1">// 所以又換回 main thread 執行</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm main thread"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ *
+ * 輸出結果：
+ * I'm main thread
+ * I'm t1
+ *
+ */</span>
+</code></pre>
+</div>
+
+<p>這個例子是 main thread yield之後大家都不想執行<br />
+所以又換 main thread 執行<br />
+反之如果<code class="highlighter-rouge">yield()</code>之後別人想跑<br />
+那就要先讓他跑<br />
+等等才會輪到自己<br /></p>
+
+<hr />
+
+<h2 id="section-4">總結</h2>
+<p>這篇只提到
+還有一些比較常見的用法<br />
+之後會寫一些比較難的還有怎麼應用<br /></p>
+
+<p>Thread 是個滿好用的東西<br />
+但是要把它寫好真的也滿難的<br />
+什麼時候誰要等誰<br />
+然後不能同時讀檔案寫檔案<br />
+要考慮很多事情<br /></p>
+
+<hr />
+
+<p>這是我在 FB 上的粉專<br />
+如果有新文章或是看到好的文章都會分享在這裡<br />
+<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br />
+如果內容有誤或是有疑問的也可以透過粉專跟我說</p>
+
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/06/07/cheerio-weather/">
+            [Node.js] 用 cheerio 抓取即時天氣
+            <small>07 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/06/jquery-flip/">
+            [JQuery] 用 JQuery 做出卡片翻動的效果
+            <small>06 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/06/STL2/">
+            [C++] STL 容器 (二) - Iterator
+            <small>06 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
