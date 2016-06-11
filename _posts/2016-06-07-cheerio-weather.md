@@ -224,11 +224,3 @@ for(var i=0 ; i<output.length ; i++){
 以上是用 Node.js 抓天氣的教學<br>
 request 跟 cheerio 還有其他很多應用<br>
 想要深入了解的可以去看他們的 github repository<br>
-
----
-
-這是我在 FB 上的粉專<br>
-如果有新文章或是看到好的文章都會分享在這裡<br>
-[賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
-如果內容有誤或是有疑問的也可以透過粉專跟我說
-

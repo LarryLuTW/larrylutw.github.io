@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-11T11:00:28+08:00</updated>
+ <updated>2016-06-12T02:51:59+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -407,14 +407,6 @@ main thread 又在等 t1 完成&lt;br /&gt;
 什麼時候誰要等誰&lt;br /&gt;
 然後不能同時讀檔案寫檔案&lt;br /&gt;
 要考慮很多事情&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -644,14 +636,6 @@ output:
 &lt;p&gt;以上是用 Node.js 抓天氣的教學&lt;br /&gt;
 request 跟 cheerio 還有其他很多應用&lt;br /&gt;
 想要深入了解的可以去看他們的 github repository&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -785,14 +769,6 @@ class=”back”  是背面的內容&lt;br /&gt;
 
 &lt;p&gt;想要看更詳細的可以到&lt;a href=&quot;http://nnattawat.github.io/flip/&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;
 也有更多其他的用法&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -964,14 +940,6 @@ iterator 像是一個比較聰明的 pointer&lt;br /&gt;
 之後應該會再繼續寫下一篇&lt;br /&gt;
 感覺要講的東西還有好多&lt;br /&gt;
 只能說 C++ 真是博大精深阿～～&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -1306,14 +1274,6 @@ iterator 像是一個比較聰明的 pointer&lt;br /&gt;
 &lt;p&gt;STL 有很多優點&lt;br /&gt;
 練到能活用也要花一段時間&lt;br /&gt;
 但是會了之後真的很好用&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -1544,14 +1504,6 @@ CoffeeScript 有很多優點&lt;br /&gt;
 不過缺點就是可能要再學一些新的語法&lt;br /&gt;
 但如果是學過 Python 或是 Ruby 應該不會太難上手&lt;br /&gt;
 要看更詳細的可以到&lt;a href=&quot;http://coffeescript.org/#try:alert%20%22Hello%20CoffeeScript!%22&quot; target=&quot;_blank&quot;&gt;他們的網站&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -1798,14 +1750,6 @@ code 大概長這樣&lt;br /&gt;&lt;/p&gt;
 不過這三個是我覺得比較常用的&lt;br /&gt;
 所以想介紹給大家&lt;br /&gt;
 要想要看更詳細可以到他們的 &lt;a href=&quot;https://github.com/caolan/async&quot;&gt;GitHub&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -2016,15 +1960,7 @@ parallel 的多個 function 會同時執行&lt;br /&gt;
 
 &lt;p&gt;這是第二篇&lt;br /&gt;
 &lt;a href=&quot;../../../../2016/06/01/async2/&quot;&gt;[JavaScript] 如何用 async 控制流程 (二)&lt;/a&gt;&lt;br /&gt;
-會介紹一些比較難的流程控制&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;這是我在 FB 上的粉專&lt;br /&gt;
-如果有新文章或是看到好的文章都會分享在這裡&lt;br /&gt;
-&lt;a href=&quot;https://www.facebook.com/賴瑞的程式筆記-1755838524703270/&quot;&gt;賴瑞的程式筆記&lt;/a&gt;&lt;br /&gt;
-如果內容有誤或是有疑問的也可以透過粉專跟我說&lt;br /&gt;&lt;/p&gt;
-
+會介紹一些比較難的流程控制&lt;/p&gt;
 </content>
  </entry>
  

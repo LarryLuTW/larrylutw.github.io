@@ -131,11 +131,3 @@ class="back"  是背面的內容<br>
 
 想要看更詳細的可以到<a href="http://nnattawat.github.io/flip/" target="_blank">他們的網站</a><br>
 也有更多其他的用法<br>
-
----
-
-這是我在 FB 上的粉專<br>
-如果有新文章或是看到好的文章都會分享在這裡<br>
-[賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
-如果內容有誤或是有疑問的也可以透過粉專跟我說<br>
-

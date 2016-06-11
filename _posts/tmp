@@ -1,0 +1,3 @@
+if(textbox.SelectedText.Length > 0){
+   textbox.Text = textbox.Text.Replace(textbox1.Text.Substring(textbox.SelectionStart, textbox.SelectionLength), "123");
+}
