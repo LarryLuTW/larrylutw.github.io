@@ -15,7 +15,7 @@ published: true
 
 - ### Process(程序)：<br>
 跑起來的程式<br>
-你寫出來的 Program 可以讓他同時跑在很多地方<br>
+寫出來的 Program 可以讓他同時跑在很多地方<br>
 這樣就可以產生很多 Process<br>
 
 - ### Thread(執行緒)：<br>
@@ -23,25 +23,35 @@ published: true
 在 Java 中預設只有 main 一個<br>
 可以建立很多 Thread 讓他們同時運作<br>
 
+<img src="http://www.javatpoint.com/images/multithreading.JPG" height="360">
+
 ---
 
-## 單執行緒程式
+## 單執行緒程式(single threading)
 
 平常的程式如果沒有建其他 Thread 的話都是單執行緒<br>
 在 Java 中就是 main<br>
 從 main 的頭開始跑<br>
 main 跑完了整個程式就結束<br>
 整個程式就只有 main 所在的那個 Thread<br>
-我們通常把 main 所在的那個 Thread 稱為 main Thread<br>
+我們通常把 main 所在的那個 Thread 稱為 main thread<br>
+
+## 多執行緒程式(multithreading)
+
+當你的程式有很多 thread 的時候<br>
+系統會把它排進一個 Queue<br>
+然後每個 thread 就會排隊輪流執行<br>
+優先權高的可能會執行比較久<br>
+但優先權低的也會執行到<br>
+只是可能會一直被插隊<br>
+<br>
+<img src="http://ppt.cc/03mFV" height="250">
 
 ---
 
 ## 如何產生 Thread
 
 Java 的 Thread 被定義在 java.lang.Thread<br>
-因為是在 java.lang 裡面所以不用特別 import<br>
-直接使用就可以了<br>
-<br>
 Thread 的 Constructor 有兩種：<br>
 
 1. Thread()
@@ -53,9 +63,9 @@ Thread 的 Constructor 有兩種：<br>
 
 ## 進入點
 
-使用 Thread() 產生的 Thread<br>
-他會從 Thread 裡的 run() 開始執行<br>
-執行完了那個 Thread 就結束<br>
+使用 class Thread 產生的 thread 物件<br>
+會從物件裡的 run() 開始執行<br>
+執行完了那個 thread 就結束<br>
 就像 main() 一樣<br>
 <br>
 先來看一段簡單的 code<br>
@@ -88,13 +98,13 @@ public class Example1 {
  */
 ```
 
-有些人的輸出結果可能會跟我不太一樣<br>
-因為有多個 Thread 同時在跑時系統會自動分配<br>
-就像範例中 MyThread 跟 main Thread 都要輸出<br>
+有些人的輸出結果可能會跟我不一樣<br>
+因為有多個 thread 同時在跑時系統會自動分配<br>
+就像範例中 t1 跟 main thread 都要輸出<br>
 系統就會幫他們排優先順序<br>
-不過通常是 main Thread 最大除非有調整優先度<br>
+不過通常是 main thread 最大除非有調整優先度<br>
 <br>
-來看看另外一個範例<br>
+來看另外一個範例<br>
 
 ```java
 // Example2.java
@@ -120,7 +130,7 @@ public class Example2 {
         Thread t4 = new MyThread(4);
         Thread t5 = new MyThread(5);
         
-        // 新增 5 個 thread，看最後會輸出什麼
+        // 新增 5 個 thread
 
         t1.start();
         t2.start();
@@ -143,7 +153,7 @@ public class Example2 {
 ```
 
 這個範例有 5 個 thread<br>
-系統會自己排誰優先執行<br>
+系統會自己排誰先執行<br>
 所以每次輸出都會不太一樣<br>
 
 ---
@@ -154,7 +164,7 @@ public class Example2 {
 `priority`可以設定 1 ~ 10<br>
 預設值是 5<br>
 數字越大優先權越高<br>
-用跟上面一樣的範例<br>
+用上面的範例稍作修改<br>
 
 ```java
 // Example2.java
@@ -206,20 +216,20 @@ public class Example2 {
  */
 ```
 
-有比較照順序一點<br>
+有比較照順序一點XD<br>
 不過可能因為是 t1 先 start<br>
 所以 t1 還是排在前面<br>
 <br>
 優先權低不代表一定比較晚執行<br>
 只是代表他們同時競爭相同資源時<br>
 會先給優先權大的<br>
-譬如說同時要輸出或是存取某個檔案<br>
+譬如說同時要輸出或是存取某個檔案時<br>
 
 ---
 
 ## 其他改變優先權的方法
 
-接下來這邊會介紹 sleep, yield, join 三個函式<br>
+接下來這邊會介紹 sleep, yield, join<br>
 用來等待其他 thread 或是先讓其他 thread 執行<br>
 
 ### sleep
@@ -228,6 +238,8 @@ public class Example2 {
 先睡一下等別人<br>
 
 ```java
+// Sleep.java
+
 class MyThread extends Thread {
     public void run(){
         try {
@@ -272,6 +284,8 @@ public class Sleep {
 等某個 thread 結束之後才繼續執行<br>
 
 ```java
+// Join.java
+
 class MyThread extends Thread {
     public void run(){
         try {
@@ -283,7 +297,7 @@ class MyThread extends Thread {
     }
 }
 
-public class Sleep {
+public class Join {
     public static void main(String[] args){
         Thread t1 = new MyThread();
         t1.start();
@@ -309,10 +323,10 @@ public class Sleep {
  */
 ```
 
-因為 t1 先 sleep 兩秒<br>
+因為 t1 要先 sleep 兩秒<br>
 main thread 又在等 t1 完成<br>
 所以整個程式會先閒置兩秒<br>
-然後再輸出 t1, main thread<br>
+然後再依序輸出`I'm t1`, `I'm main thread`<br>
 
 ---
 
@@ -356,17 +370,16 @@ public class Sleep {
  */
 ```
 
-這個例子是 main thread yield之後大家都不想執行<br>
+這個例子是 main thread yield 之後大家都不想執行<br>
 所以又換 main thread 執行<br>
 反之如果`yield()`之後別人想跑<br>
 那就要先讓他跑<br>
-等等才會輪到自己<br>
+等等才會輪回來自己<br>
 
 ---
 
 ## 總結
-這篇只提到
-還有一些比較常見的用法<br>
+這邊只提到一些比較常見的用法<br>
 之後會寫一些比較難的還有怎麼應用<br>
 
 Thread 是個滿好用的東西<br>
