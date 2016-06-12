@@ -15,7 +15,7 @@
 │   └── post.html
 ├── _posts                # 預設的文章放置處，
 │   └── 2015-07-11-welcome-to-jekyll.markdown
-└── _sass                 # 會被 include 的 sass 檔們所在的資料夾
+├── _sass                 # 會被 include 的 sass 檔們所在的資料夾
 ├── _base.scss
 ├── _layout.scss
 └── _syntax-highlighting.scss
