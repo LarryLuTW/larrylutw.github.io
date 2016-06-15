@@ -21,11 +21,17 @@ title: 分類文章
 
 ### [[Node.js] 用 cheerio 抓取即時天氣](../2016/06/07/cheerio-weather/)
 
+### [[JQuery] 用 JQuery 做出卡片翻動的效果](../2016/06/06/jquery-flip/)
+
 ### [[JavaScript] 如何用 async 控制流程 (一)](../2016/05/31/async/)
 
 ### [[JavaScript] 如何用 async 控制流程 (二)](../2016/06/01/async2/)
 
-### [[JQuery] 用 JQuery 做出卡片翻動的效果](../2016/06/06/jquery-flip/)
-
 ### [[JavaScript] CoffeeScript 基本介紹](../2016/06/04/coffeeScript/)
+
+---
+
+# Linux
+
+### [[Linux] wget 常見用法](../2016/06/15/wget/)
 

@@ -4,13 +4,147 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-12T17:28:10+08:00</updated>
+ <updated>2016-06-15T15:40:19+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>[Linux] wget 常見用法</title>
+   <link href="http://larry850806.github.io/2016/06/15/wget/"/>
+   <updated>2016-06-15T00:00:00+08:00</updated>
+   <id>http://larry850806.github.io/2016/06/15/wget</id>
+   <content type="html">&lt;h2 id=&quot;section&quot;&gt;內容&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#downloadFile&quot;&gt;下載檔案&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#backupPage&quot;&gt;備份網頁&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#downloadWebsite&quot;&gt;下載整個網站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;downloadFile&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;1.下載檔案&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;下載&lt;/h3&gt;
+
+&lt;p&gt;普通的下載檔案&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget http://ipv4.download.thinkbroadband.com/5MB.zip -O 5MB.zip
+
+-O  下載下來的檔名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;續傳&lt;/h3&gt;
+
+&lt;p&gt;檔案太大的話可以用續傳功能&lt;br /&gt;
+上次下載到哪裡會繼續下載&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -c http://ipv4.download.thinkbroadband.com/5MB.zip
+
+-c  續傳
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上次下載到 25% 網路就斷了&lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/RHt0Erp.png&quot; alt=&quot;&quot; /&gt;
+繼續下載到 58%&lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/cD9sg5m.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;重試&lt;/h3&gt;
+
+&lt;p&gt;如果網路不穩時可以設定重試次數&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -t 10 http://ipv4.download.thinkbroadband.com/5MB.zip
+
+-t 10   最多重試 10 次
+-t 0    不斷重試直到成功為止
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;速度上限&lt;/h3&gt;
+
+&lt;p&gt;也可以設定速度上限&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget --limit-rate&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;200k http://ipv4.download.thinkbroadband.com/5MB.zip
+
+--limit-rate    速度上限
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;下載速限 200KB/s&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;backupPage&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;2.備份網頁&lt;/h2&gt;
+
+&lt;h3 id=&quot;google-&quot;&gt;備份 Google 搜尋的網頁&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://imgur.com/4sApmZP.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -p -k https://www.google.com.tw
+
+-p  下載網頁所需的所有檔案, 如圖片.背景音樂
+-k  將相對連結轉為絕對連結, 可離線瀏覽
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;下載完會生出一個像這樣的資料夾&lt;br /&gt;
+&lt;img src=&quot;http://i.imgur.com/JMjX9kH.png&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+進去把 index.html 打開就可以看到下載的網頁了&lt;br /&gt;
+&lt;img src=&quot;http://i.imgur.com/WkB5CJH.png&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+再進到 images 裡面看一下&lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/u18AwZs.png&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+就可以找到 google 的 logo ~ &lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/thElnfF.png&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;downloadWebsite&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;3.下載整個網站&lt;/h2&gt;
+
+&lt;p&gt;網站 != 網頁&lt;br /&gt;
+一個網站可能有很多網頁&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;下載整個”演算法筆記”網站&lt;/h3&gt;
+
+&lt;p&gt;來看看&lt;a href=&quot;http://www.csie.ntnu.edu.tw/~u91029/index.html&quot; target=&quot;_blank&quot;&gt;演算法筆記&lt;/a&gt;這個網站&lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/Y4iMtPw.png&quot; alt=&quot;&quot; /&gt;
+這個網站裡面有很多網頁&lt;br /&gt;
+如果要把整個網站下載下來&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -r -p -np -k http://www.csie.ntnu.edu.tw/~u91029/index.html
+
+-r   遞迴下載網站內的所有檔案
+-p   下載網頁所需的所有檔案, 如圖片.背景音樂
+-np  不要下載父目錄的東西
+-k   將相對連結轉為絕對連結, 可離線瀏覽
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因為整個網站有很多圖片跟文字&lt;br /&gt;
+所以要有點久&lt;br /&gt;
+(我自己下載花了六分鐘左右)&lt;br /&gt;
+&lt;br /&gt;
+下載完進到裡面找 index.html 就可以離線瀏覽了&lt;br /&gt;
+&lt;img src=&quot;http://imgur.com/O7ztPzf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以上是比較常見的 wget 用法&lt;br /&gt;
+我個人覺得最好用的是下載網站的功能～&lt;br /&gt;
+下載之後就可以直接在本機上看&lt;br /&gt;
+偶爾在更新重新下載一次就可以了&lt;br /&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>[Java] 執行緒(Thread) 入門</title>
