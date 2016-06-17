@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <meta name="keywords" content="node.js, async">
+  
+
+  <title>
+    
+      [Node.js] 理解 Node.js 事件驅動 &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/classified/">分類文章</a>
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="/"> 最新文章 </a>
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[Node.js] 理解 Node.js 事件驅動</h1>
+  <span class="post-date">16 Jun 2016</span>
+  <p>這篇講的東西比較篇概念<br />
+所以文字敘述會多一點<br />
+希望大家可以有耐心的看完～<br /></p>
+
+<hr />
+
+<h2 id="async">Async(非同步)</h2>
+
+<p>Node.js 是一個單執行緒且非同步的語言<br />
+非同步的 function 會被放進一個 event queue<br />
+等其他 code 跑完之後才會跑那個 event queue<br />
+如果 queue 裡面有很多事要做就會輪流做<br />
+所以不會阻塞執行緒<br /></p>
+
+<h2 id="settimeout">setTimeout</h2>
+
+<p>Javascript 最簡單的 async 函式是 setTimeout<br />
+setTimeout 會在一定的時間之後執行某個函式<br />
+或說是在一定時間之後把那個函式放進 event queue<br />
+等其他事情都做完就會就會開始做 event queue 內的事情<br />
+來看看這一段 code<br /></p>
+
+<h3 id="section">範例1</h3>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'callback'</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>剛開始跑到 setTimeout<br />
+系統會設定在 1 秒之後把 function 要做的事放到 event queue<br />
+然後就繼續跑到下面輸出 “Hello World”<br />
+輸出結束之後這時候事情都做完了<br />
+<br />
+等了一秒 function 被塞到 event queue<br />
+這時候沒有事情要做所以就開始跑 event queue 內的事情<br />
+然後就輸出 “callback”<br /></p>
+</blockquote>
+
+<h3 id="section-1">範例2</h3>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'callback'</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>這個跟 範例1 不太一樣<br />
+先跑到 setTimeout<br />
+系統會設定在 1 秒之後把 function 要做的事放到 event queue<br />
+繼續往下跑到 while<br />
+一直算一些東西<br />
+<br />
+等了一秒 function 被塞到 event queue<br />
+這時候因為一直有事情要做<br />
+所以雖然<code class="highlighter-rouge">console.log('callback')</code>已經被放到 event queue <br />
+但永遠不會執行<br />
+因為程式要在做完主要的事情才會開始跑 event queue<br /></p>
+</blockquote>
+
+<hr />
+
+<h2 id="callback">Callback(回呼)</h2>
+
+<p>因為不知道 async 的那些工作什麼時候會完成<br />
+但我們又需要等那些工作做完之後才能做某些事情<br />
+<br />
+譬如說如果要判斷一個檔案裡面有多少字元<br />
+要先讀檔案<br />
+接著再從讀到的字串計算有多少個字元<br />
+但偏偏讀檔案的函式是 async<br />
+這時候就需要 callback<br /></p>
+
+<h3 id="section-2">範例1</h3>
+
+<p>讀檔案並計算長度<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+
+<span class="c1">// fs.readFile(filename, callback(err, content))</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'test.txt'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'not finish'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>fs 是個 nodejs 的模組<br /> 
+可以用來讀檔案<br />
+跑到<code class="highlighter-rouge">fs.readFile</code>的時候<br />
+系統會把讀檔案這個任務放到 event queue<br />
+等沒事的時候再去做<br />
+接著就繼續往下跑輸出<code class="highlighter-rouge">not finish</code><br /></p>
+
+  <p>因為不知道檔案什麼時候會讀完<br />
+所以我們把檔案讀完要做的事情放在 callback 裡面<br />
+雖然不知道什麼時候會讀完<br />
+但只要一讀完檔案就會做 callback 裡面的事情<br />
+計算那個檔案裡面有多少字元<br />
+然後輸出<code class="highlighter-rouge">finish</code><br /></p>
+</blockquote>
+
+<h3 id="section-3">範例2</h3>
+
+<p>讀完檔案在檔尾加上<code class="highlighter-rouge">Hello World</code><br />
+再寫回去檔案<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+
+<span class="c1">// fs.readFile(filename, callback(err, content))</span>
+<span class="c1">// fs.writeFile(filename, content, callback(err))</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'test.txt'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="nx">str</span> <span class="o">+=</span> <span class="s1">'Hello World'</span><span class="p">;</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">'test.txt'</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'not finish'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>用 callback 的方式可以一直疊一直疊<br />
+讀完檔案之後在尾巴加上<code class="highlighter-rouge">Hello World</code><br />
+之後再寫入檔案<br />
+但寫入檔案也是 async<br />
+所以也要設定一個 callback<br />
+寫入完成之後再輸出<code class="highlighter-rouge">not finish</code><br /></p>
+</blockquote>
+
+<h3 id="section-4">範例3</h3>
+
+<p>在 callback 內檢查錯誤<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'test.txt'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="nx">str</span> <span class="o">+=</span> <span class="s1">'Hello World'</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>callback 內通常都會有一個<code class="highlighter-rouge">err</code>傳回<br />
+如果不是<code class="highlighter-rouge">null</code>或<code class="highlighter-rouge">undefined</code>代表處理過程中有發生錯誤<br />
+譬如說要讀取<code class="highlighter-rouge">test.txt</code>這個檔案<br />
+結果根本沒有這個檔案<br />
+那就會發生錯誤<br />
+用 callback 一定要檢查錯誤<br />
+如果有錯誤繼續做下去可能會發生非預期的結果<br /></p>
+</blockquote>
+
+<hr />
+
+<h2 id="async-function">自己寫一個 async function</h2>
+
+<p>我們也可以把一些 async 的動作包起來<br />
+自己寫一個 async function<br />
+然後定義一個 callback<br /></p>
+
+<h3 id="section-5">範例</h3>
+
+<p>寫一個函式叫做 append<br />
+功能是在某個檔案後面加上某個字串<br />
+因為 append 需要讀檔寫檔<br />
+所以一定也是個 async 函式</p>
+
+<p>prototype 可能長這樣<br />
+<code class="highlighter-rouge">append(filename, str, callback(err))</code></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">append</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err1</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">err1</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err1</span><span class="p">);</span>
+        
+        <span class="kd">var</span> <span class="nx">newContent</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">str</span><span class="p">;</span>
+        <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">newContent</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err2</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">err2</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err2</span><span class="p">);</span>
+
+            <span class="nx">callback</span><span class="p">(</span><span class="nx">err1</span> <span class="o">||</span> <span class="nx">err2</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">append</span><span class="p">(</span><span class="s1">'text.txt'</span><span class="p">,</span> <span class="s1">'Hello World'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>在<code class="highlighter-rouge">append</code>內剛開始先讀檔接著寫檔<br />
+等讀寫都完成之後就呼叫 callback<br />
+這樣就會跑使用者定義的 callback function<br />
+<br />
+寫完之後就可以直接像下面這樣用<br />
+然後給一個 callback function<br />
+在<code class="highlighter-rouge">append</code>都完成之後就會跑 callback 然後輸出<code class="highlighter-rouge">finish</code><br /></p>
+</blockquote>
+
+<hr />
+
+<h2 id="callback-hell">Callback Hell(回呼地獄)</h2>
+
+<p>因為使用 callback 可能會一直往上疊<br />
+先進行 A 接著跑 B 然後 C, D 等等等<br />
+B 需要 A 的結果，C 需要 B 的結果<br />
+寫出來的 code 可能會長這樣<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">func1</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err1</span><span class="p">,</span> <span class="nx">result1</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err1</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">func2</span><span class="p">(</span><span class="nx">result1</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err2</span><span class="p">,</span> <span class="nx">result2</span><span class="p">,</span> <span class="nx">result3</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">err2</span><span class="p">){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err2</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">func3</span><span class="p">(</span><span class="nx">result2</span><span class="p">,</span> <span class="nx">result3</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err3</span><span class="p">,</span> <span class="nx">result4</span><span class="p">){</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nx">err3</span><span class="p">){</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err3</span><span class="p">);</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result4</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>這樣的 code 還是對的<br />
+只是很醜很難 debug<br />
+可以用 async module 來改善<br />
+避免 code 越疊越高<br />
+可以參考<a href="../../../05/31/async/">這篇 async 介紹</a><br />
+不然也可以用 Promise<br />
+不過那比較難懂<br />
+建議完全理解 callback 再開始摸 Promise<br /></p>
+</blockquote>
+
+<hr />
+
+<p>Javascript 的 callback 機制跟其他語言不一樣<br />
+像 C++ / Java 都是一行一行跑<br />
+但 js 因為有一堆 callback 常常不知道現在在跑哪一段 code<br />
+剛開始會覺得有點亂<br />
+但久了之後覺得還滿好用的<br />
+不用自己去確認某件事做完了沒<br />
+反正做完會有 callback<br />
+而且也是因為 node.js 沒事做的時候會跑 event queue<br />
+所以效率很高<br /></p>
+
+<p>Node.js 的事件驅動機制介紹就到這裡<br />
+想看 async 的可以參考這一篇<br />
+<a href="../../../05/31/async/">如何用 async 控制流程</a><br /></p>
+
+
+</div>
+
+<p>FaceBook 粉專：
+<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br>
+如果有新文章或是看到好的文章都會分享在這裡
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/06/15/wget/">
+            [Linux] wget 常見用法
+            <small>15 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/10/Java-Thread/">
+            [Java] 執行緒(Thread) 入門
+            <small>10 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/07/cheerio-weather/">
+            [Node.js] 用 cheerio 抓取即時天氣
+            <small>07 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
