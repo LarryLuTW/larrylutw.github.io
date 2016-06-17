@@ -107,9 +107,10 @@ console.log('not finish');
 > 可以用來讀檔案<br>
 > 跑到`fs.readFile`的時候<br>
 > 系統會把讀檔案這個任務放到 event queue<br>
-> 等沒事的時候再去做<br>
-> 接著就繼續往下跑輸出`not finish`<br>
+> 有空的時候就會去做<br>
+> 如果當下可以系統有空也有可能馬上讀<br>
 > 
+> 接著就繼續往下跑輸出`not finish`<br>
 > 因為不知道檔案什麼時候會讀完<br>
 > 所以我們把檔案讀完要做的事情放在 callback 裡面<br>
 > 雖然不知道什麼時候會讀完<br>
@@ -259,14 +260,15 @@ func1(function(err1, result1){
 
 整個程式只有一個 event queue<br>
 async 的 function 都會被塞到 event queue<br>
-等主要的事情做完就開始跑 event queue<br>
+系統有空就開始跑 event queue<br>
 裡面的所有任務會輪流跑<br>
 跑完就呼叫 callback<br>
 
 ---
 
 Javascript 的 callback 機制跟其他語言不一樣<br>
-像 C++ / Java 都是一行一行跑<br>
+像 C++ / Java 都是一行一行跑(如果只有單執行緒)<br>
+<br>
 但 js 因為有一堆 callback 常常不知道現在在跑哪一段 code<br>
 剛開始會覺得有點亂<br>
 但久了之後覺得還滿好用的<br>

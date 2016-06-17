@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-17T12:04:58+08:00</updated>
+ <updated>2016-06-17T12:26:24+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -124,10 +124,11 @@ setTimeout 會在一定的時間之後執行某個函式&lt;br /&gt;
 可以用來讀檔案&lt;br /&gt;
 跑到&lt;code class=&quot;highlighter-rouge&quot;&gt;fs.readFile&lt;/code&gt;的時候&lt;br /&gt;
 系統會把讀檔案這個任務放到 event queue&lt;br /&gt;
-等沒事的時候再去做&lt;br /&gt;
-接著就繼續往下跑輸出&lt;code class=&quot;highlighter-rouge&quot;&gt;not finish&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
+有空的時候就會去做&lt;br /&gt;
+如果當下可以系統有空也有可能馬上讀&lt;br /&gt;&lt;/p&gt;
 
-  &lt;p&gt;因為不知道檔案什麼時候會讀完&lt;br /&gt;
+  &lt;p&gt;接著就繼續往下跑輸出&lt;code class=&quot;highlighter-rouge&quot;&gt;not finish&lt;/code&gt;&lt;br /&gt;
+因為不知道檔案什麼時候會讀完&lt;br /&gt;
 所以我們把檔案讀完要做的事情放在 callback 裡面&lt;br /&gt;
 雖然不知道什麼時候會讀完&lt;br /&gt;
 但只要一讀完檔案就會做 callback 裡面的事情&lt;br /&gt;
@@ -285,14 +286,15 @@ B 需要 A 的結果，C 需要 B 的結果&lt;br /&gt;
 
 &lt;p&gt;整個程式只有一個 event queue&lt;br /&gt;
 async 的 function 都會被塞到 event queue&lt;br /&gt;
-等主要的事情做完就開始跑 event queue&lt;br /&gt;
+系統有空就開始跑 event queue&lt;br /&gt;
 裡面的所有任務會輪流跑&lt;br /&gt;
 跑完就呼叫 callback&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;p&gt;Javascript 的 callback 機制跟其他語言不一樣&lt;br /&gt;
-像 C++ / Java 都是一行一行跑&lt;br /&gt;
+像 C++ / Java 都是一行一行跑(如果只有單執行緒)&lt;br /&gt;
+&lt;br /&gt;
 但 js 因為有一堆 callback 常常不知道現在在跑哪一段 code&lt;br /&gt;
 剛開始會覺得有點亂&lt;br /&gt;
 但久了之後覺得還滿好用的&lt;br /&gt;
