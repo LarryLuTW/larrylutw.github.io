@@ -5,6 +5,8 @@ keywords: node.js, async
 published: true
 ---
 
+![](http://tw.gitbook.net/uploads/allimg/150329/14252515U-0.jpg)
+
 這篇講的東西比較篇概念<br>
 所以文字敘述會多一點<br>
 希望大家可以有耐心的看完～<br>

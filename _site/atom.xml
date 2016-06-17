@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-17T11:40:22+08:00</updated>
+ <updated>2016-06-17T11:44:11+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -17,7 +17,9 @@
    <link href="http://larry850806.github.io/2016/06/16/nodejs-async/"/>
    <updated>2016-06-16T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/06/16/nodejs-async</id>
-   <content type="html">&lt;p&gt;這篇講的東西比較篇概念&lt;br /&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;http://tw.gitbook.net/uploads/allimg/150329/14252515U-0.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;這篇講的東西比較篇概念&lt;br /&gt;
 所以文字敘述會多一點&lt;br /&gt;
 希望大家可以有耐心的看完～&lt;br /&gt;&lt;/p&gt;
 
