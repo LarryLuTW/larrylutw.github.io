@@ -32,8 +32,9 @@ title: About Me
 
 - [Cool Slide](https://github.com/CoolSlide/cool-slide)<br>用 markdown 語法寫出很酷的投影片<br>
 [這是 Cool Slide 的 Demo](http://coolslide.github.io)<br>
-這個專案目前還在進行中<br>
-需要懂前端的人來幫忙<br>
+
+- [Youtube Downloader](https://github.com/Larry850806/youtube-downloader)<br>一個 command line tool<br>
+下簡單的指令就可以下載 youtube 的音樂<br>
 
 
 ### 聯絡資訊:
