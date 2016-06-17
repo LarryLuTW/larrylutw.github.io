@@ -23,6 +23,8 @@ title: 分類文章
 
 ### [[JQuery] 用 JQuery 做出卡片翻動的效果](../2016/06/06/jquery-flip/)
 
+### [[Node.js] 理解 Node.js 事件驅動](../2016/06/16/nodejs-async/)
+
 ### [[JavaScript] 如何用 async 控制流程 (一)](../2016/05/31/async/)
 
 ### [[JavaScript] 如何用 async 控制流程 (二)](../2016/06/01/async2/)
