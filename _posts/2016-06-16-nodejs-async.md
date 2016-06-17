@@ -7,7 +7,7 @@ published: true
 
 ![](http://tw.gitbook.net/uploads/allimg/150329/14252515U-0.jpg)
 
-這篇講的東西比較篇概念<br>
+這篇講的東西比較偏概念<br>
 所以文字敘述會多一點<br>
 希望大家可以有耐心的看完～<br>
 
@@ -18,7 +18,7 @@ published: true
 Node.js 是一個單執行緒且非同步的語言<br>
 非同步的 function 會被放進一個 event queue<br>
 等其他 code 跑完之後才會跑那個 event queue<br>
-如果 queue 裡面有很多事要做就會輪流做<br>
+如果 queue 裡面有很多事要做就會依序做<br>
 所以不會阻塞執行緒<br>
 
 ## setTimeout

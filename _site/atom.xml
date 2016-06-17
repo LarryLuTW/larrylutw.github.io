@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-17T12:26:24+08:00</updated>
+ <updated>2016-06-17T23:22:05+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -19,7 +19,7 @@
    <id>http://larry850806.github.io/2016/06/16/nodejs-async</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;http://tw.gitbook.net/uploads/allimg/150329/14252515U-0.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;這篇講的東西比較篇概念&lt;br /&gt;
+&lt;p&gt;這篇講的東西比較偏概念&lt;br /&gt;
 所以文字敘述會多一點&lt;br /&gt;
 希望大家可以有耐心的看完～&lt;br /&gt;&lt;/p&gt;
 
@@ -30,7 +30,7 @@
 &lt;p&gt;Node.js 是一個單執行緒且非同步的語言&lt;br /&gt;
 非同步的 function 會被放進一個 event queue&lt;br /&gt;
 等其他 code 跑完之後才會跑那個 event queue&lt;br /&gt;
-如果 queue 裡面有很多事要做就會輪流做&lt;br /&gt;
+如果 queue 裡面有很多事要做就會依序做&lt;br /&gt;
 所以不會阻塞執行緒&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;settimeout&quot;&gt;setTimeout&lt;/h2&gt;
