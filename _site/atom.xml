@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-17T11:44:11+08:00</updated>
+ <updated>2016-06-17T12:04:58+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -281,6 +281,14 @@ B 需要 A 的結果，C 需要 B 的結果&lt;br /&gt;
 建議完全理解 callback 再開始摸 Promise&lt;br /&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h2 id=&quot;section-6&quot;&gt;總結&lt;/h2&gt;
+
+&lt;p&gt;整個程式只有一個 event queue&lt;br /&gt;
+async 的 function 都會被塞到 event queue&lt;br /&gt;
+等主要的事情做完就開始跑 event queue&lt;br /&gt;
+裡面的所有任務會輪流跑&lt;br /&gt;
+跑完就呼叫 callback&lt;br /&gt;&lt;/p&gt;
+
 &lt;hr /&gt;
 
 &lt;p&gt;Javascript 的 callback 機制跟其他語言不一樣&lt;br /&gt;
@@ -289,9 +297,7 @@ B 需要 A 的結果，C 需要 B 的結果&lt;br /&gt;
 剛開始會覺得有點亂&lt;br /&gt;
 但久了之後覺得還滿好用的&lt;br /&gt;
 不用自己去確認某件事做完了沒&lt;br /&gt;
-反正做完會有 callback&lt;br /&gt;
-而且也是因為 node.js 沒事做的時候會跑 event queue&lt;br /&gt;
-所以效率很高&lt;br /&gt;&lt;/p&gt;
+反正做完會有 callback&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;Node.js 的事件驅動機制介紹就到這裡&lt;br /&gt;
 想看 async 的可以參考這一篇&lt;br /&gt;

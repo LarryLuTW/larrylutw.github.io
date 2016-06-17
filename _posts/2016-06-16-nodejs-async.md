@@ -255,6 +255,14 @@ func1(function(err1, result1){
 > 不過那比較難懂<br>
 > 建議完全理解 callback 再開始摸 Promise<br>
 
+## 總結
+
+整個程式只有一個 event queue<br>
+async 的 function 都會被塞到 event queue<br>
+等主要的事情做完就開始跑 event queue<br>
+裡面的所有任務會輪流跑<br>
+跑完就呼叫 callback<br>
+
 ---
 
 Javascript 的 callback 機制跟其他語言不一樣<br>
@@ -264,8 +272,6 @@ Javascript 的 callback 機制跟其他語言不一樣<br>
 但久了之後覺得還滿好用的<br>
 不用自己去確認某件事做完了沒<br>
 反正做完會有 callback<br>
-而且也是因為 node.js 沒事做的時候會跑 event queue<br>
-所以效率很高<br>
 
 Node.js 的事件驅動機制介紹就到這裡<br>
 想看 async 的可以參考這一篇<br>
