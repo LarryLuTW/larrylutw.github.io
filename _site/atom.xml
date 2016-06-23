@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-06-24T01:44:28+08:00</updated>
+ <updated>2016-06-24T02:00:03+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -329,7 +329,7 @@ $: 結尾
 &lt;p&gt;Regular Expression 是個很好用的工具
 剛學可能會覺得有點複雜&lt;br /&gt;
 用久了之後就會覺得很好用&lt;br /&gt;
-而且也可以搭配 sed, grep 做取代、搜尋的工作&lt;br /&gt;
+而且也可以搭配 sed 跟 grep 做取代、搜尋的工作&lt;br /&gt;
 可以省下不少時間&lt;br /&gt;
 &lt;br /&gt;
 這篇只介紹比較常用的一些表示法&lt;br /&gt;
