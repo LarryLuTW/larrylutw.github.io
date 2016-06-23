@@ -35,5 +35,7 @@ title: 分類文章
 
 # Else
 
+### [[其他] 用 Regular Expression 做字串比對](../2016/06/23/regex/)
+
 ### [[Linux] wget 常見用法](../2016/06/15/wget/)
 
