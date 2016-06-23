@@ -33,7 +33,7 @@ title: 分類文章
 
 ---
 
-# Linux
+# Else
 
 ### [[Linux] wget 常見用法](../2016/06/15/wget/)
 

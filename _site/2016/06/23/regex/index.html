@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <meta name="keywords" content="regular expression, regex, regexp, 正規表示式, 正則表達式">
+  
+
+  <title>
+    
+      [其他] 用 Regular Expression 做字串比對 &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/classified/">分類文章</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="/"> 最新文章 </a>
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[其他] 用 Regular Expression 做字串比對</h1>
+  <span class="post-date">23 Jun 2016</span>
+  <h2 id="regular-expression">什麼是 Regular Expression</h2>
+
+<p>Regular Expression 中文翻成正規表示式<br />
+英文簡寫為 Regex 或 RegExp<br />
+RegExp 是用來比對字串是不是有符合正確的格式<br />
+語法很簡單而且大部分語言都有支援它<br /></p>
+
+<hr />
+
+<h2 id="section">使用時機</h2>
+
+<p>譬如說你需要在程式內請使用者輸入生日<br />
+你規定的格式</p>
+
+<ul>
+  <li>1996-08-06</li>
+</ul>
+
+<p>但使用者可能會不小心輸成其他格式<br /></p>
+
+<ul>
+  <li>19960806</li>
+  <li>1996-8-6</li>
+  <li>85-08-06</li>
+  <li>850806</li>
+</ul>
+
+<p>如果要寫程式來過濾這些格式恐怕要寫很多判斷式<br />
+這時候就可以用 Regexp 來驗證字串格式<br /></p>
+
+<hr />
+
+<h2 id="section-1">語法</h2>
+
+<h4 id="section-2">字元</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a: a 這個字元
+0: 0 這個字元
+.: 任意字元
+</code></pre>
+</div>
+
+<table style="width:100%; font-family:monospace;">
+    <tr>
+        <td> RegExp </td>
+        <td> 說明 </td>
+        <td> 範例 </td> 
+    </tr>
+    <tr>
+        <td> /a/ </td>
+        <td> 含字母 a 的字串</td> 
+        <td> "a","apple" </td>
+    </tr>
+    <tr>
+        <td> /./ </td>
+        <td> 含任意字元的字串 </td>
+        <td> "aaa","a","嗨" </td>
+    </tr>
+    <tr>
+        <td> /a./ </td>
+        <td> 含字母 a 後面接一個任意字元的字串 </td>
+        <td> "aaa","apple" </td>
+    </tr>
+</table>
+
+<hr />
+
+<h4 id="section-3">次數</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>*: 出現 0 次以上
+?: 出現 0 次或 1 次
++: 出現一次以上
+
+{2}: 出現兩次
+{2,}: 出現兩次以上
+{,10}: 出現十次以下
+{2,5}: 出現兩次到五次
+</code></pre>
+</div>
+
+<table style="width:100%; font-family:monospace;">
+    <tr>
+        <td> RegExp </td>
+        <td> 說明 </td>
+        <td> 範例 </td> 
+    </tr>
+    <tr>
+        <td> /a*/ </td>
+        <td> 包含 0 次以上的 a </td> 
+        <td> "apple","hello" </td>
+    </tr>
+    <tr>
+        <td> /ab*/ </td>
+        <td> 包含一個 a ，後面至少 0 個 b </td>
+        <td> "a","ab" </td>
+    </tr>
+    <tr>
+        <td> /a?/ </td>
+        <td> 包含空字串或一個 a </td>
+        <td> "c","","app" </td>
+    </tr>
+    <tr>
+        <td> /123a+/ </td>
+        <td> 包含 123 後面有一個以上的 a </td>
+        <td> "123a","123app" </td>
+    </tr>
+    <tr>
+        <td> /123a{1,2}/ </td>
+        <td> 包含 123 後面出現一個或兩個 a </td>
+        <td> "1123a","123aaa" </td>
+    </tr>
+</table>
+
+<hr />
+
+<h4 id="section-4">頭尾</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>^: 開頭
+$: 結尾
+</code></pre>
+</div>
+
+<table style="width:100%; font-family:monospace;">
+    <tr>
+        <td> RegExp </td>
+        <td> 說明 </td>
+        <td> 範例 </td> 
+    </tr>
+    <tr>
+        <td> /^app/ </td>
+        <td> 開頭是 app 的字串 </td>
+        <td> "app","apple" </td>
+    </tr>
+    <tr>
+        <td> /ry$/ </td>
+        <td> 結尾是 ry 的字串 </td>
+        <td> "Larry" </td>
+    </tr>
+    <tr>
+        <td> /^abcd$/ </td>
+        <td> 開頭結尾中間只有 abcd 的字串 </td>
+        <td> "abcd" </td>
+    </tr>
+    <tr>
+        <td> /^La.*le$/ </td>
+        <td> 開頭是 La 尾巴是 le 的字串 </td>
+        <td> "Larry loves apple" </td>
+    </tr>
+</table>
+
+<hr />
+
+<h4 id="section-5">比對多個字元</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[]: 括號內的任何字元
+[^]: 不在括號內的任何字元
+</code></pre>
+</div>
+
+<table style="width:100%; font-family:monospace;">
+    <tr>
+        <td> RegExp </td>
+        <td> 說明 </td>
+        <td> 範例 </td> 
+    </tr>
+    <tr>
+        <td> /^[aeiou]/ </td>
+        <td> 開頭是小寫母音的字串 </td>
+        <td> "apple","oh" </td>
+    </tr>
+    <tr>
+        <td> /[^aeiouAEIOU]$/ </td>
+        <td> 結尾不是母音的字串 </td>
+        <td> "Larry","ok" </td>
+    </tr>
+    <tr>
+        <td> /^[aeiou]{3}$/ </td>
+        <td> 三個小寫母音組成的字串 </td>
+        <td> "aaa","aeu" </td>
+    </tr>
+    <tr>
+        <td> /^[^aeiou]*$/ </td>
+        <td> 不包含小寫母音的字串 </td>
+        <td> "hEllO","ApplE" </td>
+    </tr>
+    <tr>
+        <td> /[0-9]/ </td>
+        <td> 含數字的字串 </td>
+        <td> "app1e","123" </td>
+    </tr>
+    <tr>
+        <td> /[a-z]/ </td>
+        <td> 含小寫字母的字串 </td>
+        <td> "12a45","aaa" </td>
+    </tr>
+    <tr>
+        <td> /^[^a-zA-Z]$/ </td>
+        <td> 不含英文字母的字串 </td>
+        <td> "123","345" </td>
+    </tr>
+</table>
+
+<hr />
+
+<h4 id="section-6">特殊字元</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\.: "." 這個字元，直接寫 /./ 會被判斷成任意字元
+\+: "+" 這個字元，類似的還有 \?, \*
+\(: "(" 這個字元，類似的還有 \), \[, \]
+\\: "\" 這個字元
+
+\d: 任何數字字元，等同 [0-9]
+\D: 任何非數字字元，等同 [^0-9]
+\w: 任何數字字母底線，等同 [A-Za-z0-9_]
+\w: 任何非數字字母底線，等同 [^A-Za-z0-9_]
+\s: 任何空白字元(空白,換行,tab)，等同 [ \f\n\r\t\v]
+\s: 任何非空白字元(空白,換行,tab)，等同 [^ \f\n\r\t\v]
+</code></pre>
+</div>
+
+<hr />
+
+<h4 id="section-7">實例</h4>
+
+<table style="width:100%; font-family:monospace;">
+    <tr>
+        <td> RegExp </td>
+        <td> 說明 </td>
+        <td> 範例 </td> 
+    </tr>
+    <tr>
+        <td> /^\d{4}-\d{2}-\d{2}$/ </td>
+        <td> 西元生日格式 </td>
+        <td> "1996-08-06" </td>
+    </tr>
+    <tr>
+        <td> /^[A-Z]\d{9}$/ </td>
+        <td> 身分證字號 </td>
+        <td> "A123456789" </td>
+    </tr>
+    <tr>
+        <td> /^09\d{8}$/ </td>
+        <td> 手機號碼 </td>
+        <td> "0912345678" </td>
+    </tr>
+    <tr>
+        <td> /^[^aeiou]*$/ </td>
+        <td> 不包含小寫母音的字串 </td>
+        <td> "hEllO","ApplE" </td>
+    </tr>
+    <tr>
+        <td> /^.*@gmail\.com$/ </td>
+        <td> gmail 信箱 </td>
+        <td> "test@gmail.com" </td>
+    </tr>
+    <tr>
+        <td> /^[0-9\+\-\*\/]*$/ </td>
+        <td> 四則運算算式 </td>
+        <td> "1+2*3" </td>
+    </tr>
+</table>
+
+<hr />
+
+<h2 id="section-8">在各語言中使用</h2>
+
+<h3 id="c">C++</h3>
+<p>註: C++ 11 才開始支援 regex</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include&lt;regex&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">regex</span> <span class="n">re</span> <span class="o">=</span> <span class="n">regex</span><span class="p">(</span><span class="s">"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">regex_match</span><span class="p">(</span><span class="s">"1996-08-06"</span><span class="p">),</span> <span class="n">re</span><span class="p">){</span>
+        <span class="c1">// doSomething
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="java">Java</h3>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"1996-08-06"</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="s">"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"</span><span class="o">)){</span>
+            <span class="c1">//doSomething</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="javascript">JavaScript</h3>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'[0-9]{4}-[0-9]{2}-[0-9]{2}'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">'1996-08-06'</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pattern</span><span class="p">)){</span>
+    <span class="c1">// doSomething</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>###</p>
+
+<h2 id="section-9">結論</h2>
+
+<p>Regular Expression 是個很好用的工具
+剛學可能會覺得有點複雜<br />
+用久了之後就會覺得很好用<br />
+而且也可以搭配 sed, grep 做取代、搜尋的工作<br />
+可以省下不少時間<br />
+<br />
+這篇只介紹比較常用的一些表示法<br />
+如果想知道更深入的可以再到網路上去查<br /></p>
+
+
+</div>
+
+<p>FaceBook 粉專：
+<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br>
+如果有新文章或是看到好的文章都會分享在這裡
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/06/16/nodejs-async/">
+            [Node.js] 理解 Node.js 事件驅動
+            <small>16 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/15/wget/">
+            [Linux] wget 常見用法
+            <small>15 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/10/Java-Thread/">
+            [Java] 執行緒(Thread) 入門
+            <small>10 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
