@@ -21,6 +21,8 @@ title: 分類文章
 
 ### [[Node.js] 用 cheerio 抓取即時天氣](../2016/06/07/cheerio-weather/)
 
+### [[JavaScript] 幾個實用的 JS 小技巧](../2016/07/16/JS-tips/)
+
 ### [[Node.js] 理解 Node.js 事件驅動](../2016/06/16/nodejs-async/)
 
 ### [[JavaScript] 如何用 async 控制流程 (一)](../2016/05/31/async/)
