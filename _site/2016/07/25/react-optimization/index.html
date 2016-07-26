@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <meta name="keywords" content="js, javascript, react, reactjs, optimization, shouldComponentUpdate, immutable">
+  
+
+  <title>
+    
+      [JavaScript] 如何提高 React App 的效能 &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/classified/">分類文章</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="/"> 最新文章 </a>
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[JavaScript] 如何提高 React App 的效能</h1>
+  <span class="post-date">25 Jul 2016</span>
+  <p>這篇是我最近在寫 React.js 時的一些心得<br />
+關於怎麼使用 <code class="highlighter-rouge">shouldComponentUpdate</code> 及 <code class="highlighter-rouge">immutable.js</code> 提高效能<br /></p>
+
+<hr />
+
+<h2 id="virtual-dom">Virtual DOM</h2>
+
+<p>因為使用傳統的方式對 DOM 進行操作很慢<br />
+為此 React 設計了 Virtual DOM 這個中間層來降低操作 DOM 的成本<br />
+Virtual DOM 是一個類似實際 DOM 節點的樹狀結構<br />
+當有資料改變時才會透過 diff 演算法計算最小差異並更新到實際的 DOM 上<br />
+<br />
+所以當我們 render 時其實都是 render 到 Virtual DOM 上<br />
+React 會自己幫我們算出最小差異然後更新<br /></p>
+
+<p><img src="https://docs.google.com/drawings/d/11ugBTwDkqn6p2n5Fkps1p3Elp8ZToIRzXzvM4LJMYaU/pub?w=543&amp;h=229" alt="" /></p>
+
+<hr />
+
+<h2 id="shouldcomponentupdate">shouldComponentUpdate</h2>
+
+<p>在講 <code class="highlighter-rouge">shouldComponentUpdate</code> 之前先來看看 Component 的生命週期<br />
+當 <code class="highlighter-rouge">state</code> 或是 <code class="highlighter-rouge">props</code> 改變的時候會先呼叫 <code class="highlighter-rouge">shouldComponentUpdate()</code><br />
+如果回傳 <code class="highlighter-rouge">true</code> 才會 render 到 Virtual DOM<br />
+最後再由 React 的 diff 演算法決定要怎麼更新 Real DOM<br /></p>
+
+<p><img src="http://imgur.com/YGROhPj.png" alt="" /></p>
+
+<p>因為 <code class="highlighter-rouge">shouldComponentUpdate()</code> 預設是回傳 true<br />
+也就是 “一律重繪”<br />
+不管有沒有改變一律重新 render 到 Virtual DOM 上<br />
+最後由 diff 演算法判斷到底哪些需要改變<br /></p>
+
+<p>雖然 React 的 diff 算法很高效<br />
+但如果數量一多的時候 React 要遞迴跑完所有 component 的 render<br />
+一定會拖慢速度<br />
+所以可以自己實作<code class="highlighter-rouge">shouldComponentUpdate</code><br />
+如果資料相同就不要重新 render<br /></p>
+
+<p>如果有一個 Component 叫 Item:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// &lt;Item content="item1" /&gt;</span>
+
+<span class="kd">var</span> <span class="nx">Item</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span> <span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span>    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>可以加入一個<code class="highlighter-rouge">shouldComponentUpdate(nextProps, nextState)</code><br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">shouldComponentUpdate</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">,</span> <span class="nx">nextState</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">content</span> <span class="o">!==</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>只有在<code class="highlighter-rouge">this.props.content</code>改變的時候才重新 render<br />
+這樣就可以大大減低重新 render 的次數<br /></p>
+
+<hr />
+
+<h2 id="section">可能會遇到什麼問題？？</h2>
+
+<p><img src="http://e.share.photo.xuite.net/qmother0615/1ee0ca0/6395131/261147045_l.jpg" width="400" /></p>
+
+<p>有時候可能會遇到<code class="highlighter-rouge">props</code>是物件或者陣列的情況<br />
+但物件跟陣列沒辦法比較相等<br />
+看看下面的例子<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Larry'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Larry'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj1</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj1</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">name</span> <span class="o">&amp;&amp;</span> <span class="nx">obj1</span><span class="p">.</span><span class="nx">age</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// true</span>
+
+
+
+<span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr1</span> <span class="o">===</span> <span class="nx">arr2</span><span class="p">);</span> <span class="c1">// false</span>
+
+<span class="c1">// 比較 array 內所有元素</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="nx">arr2</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">arr1</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">arr2</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}());</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<p>用<code class="highlighter-rouge">===</code>進行比較的話只能比較是不是同一個物件<br />
+如果要比較內容的話要自己進行比較<br />
+陣列也是要自己遍歷整個陣列<br />
+所以<code class="highlighter-rouge">shouldComponentUpdate</code>可能會寫成這樣<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// &lt;List items={['item1', 'item2', 'item3']} /&gt;</span>
+
+<span class="nx">shouldComponentUpdate</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">,</span> <span class="nx">nextState</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>但因為是遍歷整個陣列<br />
+如果數量一多的話還是會超慢<br />
+這時候就可以用<code class="highlighter-rouge">immutable.js</code><br /></p>
+
+<hr />
+
+<h2 id="immutablejs">Immutable.js</h2>
+
+<p><img src="https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/022/full/immutable_js_egghead_lesson_series.jpg?1444692575" width="450" /></p>
+
+<p><code class="highlighter-rouge">immutable.js</code> 是由 Facebook 開源的一個 library<br />
+提供各種不同的結構<br />
+可以用<code class="highlighter-rouge">npm install immutable</code>安裝<br />
+比較常用的有 List 跟 Map<br />
+這邊只稍微提一下怎麼用<br />
+想深入了解的可以看<a href="http://facebook.github.io/immutable-js/docs/">官方文件</a><br /></p>
+
+<p>immutable.js 中的 List 就像是 Array<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Immutable</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'immutable'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">list1</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">);</span>  <span class="c1">// ['a', 'b', 'c']</span>
+<span class="kd">var</span> <span class="nx">list2</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">);</span>  <span class="c1">// ['a', 'b', 'c']</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nx">list1</span><span class="p">,</span> <span class="nx">list2</span><span class="p">));</span>  <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">list1</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>                <span class="c1">// 'a'</span>
+<span class="nx">list1</span> <span class="o">=</span> <span class="nx">list1</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">);</span>                <span class="c1">// list1 = ['b', 'b', 'c']</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nx">list1</span><span class="p">,</span> <span class="nx">list2</span><span class="p">));</span>  <span class="c1">// false</span>
+</code></pre>
+</div>
+
+<p>immutable.js 中的 Map 就像是 Object<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">map1</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Larry'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">});</span>
+<span class="kd">var</span> <span class="nx">map2</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Larry'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nx">map1</span><span class="p">,</span> <span class="nx">map2</span><span class="p">));</span>  <span class="c1">// true</span>
+<span class="nx">map1</span> <span class="o">=</span> <span class="nx">map1</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'Larry Lu'</span><span class="p">);</span>
+<span class="c1">// map1 = {name: 'Larry Lu', age: 19}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map1</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">));</span>          <span class="c1">// 'Larry Lu'</span>
+<span class="nx">conosle</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nx">map1</span><span class="p">,</span> <span class="nx">map2</span><span class="p">));</span>  <span class="c1">// false</span>
+</code></pre>
+</div>
+
+<p>這樣就可以用<code class="highlighter-rouge">Immutable.is</code>來比較陣列跟物件<br />
+而且<code class="highlighter-rouge">Immutable.is</code>不是把每個值都取出來比較<br />
+而是創建 List 跟 Map 時就計算得到一個 hash value<br />
+比較時就比較那個 hash value 就好了<br />
+所以速度會快非常多<br /></p>
+
+<p>還有一個要注意的點是<code class="highlighter-rouge">immutable.js</code>創造出來的物件是不可變的<br />
+在 js 內要更改陣列內的元素只要<code class="highlighter-rouge">arr[index] = value</code><br />
+但用<code class="highlighter-rouge">immutable.js</code>時要<code class="highlighter-rouge">list = list.set(index, value)</code><br />
+因為<code class="highlighter-rouge">set</code>時不會更改原本的而是創造一個新的<code class="highlighter-rouge">List</code><br />
+<code class="highlighter-rouge">map</code>也是一樣<br />
+所以一定要<code class="highlighter-rouge">map = map.set('name', 'Larry Lu')</code><br />
+如果只是單純<code class="highlighter-rouge">map.set('name', 'Larry Lu')</code>就只會創造一個新<code class="highlighter-rouge">Map</code><br />
+但是沒有人接他的回傳值<br /></p>
+
+<hr />
+
+<h2 id="shouldcomponentupdate--immutablejs">綜合 shouldComponentUpdate 及 Immutable.js</h2>
+
+<p>所以最後就可以把 component 寫成這樣<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// &lt;Item info={Immutable.Map({'name': 'Larry', age: 19})} /&gt;</span>
+
+<span class="kd">var</span> <span class="nx">Item</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">shouldComponentUpdate</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">,</span> <span class="nx">nextState</span><span class="p">){</span>
+        <span class="k">return</span> <span class="o">!</span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">info</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">info</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">render</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span> <span class="p">{</span><span class="s1">'name: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span> <span class="p">{</span><span class="s1">'age: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span> <span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>這樣就可以減少很多重新 render 的次數<br />
+而且在判斷要不要重新 render 時也可以非常快速<br /></p>
+
+
+</div>
+
+<p>FaceBook 粉專：
+<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br>
+如果有新文章或是看到好的文章都會分享在這裡
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/07/16/JS-tips/">
+            [JavaScript] 幾個實用的 JS 小技巧
+            <small>16 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/23/regex/">
+            [Else] 用 Regular Expression 做字串比對
+            <small>23 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/16/nodejs-async/">
+            [Node.js] 理解 Node.js 事件驅動
+            <small>16 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
