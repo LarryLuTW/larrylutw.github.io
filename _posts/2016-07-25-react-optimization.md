@@ -8,6 +8,8 @@ published: true
 這篇是我最近在鑽研 React.js 時的一些心得<br>
 關於怎麼使用 `shouldComponentUpdate` 及 `immutable.js` 提高效能<br>
 
+<img src="http://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png" width="400">
+
 ---
 
 ## Virtual DOM

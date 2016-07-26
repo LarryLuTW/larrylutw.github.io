@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-07-26T13:54:51+08:00</updated>
+ <updated>2016-07-26T13:59:12+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -19,6 +19,8 @@
    <id>http://larry850806.github.io/2016/07/25/react-optimization</id>
    <content type="html">&lt;p&gt;這篇是我最近在鑽研 React.js 時的一些心得&lt;br /&gt;
 關於怎麼使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt; 及 &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable.js&lt;/code&gt; 提高效能&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
