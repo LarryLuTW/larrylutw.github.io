@@ -112,7 +112,7 @@
       <div class="post">
   <h1 class="post-title">[JavaScript] 如何提高 React App 的效能</h1>
   <span class="post-date">25 Jul 2016</span>
-  <p>這篇是我最近在寫 React.js 時的一些心得<br />
+  <p>這篇是我最近在鑽研 React.js 時的一些心得<br />
 關於怎麼使用 <code class="highlighter-rouge">shouldComponentUpdate</code> 及 <code class="highlighter-rouge">immutable.js</code> 提高效能<br /></p>
 
 <hr />
@@ -146,8 +146,7 @@ React 會自己幫我們算出最小差異然後更新<br /></p>
 最後由 diff 演算法判斷到底哪些需要改變<br /></p>
 
 <p>雖然 React 的 diff 算法很高效<br />
-但如果數量一多的時候 React 要遞迴跑完所有 component 的 render<br />
-一定會拖慢速度<br />
+但如果數量一多 React 要遞迴跑完所有 component 的 render 還是會拖慢速度<br />
 所以可以自己實作<code class="highlighter-rouge">shouldComponentUpdate</code><br />
 如果資料相同就不要重新 render<br /></p>
 
@@ -191,21 +190,19 @@ React 會自己幫我們算出最小差異然後更新<br /></p>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj1</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">);</span> <span class="c1">// false</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj1</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">name</span> <span class="o">&amp;&amp;</span> <span class="nx">obj1</span><span class="p">.</span><span class="nx">age</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// true</span>
 
-
-
 <span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr1</span> <span class="o">===</span> <span class="nx">arr2</span><span class="p">);</span> <span class="c1">// false</span>
 
-<span class="c1">// 比較 array 內所有元素</span>
+<span class="c1">// 比較 array 內所有元素 -&gt; true</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="nx">arr2</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
     <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">arr1</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">arr2</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}());</span> <span class="c1">// true</span>
+<span class="p">}());</span>
 </code></pre>
 </div>
 
@@ -228,7 +225,7 @@ React 會自己幫我們算出最小差異然後更新<br /></p>
 
 <p>但因為是遍歷整個陣列<br />
 如果數量一多的話還是會超慢<br />
-這時候就可以用<code class="highlighter-rouge">immutable.js</code><br /></p>
+這時候就可以用<code class="highlighter-rouge">immutable.js</code>加速<br /></p>
 
 <hr />
 
@@ -281,15 +278,14 @@ React 會自己幫我們算出最小差異然後更新<br /></p>
 但用<code class="highlighter-rouge">immutable.js</code>時要<code class="highlighter-rouge">list = list.set(index, value)</code><br />
 因為<code class="highlighter-rouge">set</code>時不會更改原本的而是創造一個新的<code class="highlighter-rouge">List</code><br />
 <code class="highlighter-rouge">map</code>也是一樣<br />
-所以一定要<code class="highlighter-rouge">map = map.set('name', 'Larry Lu')</code><br />
-如果只是單純<code class="highlighter-rouge">map.set('name', 'Larry Lu')</code>就只會創造一個新<code class="highlighter-rouge">Map</code><br />
-但是沒有人接他的回傳值<br /></p>
+所以一定要<code class="highlighter-rouge">map = map.set('name', 'Larry Lu')</code><br /></p>
 
 <hr />
 
-<h2 id="shouldcomponentupdate--immutablejs">綜合 shouldComponentUpdate 及 Immutable.js</h2>
+<h2 id="section-1">結論</h2>
 
-<p>所以最後就可以把 component 寫成這樣<br /></p>
+<p>綜合 shouldComponentUpdate 及 Immutable.js 之後<br />
+最後就可以把 component 寫成這樣<br /></p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// &lt;Item info={Immutable.Map({'name': 'Larry', age: 19})} /&gt;</span>
 
@@ -310,14 +306,17 @@ React 會自己幫我們算出最小差異然後更新<br /></p>
 </div>
 
 <p>這樣就可以減少很多重新 render 的次數<br />
-而且在判斷要不要重新 render 時也可以非常快速<br /></p>
+而且在判斷要不要重新 render 時也可以非常快速<br />
+讓原本就很快的 React 再更快～～<br /></p>
 
 
 </div>
 
-<p>FaceBook 粉專：
-<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/">賴瑞的程式筆記</a><br>
-如果有新文章或是看到好的文章都會分享在這裡
+<p>
+GitHub：<a href="https://github.com/Larry850806" target="_blank">Larry Lu</a><br>
+FaceBook 粉專：<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/" target="_blank">賴瑞的程式筆記</a><br>
+如果有新文章或是看到好的文章都會分享在粉專
+</p>
 
 <div class="related">
   <h2>Related Posts</h2>

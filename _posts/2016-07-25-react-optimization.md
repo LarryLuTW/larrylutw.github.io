@@ -5,7 +5,7 @@ keywords: js, javascript, react, reactjs, optimization, shouldComponentUpdate, i
 published: true
 ---
 
-這篇是我最近在寫 React.js 時的一些心得<br>
+這篇是我最近在鑽研 React.js 時的一些心得<br>
 關於怎麼使用 `shouldComponentUpdate` 及 `immutable.js` 提高效能<br>
 
 ---
@@ -39,8 +39,7 @@ React 會自己幫我們算出最小差異然後更新<br>
 最後由 diff 演算法判斷到底哪些需要改變<br>
 
 雖然 React 的 diff 算法很高效<br>
-但如果數量一多的時候 React 要遞迴跑完所有 component 的 render<br>
-一定會拖慢速度<br>
+但如果數量一多 React 要遞迴跑完所有 component 的 render 還是會拖慢速度<br>
 所以可以自己實作`shouldComponentUpdate`<br>
 如果資料相同就不要重新 render<br>
 
@@ -85,21 +84,19 @@ var obj2 = {name: 'Larry', age: 19};
 console.log(obj1 === obj2); // false
 console.log(obj1.name === obj2.name && obj1.age === obj2.age); // true
 
-
-
 var arr1 = [1, 2, 3];
 var arr2 = [1, 2, 3];
 
 console.log(arr1 === arr2); // false
 
-// 比較 array 內所有元素
+// 比較 array 內所有元素 -> true
 console.log(function(){
     if(arr1.length != arr2.length) return false;
     for(var i=0 ; i<arr1.length ; i++){
         if(arr1[i] !== arr2[i]) return false;
     }
     return true;
-}()); // true
+}());
 ```
 
 用`===`進行比較的話只能比較是不是同一個物件<br>
@@ -121,7 +118,7 @@ shouldComponentUpdate(nextProps, nextState){
 
 但因為是遍歷整個陣列<br>
 如果數量一多的話還是會超慢<br>
-這時候就可以用`immutable.js`<br>
+這時候就可以用`immutable.js`加速<br>
 
 ---
 
@@ -175,14 +172,13 @@ conosle.log(Immutable.is(map1, map2));  // false
 因為`set`時不會更改原本的而是創造一個新的`List`<br>
 `map`也是一樣<br>
 所以一定要`map = map.set('name', 'Larry Lu')`<br>
-如果只是單純`map.set('name', 'Larry Lu')`就只會創造一個新`Map`<br>
-但是沒有人接他的回傳值<br>
 
 ---
 
-## 綜合 shouldComponentUpdate 及 Immutable.js
+## 結論
 
-所以最後就可以把 component 寫成這樣<br>
+綜合 shouldComponentUpdate 及 Immutable.js 之後<br>
+最後就可以把 component 寫成這樣<br>
 
 ```js
 // <Item info={Immutable.Map({'name': 'Larry', age: 19})} />
@@ -204,5 +200,6 @@ var Item = React.createClass({
 
 這樣就可以減少很多重新 render 的次數<br>
 而且在判斷要不要重新 render 時也可以非常快速<br>
+讓原本就很快的 React 再更快～～<br>
 
 
