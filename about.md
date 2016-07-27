@@ -17,7 +17,7 @@ title: About Me
 - Data Structor and Algorithm
 
 
-## 我做過的作品:
+## 我的作品:
 
 - [Facebook chat bot](https://github.com/Larry850806/facebook-chat-bot)<br>
 可以設定關鍵字的 FB 聊天機器人<br>
@@ -27,11 +27,7 @@ title: About Me
 這是一個 Nodejs module<br>
 提供登入、取得好友、今日抽卡等等的 API<br>
 目前還在持續新增中<br>
-如果需要什麼 API 也可以開個 Issue 讓我知道<br>
 
-
-- [Cool Slide](https://github.com/CoolSlide/cool-slide)<br>用 markdown 語法寫出很酷的投影片<br>
-[這是 Cool Slide 的 Demo](http://coolslide.github.io)<br>
 
 - [Youtube Downloader](https://github.com/Larry850806/youtube-downloader)<br>一個 command line tool<br>
 下簡單的指令就可以下載 youtube 的音樂<br>

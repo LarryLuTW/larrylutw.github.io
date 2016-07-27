@@ -19,6 +19,8 @@ title: 分類文章
 
 # JavaScript
 
+### [[JavaScript] 如何提高 React App 的效能](../2016/07/25/react-optimization/)
+
 ### [[Node.js] 用 cheerio 抓取即時天氣](../2016/06/07/cheerio-weather/)
 
 ### [[JavaScript] 幾個實用的 JS 小技巧](../2016/07/16/JS-tips/)
