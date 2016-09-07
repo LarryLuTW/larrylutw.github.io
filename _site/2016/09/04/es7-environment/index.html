@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <meta name="keywords" content="js, javascript, react, reactjs, optimization, shouldComponentUpdate, immutable">
+  
+
+  <title>
+    
+      [Node.js] 自己動手打造 ES7 開發環境 &middot; Larry
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78692824-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+
+            <img id="circlePhoto" src="http://i.imgur.com/ZF2xXSG.jpg" width=190 style="display: none;">
+
+            <script>
+                if(screen.width > screen.height){  // if not mobile
+                    var photo = document.getElementById('circlePhoto');
+                    photo.style.display = '';
+                }
+            </script>
+
+      <h1>
+        <a style="font-family: serif;" href="https://github.com/Larry850806">
+            Larry Lu
+        </a>
+      </h1>
+      <p class="lead">I am a developer and I love working with people.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About Me</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/classified/">分類文章</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="/"> 最新文章 </a>
+
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+    <br>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">[Node.js] 自己動手打造 ES7 開發環境</h1>
+  <span class="post-date">04 Sep 2016</span>
+  <p><img src="http://i.imgur.com/ZAFeDJr.png" alt="" /></p>
+
+<p>因為前陣子接觸了 ES7 的 async/await<br />
+習慣了之後就覺得 ES6 的 Promise 很難用XD<br />
+就想用 babel 來當轉譯器<br />
+架個 ES7 的開發環境來玩 async/await<br /></p>
+
+<h2 id="section">開發環境的架構</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+├── package.json
+├── node_modules
+├── gulpfile.js
+├── index.js
+├── src
+│   ├── index.js
+│   └── utils.js
+├── build
+    ├── index.js
+    └── utils.js
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">package.json</code> 跟 <code class="highlighter-rouge">node_modules</code> 大家應該都很熟悉就不多做說明了</li>
+  <li><code class="highlighter-rouge">gulpfile.js</code> 是 <code class="highlighter-rouge">gulp</code> 的任務配置</li>
+  <li><code class="highlighter-rouge">src</code> 裡面放 ES7 的 source code</li>
+  <li><code class="highlighter-rouge">build</code> 裡面放被 babel 轉譯過後的 ES5 程式碼</li>
+  <li><code class="highlighter-rouge">index.js</code> 是整個程式的起點，什麼都不做就只跑 <code class="highlighter-rouge">build</code> 裡面的 <code class="highlighter-rouge">index.js</code></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// index.js</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./build/index'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="section-1">開發流程</h2>
+
+<p>開發時只動 <code class="highlighter-rouge">src</code> 裡面的 code<br />
+Gulp 會自動轉譯 <code class="highlighter-rouge">src</code> 裡面的 code 並放到 <code class="highlighter-rouge">build</code><br />
+<br />
+要執行時就跑最外層的 <code class="highlighter-rouge">index.js</code><br />
+<code class="highlighter-rouge">index.js</code> 會自動跑 <code class="highlighter-rouge">build/index.js</code><br /></p>
+
+<hr />
+
+<h2 id="gulp-">Gulp 配置</h2>
+
+<p><img src="http://i.imgur.com/buXJvp2.png" alt="" /></p>
+
+<p>Gulp 是個很好用的自動化工具<br />
+他可以運用一些別人寫好的套件來加速開發流程<br />
+像是 compile、minify、uglify 等等<br />
+對 Gulp 不太熟悉的可以先看看這篇<a href="https://github.com/nimojs/gulp-book">Gulp 入門指南</a><br /></p>
+
+<h3 id="gulp--babel">在 Gulp 內使用 babel</h3>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// gulpfile.js</span>
+
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">babel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-babel'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'babelify'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'src/**/*.js'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">babel</span><span class="p">({</span>
+            <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'es2015'</span><span class="p">,</span> <span class="s1">'es2016'</span><span class="p">,</span> <span class="s1">'es2017'</span><span class="p">],</span>
+            <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">[</span>
+                    <span class="s2">"transform-runtime"</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="s2">"polyfill"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+                        <span class="s2">"regenerator"</span><span class="p">:</span> <span class="kc">true</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">build</span><span class="p">))</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>只要在 command line 輸入 <code class="highlighter-rouge">gulp babelify</code><br />
+gulp 就會把 <code class="highlighter-rouge">src</code> 中所有的 js 檔當做來源<br />
+接著用 <code class="highlighter-rouge">babel</code> 將他們全部轉譯成 ES5 的 code<br />
+最後再輸出到 <code class="highlighter-rouge">build</code> 裡面去<br />
+這部分需要用到這些模組<br /></p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"babel-plugin-transform-runtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.12.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-preset-es2015"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.13.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-preset-es2016"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.11.3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-preset-es2017"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.14.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gulp-babel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.1.2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p><img src="http://i.imgur.com/9QmkGN7.jpg" width="400" /></p>
+
+<p>雖然上面那段配置已經可以把 code 轉成 ES5<br />
+但如果在轉譯的過程中有錯誤(可能語法錯誤)<br />
+那就必須把錯誤輸出<br />
+所以要在 babel 之後加上這一段<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'end'</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>這樣就如果有錯誤就會輸出<br />
+像是這樣<br /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SyntaxError: src/index.js: Unexpected token (4:5)
+
+  2 | 
+&gt; 3 | func(;
+    |      ^
+  4 | 
+  5 | 
+</code></pre>
+</div>
+
+<h3 id="source-map">Source Map</h3>
+
+<p><img src="http://i.imgur.com/Fmeb6Gf.jpg" width="500" /></p>
+
+<p>寫程式有時候總是會遇到錯誤需要 debug<br />
+如果程式發生錯誤會告訴你發生在哪一行<br /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>build/index.js:5
+throw new Error('error');
+^
+
+Error: error
+    at Object.&lt;anonymous&gt; (build/index.js:5:7) &lt;-- 仔細看這行
+    at Module._compile (module.js:541:32)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+    at tryModuleLoad (module.js:417:12)
+    at Function.Module._load (module.js:409:3)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at Object.&lt;anonymous&gt; (index.js:2:1)
+    at Module._compile (module.js:541:32)
+</code></pre>
+</div>
+
+<p>他告訴我們在 <code class="highlighter-rouge">build/index.js</code> 的第五行發生錯誤<br />
+但 <code class="highlighter-rouge">build</code> 內的程式碼是 babel 產生的所以會很醜<br />
+轉譯過後的程式碼跟原本的有很大的差異<br />
+<br />
+舉個例子<br />
+轉譯前<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// before.js</span>
+
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="s1">'Hello World'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">hello</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>轉譯後(真的有夠醜XD)<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// after.js</span>
+
+<span class="kd">var</span> <span class="nx">_regenerator</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'babel-runtime/regenerator'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">_regenerator2</span> <span class="o">=</span> <span class="nx">_interopRequireDefault</span><span class="p">(</span><span class="nx">_regenerator</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">_asyncToGenerator2</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'babel-runtime/helpers/asyncToGenerator'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">_asyncToGenerator3</span> <span class="o">=</span> <span class="nx">_interopRequireDefault</span><span class="p">(</span><span class="nx">_asyncToGenerator2</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_ref</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">_asyncToGenerator3</span><span class="p">.</span><span class="k">default</span><span class="p">)(</span><span class="nx">_regenerator2</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">mark</span><span class="p">(</span><span class="kd">function</span> <span class="nx">_callee</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">_regenerator2</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="kd">function</span> <span class="nx">_callee$</span><span class="p">(</span><span class="nx">_context</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="nx">_context</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">_context</span><span class="p">.</span><span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">case</span> <span class="mi">0</span><span class="err">:</span>
+                        <span class="k">return</span> <span class="nx">_context</span><span class="p">.</span><span class="nx">abrupt</span><span class="p">(</span><span class="s1">'return'</span><span class="p">,</span> <span class="s1">'Hello World'</span><span class="p">);</span>
+
+                    <span class="k">case</span> <span class="mi">1</span><span class="err">:</span>
+                    <span class="k">case</span> <span class="s1">'end'</span><span class="err">:</span>
+                        <span class="k">return</span> <span class="nx">_context</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span> <span class="nx">_callee</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    <span class="p">}));</span>
+
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">_ref</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}();</span>
+
+<span class="kd">function</span> <span class="nx">_interopRequireDefault</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">obj</span> <span class="o">&amp;&amp;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">__esModule</span> <span class="p">?</span> <span class="nx">obj</span> <span class="p">:</span> <span class="p">{</span> <span class="na">default</span><span class="p">:</span> <span class="nx">obj</span> <span class="p">};</span> <span class="p">}</span>
+<span class="nx">hello</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>這樣會讓我們很難 debug<br />
+我們想知道的是他錯在 source code 的第幾行<br />
+這時候就要用 source map 了<br />
+<br />
+Source Map 會儲存著轉換前後程式碼的位置<br />
+可以自動做對應<br />
+我們只需要在裡面加上 sourcemaps<br />
+現在的 <code class="highlighter-rouge">gulpfile.js</code> 長這樣<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">babel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-babel'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sourcemaps</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-sourcemaps'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'babelify'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'src/**/*.js'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sourcemaps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span> <span class="c1">// &lt;--- 初始化 source map  </span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">babel</span><span class="p">({</span>
+            <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'es2015'</span><span class="p">,</span> <span class="s1">'es2016'</span><span class="p">,</span> <span class="s1">'es2017'</span><span class="p">],</span>
+            <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">[</span>
+                    <span class="s2">"transform-runtime"</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="s2">"polyfill"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+                        <span class="s2">"regenerator"</span><span class="p">:</span> <span class="kc">true</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'end'</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sourcemaps</span><span class="p">.</span><span class="nx">write</span><span class="p">({</span>   <span class="c1">// </span>
+            <span class="na">includeContent</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 這邊寫入 source map </span>
+            <span class="na">sourceRoot</span><span class="p">:</span> <span class="s1">'src'</span>      <span class="c1">// source root 設為 'src' </span>
+        <span class="p">}))</span>                        <span class="c1">//</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'build'</span><span class="p">))</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>這樣 babel 在轉譯的過程中就會自動產生 source map 了<br />
+但還有一個問題就是 node 本身並不支持 source map<br />
+所以需要用模組 source-map-support 來載入 source map<br />
+用法很簡單只要在程式起點加上一行就可以了<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// index.js</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'source-map-support'</span><span class="p">).</span><span class="nx">install</span><span class="p">();</span> <span class="c1">// 加上這一行</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./build/index'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>再跑一次已經可以顯示出 source code 中錯誤發生地方<br /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>src/index.js:3
+throw new Error('error');
+      ^
+Error: error
+    at Object.&lt;anonymous&gt; (src/index.js:3:7) &lt;-- 仔細看這行 
+    at Module._compile (module.js:541:32)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+    at tryModuleLoad (module.js:417:12)
+    at Function.Module._load (module.js:409:3)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at Object.&lt;anonymous&gt; (index.js:2:1)
+    at Module._compile (module.js:541:32)
+</code></pre>
+</div>
+
+<p>可以看出是在 <code class="highlighter-rouge">src/index.js</code> 的第三行發生錯誤<br />
+這部份會用到這兩個模組</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"gulp-sourcemaps"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.6.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source-map-support"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.4.2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<hr />
+
+<h3 id="watch">Watch</h3>
+
+<p>現在已經完成大部分功能了<br />
+但每次修改 <code class="highlighter-rouge">src</code> 中的檔案都要重新 <code class="highlighter-rouge">gulp babelify</code> 才能轉譯很麻煩<br />
+所以想讓 gulp 自動監控檔案<br />
+有任何變化就進行轉譯<br />
+要達到這個效果使用的是 gulp 的 watch 功能<br />
+在 <code class="highlighter-rouge">gulpfile.js</code> 中加上這一段<br /></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'watch'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">([</span><span class="s1">'src/**/*.js'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'babelify'</span><span class="p">]);</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'babelify'</span><span class="p">,</span> <span class="s1">'watch'</span><span class="p">]);</span>
+</code></pre>
+</div>
+
+<p>這樣 gulp 就會自動監控 <code class="highlighter-rouge">src</code> 中所有 js 檔<br />
+有任何變動就進行 babelify<br /></p>
+
+<hr />
+
+<h2 id="section-2">心得</h2>
+
+<p>這個環境真的滿方便的 (自己說XD<br />
+只要在 command line 上跑 <code class="highlighter-rouge">gulp</code><br />
+gulp 就會自動 babelify 並且監控 js 檔<br />
+<br />
+如果覺得照上面的步驟慢慢做很麻煩<br />
+這邊有現成的 <a href="https://github.com/Larry850806/nodejs-project">github repo</a><br />
+也歡迎任何意見或 Pull Request<br /></p>
+
+</div>
+
+<p>
+GitHub：<a href="https://github.com/Larry850806" target="_blank">Larry Lu</a><br>
+FaceBook 粉專：<a href="https://www.facebook.com/賴瑞的程式筆記-1755838524703270/" target="_blank">賴瑞的程式筆記</a><br>
+如果有新文章或是看到好的文章都會分享在粉專<br>
+歡迎大家按讚追蹤
+</p>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/07/25/react-optimization/">
+            [JavaScript] 如何提高 React App 的效能
+            <small>25 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/07/16/JS-tips/">
+            [JavaScript] 幾個實用的 JS 小技巧
+            <small>16 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/06/23/regex/">
+            [Else] 用 Regular Expression 做字串比對
+            <small>23 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
