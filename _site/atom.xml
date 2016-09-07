@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-09-08T00:04:13+08:00</updated>
+ <updated>2016-09-08T00:35:06+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -334,7 +334,7 @@ Error: error
 gulp 就會自動 babelify 並且監控 js 檔&lt;br /&gt;
 &lt;br /&gt;
 如果覺得照上面的步驟慢慢做很麻煩&lt;br /&gt;
-這邊有現成的 &lt;a href=&quot;https://github.com/Larry850806/nodejs-project&quot;&gt;github repo&lt;/a&gt;&lt;br /&gt;
+這邊有現成的 &lt;a href=&quot;https://github.com/Larry850806/nodejs-ES7-template&quot;&gt;github repo&lt;/a&gt;&lt;br /&gt;
 也歡迎任何意見或 Pull Request&lt;br /&gt;&lt;/p&gt;
 </content>
  </entry>

@@ -320,5 +320,5 @@ gulp.task('default', ['babelify', 'watch']);
 gulp 就會自動 babelify 並且監控 js 檔<br>
 <br>
 如果覺得照上面的步驟慢慢做很麻煩<br>
-這邊有現成的 [github repo](https://github.com/Larry850806/nodejs-project)<br>
+這邊有現成的 [github repo](https://github.com/Larry850806/nodejs-ES7-template)<br>
 也歡迎任何意見或 Pull Request<br>
