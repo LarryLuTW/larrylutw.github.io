@@ -19,6 +19,8 @@ title: 分類文章
 
 # JavaScript
 
+### [[Node.js] 自己動手打造 ES7 開發環境](../2016/09/04/es7-environment/)
+
 ### [[JavaScript] 如何提高 React App 的效能](../2016/07/25/react-optimization/)
 
 ### [[Node.js] 用 cheerio 抓取即時天氣](../2016/06/07/cheerio-weather/)
