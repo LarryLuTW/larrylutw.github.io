@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Node.js] 自己動手打造 ES7 開發環境'
-keywords: js, javascript, react, reactjs, optimization, shouldComponentUpdate, immutable
+keywords: js, javascript, gulp, gulpfile, ES6, ES7, node, nodejs, 開發環境
 published: true
 ---
 
