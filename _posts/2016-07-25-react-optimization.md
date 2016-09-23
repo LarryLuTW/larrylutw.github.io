@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[JavaScript] 如何提高 React App 的效能'
+title: '[Javascript] 如何提高 React App 的效能'
 keywords: js, javascript, react, reactjs, optimization, shouldComponentUpdate, immutable
 published: true
 ---
