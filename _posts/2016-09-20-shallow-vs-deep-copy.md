@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Javascript] 理解 JS 中的淺拷貝和深拷貝'
+title: '[Javascript] 關於 JS 中的淺拷貝和深拷貝'
 keywords: js, javascript, object, assign, immutable, reference, copy, deepclone, clonedeep
 published: true
 ---

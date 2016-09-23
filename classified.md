@@ -5,7 +5,7 @@ title: 分類文章
 
 # Javascript
 
-### [[Javascript] 理解 JS 中的淺拷貝和深拷貝](../2016/09/20/shallow-vs-deep-copy/)
+### [[Javascript] 關於 JS 中的淺拷貝和深拷貝](../2016/09/20/shallow-vs-deep-copy/)
 
 ### [[Node.js] 自己動手打造 ES7 開發環境](../2016/09/04/es7-environment/)
 

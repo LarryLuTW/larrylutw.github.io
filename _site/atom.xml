@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-09-23T09:15:43+08:00</updated>
+ <updated>2016-09-23T09:23:08+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>[Javascript] 理解 JS 中的淺拷貝和深拷貝</title>
+   <title>[Javascript] 關於 JS 中的淺拷貝和深拷貝</title>
    <link href="http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/"/>
    <updated>2016-09-20T00:00:00+08:00</updated>
    <id>http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy</id>
