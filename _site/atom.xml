@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-09-23T09:23:08+08:00</updated>
+ <updated>2016-09-28T13:15:09+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -44,7 +44,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;在修改&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;時並不會改到&lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;在修改&lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;時並不會改到&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 

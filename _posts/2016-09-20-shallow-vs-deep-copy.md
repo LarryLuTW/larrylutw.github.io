@@ -32,7 +32,7 @@ console.log(a); // 10
 console.log(b); // 20
 ```
 
-在修改`a`時並不會改到`b`<br>
+在修改`b`時並不會改到`a`<br>
 
 ---
 
