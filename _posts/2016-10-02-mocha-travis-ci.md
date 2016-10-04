@@ -113,7 +113,7 @@ npm install should --save-dev
 
 ---
 
-我們先來寫`average.js`的測試<br>
+先來寫`average.js`的測試<br>
 `mocha`的語法是這樣<br>
 
 ```js
@@ -301,7 +301,7 @@ push 之後到 travis 上看看<br>
 這篇文章用很簡單的範例帶大家走過`mocha`、`should`跟`Travis CI`<br>
 文章中的範例程式碼放在<a href="https://github.com/Larry850806/mocha-travis-ci-example" target="_black"> Larry850806/mocha-travis-ci-example </a><br>
 實際要測試的案例可能不會這麼簡單，但方法都是差不多的<br>
-如果想要更深入學習可以看看他們的文件<br>
+想要更深入學習可以看看他們的文件<br>
 
 - <a href="https://mochajs.org" target="_black"> mocha </a>
 - <a href="https://shouldjs.github.io" target="_black"> should.js </a>
@@ -310,4 +310,4 @@ push 之後到 travis 上看看<br>
 雖然寫測試有點麻煩，但只要寫一次就好了<br>
 自己手動測試難免會有疏漏而且又浪費時間<br>
 時常找不出真正的 bug <br>
-為了你的肝著想，今天就開始寫測試吧!<br>
+為了你的肝著想，今天就開始寫測試吧！<br>

@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-10-04T11:01:08+08:00</updated>
+ <updated>2016-10-04T11:06:49+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
@@ -125,7 +125,7 @@ npm install should --save-dev
 
 &lt;hr /&gt;
 
-&lt;p&gt;我們先來寫&lt;code class=&quot;highlighter-rouge&quot;&gt;average.js&lt;/code&gt;的測試&lt;br /&gt;
+&lt;p&gt;先來寫&lt;code class=&quot;highlighter-rouge&quot;&gt;average.js&lt;/code&gt;的測試&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;mocha&lt;/code&gt;的語法是這樣&lt;br /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;測試標題&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
@@ -313,7 +313,7 @@ push 之後到 travis 上看看&lt;br /&gt;
 &lt;p&gt;這篇文章用很簡單的範例帶大家走過&lt;code class=&quot;highlighter-rouge&quot;&gt;mocha&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;should&lt;/code&gt;跟&lt;code class=&quot;highlighter-rouge&quot;&gt;Travis CI&lt;/code&gt;&lt;br /&gt;
 文章中的範例程式碼放在&lt;a href=&quot;https://github.com/Larry850806/mocha-travis-ci-example&quot; target=&quot;_black&quot;&gt; Larry850806/mocha-travis-ci-example &lt;/a&gt;&lt;br /&gt;
 實際要測試的案例可能不會這麼簡單，但方法都是差不多的&lt;br /&gt;
-如果想要更深入學習可以看看他們的文件&lt;br /&gt;&lt;/p&gt;
+想要更深入學習可以看看他們的文件&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://mochajs.org&quot; target=&quot;_black&quot;&gt; mocha &lt;/a&gt;&lt;/li&gt;
@@ -324,7 +324,7 @@ push 之後到 travis 上看看&lt;br /&gt;
 &lt;p&gt;雖然寫測試有點麻煩，但只要寫一次就好了&lt;br /&gt;
 自己手動測試難免會有疏漏而且又浪費時間&lt;br /&gt;
 時常找不出真正的 bug &lt;br /&gt;
-為了你的肝著想，今天就開始寫測試吧!&lt;br /&gt;&lt;/p&gt;
+為了你的肝著想，今天就開始寫測試吧！&lt;br /&gt;&lt;/p&gt;
 </content>
  </entry>
  
