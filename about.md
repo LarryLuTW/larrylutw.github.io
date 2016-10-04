@@ -28,7 +28,7 @@ title: About Me
 
 - C/C++
 - DataStructure and Algorithm
-- Nodejs
+- Node.js
 - React.js
 - iOS Development
 

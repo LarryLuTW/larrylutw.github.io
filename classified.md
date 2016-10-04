@@ -5,11 +5,13 @@ title: 分類文章
 
 # Javascript
 
+### [[Node.js] 用 mocha 做單元測試並整合 Travis-CI](../2016/10/02/mocha-travis-ci/)
+
 ### [[Javascript] 關於 JS 中的淺拷貝和深拷貝](../2016/09/20/shallow-vs-deep-copy/)
 
 ### [[Node.js] 自己動手打造 ES7 開發環境](../2016/09/04/es7-environment/)
 
-### [[Javascript] 如何提高 React App 的效能](../2016/07/25/react-optimization/)
+### [[React.js] 如何提高 React App 的效能](../2016/07/25/react-optimization/)
 
 ### [[Node.js] 用 cheerio 抓取即時天氣](../2016/06/07/cheerio-weather/)
 
