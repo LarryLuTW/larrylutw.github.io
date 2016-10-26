@@ -34,22 +34,53 @@ title: About Me
 
 ## 我的作品:
 
-- <a href="https://github.com/Larry850806/facebook-chat-bot" target="_blank"> Facebook chat bot </a><br>
-可以設定關鍵字的 FB 聊天機器人<br>
+### 1.<a href="https://github.com/Larry850806/facebook-chat-bot" target="_blank"> Facebook chat bot </a><br>
 
-- <a href="https://larry850806.github.io/ToDo-List/" target="_blank"> ToDo List </a><br>
-簡單美觀的 Todo List<br>
+#### 可以設定關鍵字的 FB 聊天機器人
 
-- <a href="https://github.com/Larry850806/Dcard-API" target="_blank"> Dcard API </a><br>
-這是一個 Nodejs module<br>
-提供登入、取得好友、今日抽卡等等的 API<br>
-目前還在持續新增中<br>
+<img src="http://imgur.com/bnmWWkm.png" width="600">
 
-- <a href="https://github.com/Larry850806/youtube-downloader" target="_blank"> Youtube Downloader </a><br>
-下簡單的指令就可以下載 youtube 的音樂<br>
+---
+
+### 2.<a href="https://github.com/Larry850806/youtube-downloader" target="_blank"> Youtube Downloader </a><br>
+
+#### 下簡單的指令就可以下載 youtube 的音樂
+
+<img src="http://i.imgur.com/Dqqww0F.gif" width="600">
+
+---
+
+### 3.<a href="https://github.com/Larry850806/facebook-poster" target="_blank"> Facebook Poster </a><br>
+
+#### 自動在 Facebook 上發文的 Node package
+
+#### 可以用來自動發地震文XD
+
+<img src="http://i.imgur.com/MSlhdHC.png" width="600">
+
+---
+
+### 4.<a href="https://larry850806.github.io/ToDo-List/" target="_blank"> ToDo List </a><br>
+
+#### 簡單美觀的 Todo List
+
+<img src="http://i.imgur.com/Z6wNTwI.png" width="600">
+
+---
+
+### 5.<a href="https://github.com/Larry850806/Dcard-API" target="_blank"> Dcard API </a><br>
+
+#### 一個 Node package
+
+#### 提供登入、取得好友、今日抽卡等等的 API
+
+#### 目前還在持續新增中
+
+---
 
 ### 聯絡資訊:
 
-- [Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>
 - [GitHub : Larry850806](https://github.com/Larry850806)<br>
-- [FaceBook : 賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
+- [FaceBook : 盧承億](https://www.facebook.com/Larry850806)<br>
+- [Fan Page : 賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
+- [Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>

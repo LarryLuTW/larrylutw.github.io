@@ -193,11 +193,11 @@ Mac 上的快捷鍵是 Cmd + Option + I<br />
 <span class="nx">request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
     <span class="c1">// 去跟中央氣象局的網站要資料</span>
 
-    <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
     <span class="c1">// 把要到的資料放進 cheerio</span>
 
     <span class="kd">var</span> <span class="nx">weather</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.FcstBoxTable01 tbody tr'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.FcstBoxTable01 tbody tr'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">){</span>
         <span class="nx">weather</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">));</span>
     <span class="p">});</span>
     <span class="c1">// 語法都跟 jquery 一樣</span>

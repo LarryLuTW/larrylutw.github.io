@@ -94,11 +94,11 @@ var url = 'http://www.cwb.gov.tw/V7/forecast/taiwan/Taipei_City.htm';
 request(url, function(err, res, body){
     // 去跟中央氣象局的網站要資料
 
-    $ = cheerio.load(body);
+    var $ = cheerio.load(body);
     // 把要到的資料放進 cheerio
 
     var weather = []
-    var tmp = $('.FcstBoxTable01 tbody tr').each(function(i, elem){
+    $('.FcstBoxTable01 tbody tr').each(function(i, elem){
         weather.push($(this).text().split('\n'));
     });
     // 語法都跟 jquery 一樣
