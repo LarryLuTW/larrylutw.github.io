@@ -3,7 +3,9 @@ layout: page
 title: 分類文章
 ---
 
-# Javascript
+---
+
+## Javascript
 
 ### [[Node.js] 用 mocha 做單元測試並整合 Travis-CI](../2016/10/02/mocha-travis-ci/)
 
@@ -29,13 +31,13 @@ title: 分類文章
 
 ---
 
-# Java
+## Java
 
 ### [[Java] 執行緒(Thread) 入門](../2016/06/10/Java-Thread/)
 
 ---
 
-# C/C++
+## C/C++
 
 ### [[C++] STL 容器 (一) - 基本介紹](../2016/06/06/STL1/)
 
@@ -43,7 +45,7 @@ title: 分類文章
 
 ---
 
-# 其他
+## 其他
 
 ### [[實用] 分享我訂閱的一些期刊跟頻道](../2016/11/15/publication/)
 
