@@ -43,9 +43,11 @@ title: 分類文章
 
 ---
 
-# Else
+# 其他
 
-### [[其他] 用 Regular Expression 做字串比對](../2016/06/23/regex/)
+### [[實用] 分享我訂閱的一些期刊跟頻道](../2016/11/15/publication/)
+
+### [[實用] 用 Regular Expression 做字串比對](../2016/06/23/regex/)
 
 ### [[Linux] wget 常見用法](../2016/06/15/wget/)
 
