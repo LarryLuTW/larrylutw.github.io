@@ -4,13 +4,234 @@
  <title>Larry</title>
  <link href="http://larry850806.github.io/atom.xml" rel="self"/>
  <link href="http://larry850806.github.io/"/>
- <updated>2016-11-16T11:41:33+08:00</updated>
+ <updated>2017-02-14T19:53:31+08:00</updated>
  <id>http://larry850806.github.io</id>
  <author>
    <name>Larry Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>[實用] 終端機 session 管理神器 - tmux</title>
+   <link href="http://larry850806.github.io/2017/02/14/tmux/"/>
+   <updated>2017-02-14T00:00:00+08:00</updated>
+   <id>http://larry850806.github.io/2017/02/14/tmux</id>
+   <content type="html">&lt;p&gt;身為一名開發者對終端機應該不陌生，不管是要用 vim 修改文件內容、執行腳本、ssh 到遠端伺服器都會用到終端機。這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，他除了可以保存 session 外，還有視窗分割、視窗切換、多人共享畫面等等功能，廢話不多說，直接進入正題&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;安裝&lt;/h2&gt;
+
+&lt;h3 id=&quot;mac-os&quot;&gt;Mac OS&lt;/h3&gt;
+
+&lt;p&gt;首先要先安裝 &lt;a href=&quot;https://brew.sh/index_zh-tw.html&quot;&gt;Homebrew&lt;/a&gt;，沒有裝過的話先跑以下指令安裝&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby -e &quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;有了 Homebrew 之後直接安裝 tmux&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew update
+brew install tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;debian--ubuntu&quot;&gt;Debian / Ubuntu&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;redhat--centos&quot;&gt;RedHat / CentOS&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;安裝完跑跑看&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;，最下面有出現一條狀態列就是安裝成功了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/LRXlTP0.png&quot; width=&quot;730&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;基本概念&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;server&lt;/td&gt;
+      &lt;td&gt;第一次跑 tmux 時會自動開啟一個 server，server 會負責管理所有 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;session&lt;/td&gt;
+      &lt;td&gt;一個 server 裡面可以有多個 session，每次下&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;指令都會開一個新 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;window&lt;/td&gt;
+      &lt;td&gt;window 就是整個終端機的畫面，一個 session 裡面可以有多個 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;pane&lt;/td&gt;
+      &lt;td&gt;可以把一個 window 切成好幾個小區塊，每個區塊就是一個 pane&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;光看文字敘述可能不夠清楚，直接看圖&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/KmKZeKY.png&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;有了基本概念之後就來實際操作看看吧～&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;常用操作&lt;/h2&gt;
+
+&lt;p&gt;記得要先啟動 tmux，而且在按任何快捷鍵之前一定要先按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+b&lt;/code&gt;，譬如說要水平分割出一個 pane，就要先按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+b&lt;/code&gt;再按&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pane&quot;&gt;pane&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%&lt;/td&gt;
+      &lt;td&gt;水平分割出一個 pane&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;”&lt;/td&gt;
+      &lt;td&gt;垂直分割出一個 pane&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;方向鍵&lt;/td&gt;
+      &lt;td&gt;移動到另外一個 pane&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;關閉目前的 pane&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;space&lt;/td&gt;
+      &lt;td&gt;切換佈局&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{&lt;/td&gt;
+      &lt;td&gt;向前置換&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;}&lt;/td&gt;
+      &lt;td&gt;向後置換&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;alt+方向鍵&lt;/td&gt;
+      &lt;td&gt;調整大小&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;window&quot;&gt;window&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;c&lt;/td&gt;
+      &lt;td&gt;創建新的 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;amp;&lt;/td&gt;
+      &lt;td&gt;關閉目前的 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;p&lt;/td&gt;
+      &lt;td&gt;切換到上一個 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;n&lt;/td&gt;
+      &lt;td&gt;切換倒下一個 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;數字鍵&lt;/td&gt;
+      &lt;td&gt;切換到指定 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;,&lt;/td&gt;
+      &lt;td&gt;重新命名 window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;.&lt;/td&gt;
+      &lt;td&gt;修改 window 編號&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;session--&quot;&gt;session ($ 開頭是指令不是快捷鍵)&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ tmux&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;開啟一個新的 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ tmux ls&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;列出所有 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ tmux attach -t 0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;進入第 0 個 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ kill-session 0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;關閉 0 號 session&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;d&lt;/td&gt;
+      &lt;td&gt;脫離目前 session，下&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux attach&lt;/code&gt;指令可以再回來&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;s&lt;/td&gt;
+      &lt;td&gt;切換 session&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;常見的使用場景&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;一邊跑程式一邊監控系統狀態&lt;/h3&gt;
+
+&lt;p&gt;有時候要檢查程式是不是浪費太多系統資源就可以這樣用&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/57vBj5o.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;一邊寫程式一邊看結果&lt;/h3&gt;
+
+&lt;p&gt;這個就不用多說了～真的很常用&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/ncD5Ypb.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ssh-&quot;&gt;ssh 到遠端伺服器跑程式&lt;/h3&gt;
+
+&lt;p&gt;平常 ssh 到伺服器上跑程式，只要 ssh 斷了程式就會被關閉，用 tmux 就不會有這個困擾&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3QP1FbH.png&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;線上多人共同編輯&lt;/h3&gt;
+
+&lt;p&gt;透過 tmux，大家可以同時在線上共用同一個 session，也可以共同編輯同一份文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/wgFeReq.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;總結&lt;/h2&gt;
+
+&lt;p&gt;以上是 tmux 的一些簡單介紹，筆者我自從用了他之後就對他愛不釋手～所以寫了這篇文章帶大家認識這個工具，如果想要看比較詳細的教學可以看看 &lt;a href=&quot;https://www.youtube.com/watch?v=nD6g-rM5Bh0&amp;amp;list=PLbkWnfz63JbWlZSq964DCMW64dM06_qht&quot; target=&quot;_blank&quot;&gt; Tutorial - tmux Basics &lt;/a&gt;，基礎部分都熟悉之後也可以再去看其他更進階的操作。&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>[實用] 分享我訂閱的一些期刊跟頻道</title>

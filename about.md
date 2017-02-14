@@ -9,11 +9,11 @@ title: About Me
 我是盧承億，英文名字 Larry Lu，台大資工系肄業。
 <br>
 <br>
-我高中時主要寫 C/C++ 練演算法跟資結，參加過一些比賽，
-現在則是寫 Node.js 跟 React.js，
-目標是成為一個 Full Stack Developer，
-另外我也曾經在 Dcard 實習，
-碰過一些 iOS Development。
+我熱愛技術、喜歡與人分享，
+專長是 Web 前後端，
+也稍微碰過一點 iOS。
+平常喜歡寫寫技術文章還有參加各種技術活動，
+也有自己的部落格。
 <br>
 <br>
 我從 2016 年 6 月開始寫技術文章還有自己的學習心得，
@@ -26,10 +26,10 @@ title: About Me
 
 ## 專長:
 
-- C/C++
-- DataStructure and Algorithm
 - Node.js
 - React.js
+- C/C++
+- DataStructure and Algorithm
 - iOS Development
 
 ## 我的作品:
@@ -60,15 +60,7 @@ title: About Me
 
 ---
 
-### 4.<a href="https://larry850806.github.io/ToDo-List/" target="_blank"> ToDo List </a><br>
-
-#### 簡單美觀的 Todo List
-
-<img src="http://i.imgur.com/Z6wNTwI.png" width="600">
-
----
-
-### 5.<a href="https://github.com/Larry850806/Dcard-API" target="_blank"> Dcard API </a><br>
+### 4.<a href="https://github.com/Larry850806/Dcard-API" target="_blank"> Dcard API </a><br>
 
 #### 一個 Node package
 
