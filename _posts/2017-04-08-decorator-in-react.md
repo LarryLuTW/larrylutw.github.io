@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[React.js] 用 @decorator 來裝飾你的 Component 吧！'
-keywords: javascript, decorator, es7, babel, react, component, 裝飾器, 裝飾者模式, 裝飾
+keywords: javascript, js, decorator, es7, babel, react, component, HOC, higher-order component, react-decoration, recompose, decorator pattern, 裝飾器, 裝飾者模式, 裝飾
 published: true
 ---
 
