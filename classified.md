@@ -7,6 +7,8 @@ title: 分類文章
 
 ## Javascript
 
+### [[React.js] 用 @decorator 來裝飾你的 Component 吧！](../2017/04/08/decorator-in-react/)
+
 ### [[Node.js] 用 mocha 做單元測試並整合 Travis-CI](../2016/10/02/mocha-travis-ci/)
 
 ### [[Javascript] 關於 JS 中的淺拷貝和深拷貝](../2016/09/20/shallow-vs-deep-copy/)
