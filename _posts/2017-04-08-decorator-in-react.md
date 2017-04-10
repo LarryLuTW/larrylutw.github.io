@@ -5,7 +5,7 @@ keywords: javascript, js, decorator, es7, babel, react, component, HOC, higher-o
 published: true
 ---
 
-Decorator 是 ES7 的新語法，它讓我們用更簡單的方法幫類別(class)、函式(function) 添加一些特性，這篇主要講述如何在 React 中使用 decorator 及 HOC 裝飾你的 Component。
+Decorator 是 JS 以後會有的新語法，它讓我們用更簡單的方法幫類別(class)、函式(function) 添加一些特性，這篇主要講述如何在 React 中使用 decorator 及 HOC 裝飾你的 Component。
 
 <img src="https://i.imgur.com/yAUPHu6.png" width="550px" />
 
