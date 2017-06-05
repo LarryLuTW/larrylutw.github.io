@@ -113,11 +113,11 @@
 
 <hr />
 
-<h2 id="section">語法</h2>
+<h2 id="語法">語法</h2>
 
 <p>很多人可能還不太知道 decorator 的語法，先來看幾個簡單的例子</p>
 
-<h4 id="myclass--istestable-">幫 MyClass 加上一個 isTestable 的屬性</h4>
+<h4 id="幫-myclass-加上一個-istestable-的屬性">幫 MyClass 加上一個 isTestable 的屬性</h4>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isTestable</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">target</span><span class="p">.</span><span class="nx">isTestable</span> <span class="o">=</span> <span class="kc">true</span>
@@ -136,7 +136,7 @@
 </code></pre>
 </div>
 
-<h4 id="section-1">帶參數</h4>
+<h4 id="帶參數">帶參數</h4>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isTestable</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
@@ -158,7 +158,7 @@
 </code></pre>
 </div>
 
-<h4 id="function-export-">如果想要裝飾的對象是 function，可以在 export 的時候裝飾</h4>
+<h4 id="如果想要裝飾的對象是-function可以在-export-的時候裝飾">如果想要裝飾的對象是 function，可以在 export 的時候裝飾</h4>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isTestable</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">target</span><span class="p">.</span><span class="nx">isTestable</span> <span class="o">=</span> <span class="kc">true</span>
@@ -176,7 +176,7 @@
 
 <hr />
 
-<h3 id="decorator--hoc-higher-order-component">Decorator 與 HOC (Higher-Order Component)</h3>
+<h3 id="decorator-與-hoc-higher-order-component">Decorator 與 HOC (Higher-Order Component)</h3>
 
 <p>HOC 其實就是個 function，它接收某個 Component 作為他的參數，並且 return 另外一個新的 Component。像<code class="highlighter-rouge">react-redux</code>中的<code class="highlighter-rouge">connect</code>就是個 HOC，他負責訂閱 store 的改變並且通知我們的 Component，我們通常會這樣使用他：</p>
 
@@ -223,7 +223,7 @@
 
 <p>相信大家看完上面的範例之後都知道怎麼使用 decorator 了，但如果還要自己實作 decorator 實在是很麻煩，以下會介紹一些常用的 library 及應用場景，大家可以直接使用。</p>
 
-<h3 id="a-hrefhttpsgithubcommbassoreact-decoration-targetblank-react-decoration-a"><a href="https://github.com/mbasso/react-decoration" target="_blank"> react-decoration </a></h3>
+<h3 id="-react-decoration-"><a href="https://github.com/mbasso/react-decoration" target="_blank"> react-decoration </a></h3>
 
 <p>react-decoration 是一系列 decorator 的集合，專門給 React Component 用，以下簡單介紹幾個</p>
 
@@ -342,7 +342,7 @@
 
 <hr />
 
-<h3 id="a-hrefhttpsgithubcomacdliterecompose-targetblank-recompose-a"><a href="https://github.com/acdlite/recompose" target="_blank"> recompose </a></h3>
+<h3 id="-recompose-"><a href="https://github.com/acdlite/recompose" target="_blank"> recompose </a></h3>
 
 <p>recompose 提供了很多實用的 HOC，可以用來增強你的 Component</p>
 
@@ -430,7 +430,7 @@
 
 <hr />
 
-<h2 id="section-2">總結</h2>
+<h2 id="總結">總結</h2>
 
 <p>其實筆者我自己才剛接觸 decorator 沒有很久，所以也還在摸索中，若有哪裡寫得不太正確請大家多多指教。
 <br />

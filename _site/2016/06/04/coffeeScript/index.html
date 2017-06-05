@@ -113,7 +113,7 @@
 
 <hr />
 
-<h2 id="coffeescript--">CoffeeScript 的幾個特性 :</h2>
+<h2 id="coffeescript-的幾個特性-">CoffeeScript 的幾個特性 :</h2>
 <ul>
   <li>用縮排取代大括號 (Python)</li>
   <li>List Comprehension 語法 (Python)</li>
@@ -122,7 +122,7 @@
 
 <hr />
 
-<h2 id="coffeescript--javascript">怎麼把 CoffeeScript 編譯成 Javascript</h2>
+<h2 id="怎麼把-coffeescript-編譯成-javascript">怎麼把 CoffeeScript 編譯成 Javascript</h2>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>npm install -g coffee-script        <span class="c"># 安裝 CoffeeScript 編譯器</span>
 coffee -o index.js -c index.coffee  <span class="c"># 把 index.coffee 編譯成 index.js</span>
 coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coffee 到 js</span>
@@ -134,9 +134,9 @@ coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coff
 
 <hr />
 
-<h2 id="section">基本語法</h2>
+<h2 id="基本語法">基本語法</h2>
 
-<h3 id="section-1">宣告變數</h3>
+<h3 id="宣告變數">宣告變數</h3>
 <p>CoffeeScript 不用分號也不用宣告變數<br />
 直接用就可以了<br /></p>
 
@@ -153,7 +153,7 @@ coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coff
 </code></pre>
 </div>
 
-<h3 id="section-2">插入字串</h3>
+<h3 id="插入字串">插入字串</h3>
 <p>這是 Ruby 的用法<br />
 很方便<br /></p>
 
@@ -199,7 +199,7 @@ coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coff
 </code></pre>
 </div>
 
-<h3 id="section-3">交換及指定變數</h3>
+<h3 id="交換及指定變數">交換及指定變數</h3>
 <div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </code></pre>
@@ -236,8 +236,8 @@ coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coff
 </div>
 
 <h3 id="list-comprehension">List Comprehension</h3>
-<div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="nx">alert</span> <span class="nx">i</span> <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">10</span><span class="p">]</span>    <span class="c1"># alert [1..10] 內的每個元素
-</span></code></pre>
+<div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="nx">alert</span> <span class="nx">i</span> <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">10</span><span class="p">]</span>    <span class="c1"># alert [1..10] 內的每個元素</span>
+</code></pre>
 </div>
 
 <p>編譯後</p>
@@ -250,7 +250,7 @@ coffee -o js/ -c coffee/            <span class="c"># 編譯整個資料夾 coff
 </code></pre>
 </div>
 
-<h3 id="section-4">物件</h3>
+<h3 id="物件">物件</h3>
 
 <div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="nx">larry</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="o">:</span> <span class="s">"Larry"</span><span class="p">,</span> <span class="na">age</span><span class="o">:</span> <span class="mi">19</span><span class="p">,</span> <span class="na">career</span><span class="o">:</span> <span class="s">"student"</span><span class="p">}</span>
 

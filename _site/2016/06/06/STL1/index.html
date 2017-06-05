@@ -112,7 +112,7 @@
 
 <hr />
 
-<h2 id="section">內容索引(可以直接點)</h2>
+<h2 id="內容索引可以直接點">內容索引(可以直接點)</h2>
 <ul>
   <li><a href="#vector">Vector</a></li>
   <li><a href="#queue">Queue</a></li>
@@ -129,7 +129,7 @@
 <p>Vector 可以看成是一個動態陣列<br />
 <img src="http://imgur.com/YpSpyuh.png" alt="" /><br /></p>
 
-<h3 id="section-1">用法跟陣列很像，基本功能有 :</h3>
+<h3 id="用法跟陣列很像基本功能有-">用法跟陣列很像，基本功能有 :</h3>
 <ul>
   <li>push_back: 把一個值加到尾巴</li>
   <li>pop_back: 把尾巴的值移除掉</li>
@@ -137,7 +137,7 @@
   <li>[]: 得到某一個位置的值</li>
 </ul>
 
-<h3 id="section-2">範例 1</h3>
+<h3 id="範例-1">範例 1</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;vector&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -157,7 +157,7 @@
 </code></pre>
 </div>
 
-<h3 id="section-3">範例 2</h3>
+<h3 id="範例-2">範例 2</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
@@ -173,7 +173,7 @@
 </code></pre>
 </div>
 
-<h3 id="section-4">範例 3</h3>
+<h3 id="範例-3">範例 3</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
@@ -192,13 +192,13 @@
 </code></pre>
 </div>
 
-<h3 id="vector-">Vector 的優點</h3>
+<h3 id="vector-的優點">Vector 的優點</h3>
 <ul>
   <li>宣告時可以不用確定大小</li>
   <li>可以 Random Access</li>
 </ul>
 
-<h3 id="vector--1">Vector 的缺點</h3>
+<h3 id="vector-的缺點">Vector 的缺點</h3>
 <ul>
   <li>在內部進行刪除時效率很低</li>
 </ul>
@@ -212,7 +212,7 @@
 只能往尾巴排，然後從頭出來<br />
 <img src="http://blog.hqc.sk.ca/wp-content/uploads/2012/12/Queue-2012-12-11.jpg" alt="" /></p>
 
-<h3 id="section-5">基本功能有:</h3>
+<h3 id="基本功能有">基本功能有:</h3>
 <ul>
   <li>push: 把一個值加到尾巴</li>
   <li>pop: 把第一個值移除掉</li>
@@ -220,7 +220,7 @@
   <li>front: 得到頭的值</li>
 </ul>
 
-<h3 id="section-6">範例 1</h3>
+<h3 id="範例-1-1">範例 1</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;queue&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -240,7 +240,7 @@
 </code></pre>
 </div>
 
-<h3 id="section-7">範例 2</h3>
+<h3 id="範例-2-1">範例 2</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
     <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>       <span class="c1">// 一個空的 queue
@@ -256,12 +256,12 @@
 </code></pre>
 </div>
 
-<h3 id="queue-">Queue 的優點</h3>
+<h3 id="queue-的優點">Queue 的優點</h3>
 <ul>
   <li>可以快速的把頭的值拿掉</li>
 </ul>
 
-<h3 id="queue--1">Queue 的缺點</h3>
+<h3 id="queue-的缺點">Queue 的缺點</h3>
 <ul>
   <li>只能操作頭跟尾</li>
 </ul>
@@ -276,14 +276,14 @@
 或是繼續往上疊<br />
 <img src="http://imgur.com/rhIdBYm.png" alt="" /></p>
 
-<h3 id="section-8">基本功能有:</h3>
+<h3 id="基本功能有-1">基本功能有:</h3>
 <ul>
   <li>top: 得到最上面的值</li>
   <li>push: 再拿一個盤子往上疊</li>
   <li>pop: 拿掉最上面的盤子</li>
 </ul>
 
-<h3 id="section-9">範例</h3>
+<h3 id="範例">範例</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stack&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -303,12 +303,12 @@
 </code></pre>
 </div>
 
-<h3 id="stack-">Stack 的優點</h3>
+<h3 id="stack-的優點">Stack 的優點</h3>
 <ul>
   <li>操作很簡單(只有疊上去跟拿下來XD)</li>
 </ul>
 
-<h3 id="stack--1">Stack 的缺點</h3>
+<h3 id="stack-的缺點">Stack 的缺點</h3>
 <ul>
   <li>只能操作最上面的那個值</li>
 </ul>
@@ -321,14 +321,14 @@
 <p>Set 就是集合<br />
 <img src="http://imgur.com/HIeaLY4.png" alt="" /></p>
 
-<h3 id="section-10">基本功能有:</h3>
+<h3 id="基本功能有-2">基本功能有:</h3>
 <ul>
   <li>insert: 把一個數字放進集合</li>
   <li>erase: 把某個數字從集合中移除</li>
   <li>count: 檢查某個數是否有在集合中</li>
 </ul>
 
-<h3 id="section-11">範例</h3>
+<h3 id="範例-1">範例</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;set&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -348,13 +348,13 @@
 </code></pre>
 </div>
 
-<h3 id="set-">Set 的優點</h3>
+<h3 id="set-的優點">Set 的優點</h3>
 <ul>
   <li>操作很簡單</li>
   <li>可以快速檢查裡面有沒有某個元素</li>
 </ul>
 
-<h3 id="set--1">Set 的缺點</h3>
+<h3 id="set-的缺點">Set 的缺點</h3>
 <ul>
   <li>當 Set 裡面東西太多時會拖慢速度</li>
 </ul>
@@ -367,13 +367,13 @@
 <p>Map 就像是一個對應表<br />
 <img src="http://www.boost.org/doc/libs/1_44_0/libs/bimap/doc/html/images/bimap/standard.mapping.framework.png" alt="" /></p>
 
-<h3 id="section-12">基本功能有:</h3>
+<h3 id="基本功能有-3">基本功能有:</h3>
 <ul>
   <li>[]: 得到對應的值</li>
   <li>count: 檢查某個值是否有對應值</li>
 </ul>
 
-<h3 id="section-13">範例 1</h3>
+<h3 id="範例-1-2">範例 1</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;map&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -392,7 +392,7 @@
 </code></pre>
 </div>
 
-<h3 id="section-14">範例 2</h3>
+<h3 id="範例-2-2">範例 2</h3>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;map&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -411,13 +411,13 @@
 </code></pre>
 </div>
 
-<h3 id="map-">Map 的優點</h3>
+<h3 id="map-的優點">Map 的優點</h3>
 <ul>
   <li>設定對應值很簡單</li>
   <li>用很高的效率找到對應值</li>
 </ul>
 
-<h3 id="map--1">Map 的缺點</h3>
+<h3 id="map-的缺點">Map 的缺點</h3>
 <ul>
   <li>對應值越多會越慢</li>
 </ul>

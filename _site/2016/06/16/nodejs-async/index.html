@@ -113,7 +113,7 @@
 
 <hr />
 
-<h2 id="async">Async(非同步)</h2>
+<h2 id="async非同步">Async(非同步)</h2>
 
 <p>Node.js 是一個單執行緒且非同步的語言<br />
 非同步的 function 會被放進一個 event queue<br />
@@ -129,7 +129,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 等其他事情都做完就會就會開始做 event queue 內的事情<br />
 來看看這一段 code<br /></p>
 
-<h3 id="section">範例1</h3>
+<h3 id="範例1">範例1</h3>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'callback'</span><span class="p">);</span>
@@ -150,7 +150,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 然後就輸出 “callback”<br /></p>
 </blockquote>
 
-<h3 id="section-1">範例2</h3>
+<h3 id="範例2">範例2</h3>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'callback'</span><span class="p">);</span>
@@ -178,7 +178,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 
 <hr />
 
-<h2 id="callback">Callback(回呼)</h2>
+<h2 id="callback回呼">Callback(回呼)</h2>
 
 <p>因為不知道 async 的那些工作什麼時候會完成<br />
 但我們又需要等那些工作做完之後才能做某些事情<br />
@@ -189,7 +189,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 但偏偏讀檔案的函式是 async<br />
 這時候就需要 callback<br /></p>
 
-<h3 id="section-2">範例1</h3>
+<h3 id="範例1-1">範例1</h3>
 
 <p>讀檔案並計算長度<br /></p>
 
@@ -224,7 +224,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 然後輸出<code class="highlighter-rouge">finish</code><br /></p>
 </blockquote>
 
-<h3 id="section-3">範例2</h3>
+<h3 id="範例2-1">範例2</h3>
 
 <p>讀完檔案在檔尾加上<code class="highlighter-rouge">Hello World</code><br />
 再寫回去檔案<br /></p>
@@ -255,7 +255,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 寫入完成之後再輸出<code class="highlighter-rouge">not finish</code><br /></p>
 </blockquote>
 
-<h3 id="section-4">範例3</h3>
+<h3 id="範例3">範例3</h3>
 
 <p>在 callback 內檢查錯誤<br /></p>
 
@@ -282,13 +282,13 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 
 <hr />
 
-<h2 id="async-function">自己寫一個 async function</h2>
+<h2 id="自己寫一個-async-function">自己寫一個 async function</h2>
 
 <p>我們也可以把一些 async 的動作包起來<br />
 自己寫一個 async function<br />
 然後定義一個 callback<br /></p>
 
-<h3 id="section-5">範例</h3>
+<h3 id="範例">範例</h3>
 
 <p>寫一個函式叫做 append<br />
 功能是在某個檔案後面加上某個字串<br />
@@ -330,7 +330,7 @@ setTimeout 會在一定的時間之後執行某個函式<br />
 
 <hr />
 
-<h2 id="callback-hell">Callback Hell(回呼地獄)</h2>
+<h2 id="callback-hell回呼地獄">Callback Hell(回呼地獄)</h2>
 
 <p>因為使用 callback 可能會一直往上疊<br />
 先進行 A 接著跑 B 然後 C, D 等等等<br />
@@ -370,7 +370,7 @@ B 需要 A 的結果，C 需要 B 的結果<br />
 建議完全理解 callback 再開始摸 Promise<br /></p>
 </blockquote>
 
-<h2 id="section-6">總結</h2>
+<h2 id="總結">總結</h2>
 
 <p>整個程式只有一個 event queue<br />
 async 的 function 都會被塞到 event queue<br />

@@ -105,14 +105,14 @@
       <div class="post">
   <h1 class="post-title">[Node.js] 用 cheerio 抓取即時天氣</h1>
   <span class="post-date">07 Jun 2016</span>
-  <h3 id="cheerio-">cheerio 是什麼</h3>
+  <h3 id="cheerio-是什麼">cheerio 是什麼</h3>
 <p>cheerio 是一個 Node.js 的 module<br />
 是可以跑在 server 端的 JQuery<br />
 可以用來擷取網頁中的資料<br /></p>
 
 <hr />
 
-<h3 id="section">網站</h3>
+<h3 id="網站">網站</h3>
 <p>先到我們要抓取天氣的地方<br />
 當然是中央氣象局啦～<br />
 這次先示範抓台北市的天氣狀況<br />
@@ -130,7 +130,7 @@ Mac 上的快捷鍵是 Cmd + Option + I<br />
 
 <hr />
 
-<h3 id="section-1">找到我們要的區塊</h3>
+<h3 id="找到我們要的區塊">找到我們要的區塊</h3>
 <p>我們要的主要是中間有氣象資料的那一塊<br />
 從下面 HTML 的往裡面找<br />
 可以找到我們要的這個區塊<br />
@@ -139,7 +139,7 @@ Mac 上的快捷鍵是 Cmd + Option + I<br />
 
 <hr />
 
-<h3 id="html--class">觀察 HTML 標籤跟 class</h3>
+<h3 id="觀察-html-標籤跟-class">觀察 HTML 標籤跟 class</h3>
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!--
 發現在 &lt;table class="FcstBoxTable01"&gt; 裡面的 &lt;tbody&gt; 有三個 &lt;tr&gt;
 每個 &lt;tr&gt; 裡面有一筆資料
@@ -176,7 +176,7 @@ Mac 上的快捷鍵是 Cmd + Option + I<br />
 
 <hr />
 
-<h3 id="code">開始寫 code</h3>
+<h3 id="開始寫-code">開始寫 code</h3>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!--
 在 &lt;table class="FcstBoxTable01"&gt; 裡面的 &lt;tbody&gt; 有三個 &lt;tr&gt;
@@ -252,7 +252,7 @@ weather:
 
 <hr />
 
-<h3 id="section-2">整理一下我們要的資料</h3>
+<h3 id="整理一下我們要的資料">整理一下我們要的資料</h3>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code>
 <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="p">[];</span>
@@ -294,7 +294,7 @@ output:
 
 <hr />
 
-<h3 id="section-3">最後輸出出來</h3>
+<h3 id="最後輸出出來">最後輸出出來</h3>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">output</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">output</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">time</span><span class="p">;</span>
@@ -306,13 +306,13 @@ output:
 </code></pre>
 </div>
 
-<h3 id="section-4">執行結果</h3>
+<h3 id="執行結果">執行結果</h3>
 <p>每次執行都會跟網站要資料然後顯示<br />
 <img src="http://imgur.com/Zmjnb6W.png" alt="" /></p>
 
 <hr />
 
-<h3 id="section-5">總結</h3>
+<h3 id="總結">總結</h3>
 <ol>
   <li>先找到要抓哪個網站的資料</li>
   <li>用 Chrome Developer Tool 觀察 HTML 結構</li>

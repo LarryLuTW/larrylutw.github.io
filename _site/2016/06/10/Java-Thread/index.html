@@ -105,24 +105,24 @@
       <div class="post">
   <h1 class="post-title">[Java] 執行緒(Thread) 入門</h1>
   <span class="post-date">10 Jun 2016</span>
-  <h3 id="program-process-thread-br">在開始之前先來談談 Program, Process, Thread 的不同<br /></h3>
+  <h3 id="在開始之前先來談談-program-process-thread-的不同">在開始之前先來談談 Program, Process, Thread 的不同<br /></h3>
 
 <ul>
   <li>
-    <h3 id="programbr">Program(程式)：<br /></h3>
+    <h3 id="program程式">Program(程式)：<br /></h3>
     <p>寫出來的程式<br />
 簡單來說就是那堆程式碼<br />
 他們以資料的形式被存放在硬碟中<br />
 還沒有跑起來<br /></p>
   </li>
   <li>
-    <h3 id="processbr">Process(程序)：<br /></h3>
+    <h3 id="process程序">Process(程序)：<br /></h3>
     <p>跑起來的程式<br />
 寫出來的 Program 可以讓他同時跑在很多地方<br />
 這樣就可以產生很多 Process<br /></p>
   </li>
   <li>
-    <h3 id="threadbr">Thread(執行緒)：<br /></h3>
+    <h3 id="thread執行緒">Thread(執行緒)：<br /></h3>
     <p>一個 Process 裡面會有至少一個 Thread<br />
 在 Java 中預設只有 main 一個<br />
 可以建立很多 Thread 讓他們同時運作<br /></p>
@@ -133,7 +133,7 @@
 
 <hr />
 
-<h2 id="single-threading">單執行緒程式(single threading)</h2>
+<h2 id="單執行緒程式single-threading">單執行緒程式(single threading)</h2>
 
 <p>平常的程式如果沒有建其他 Thread 的話都是單執行緒<br />
 在 Java 中就是 main<br />
@@ -142,7 +142,7 @@ main 跑完了整個程式就結束<br />
 整個程式就只有 main 所在的那個 Thread<br />
 我們通常把 main 所在的那個 Thread 稱為 main thread<br /></p>
 
-<h2 id="multithreading">多執行緒程式(multithreading)</h2>
+<h2 id="多執行緒程式multithreading">多執行緒程式(multithreading)</h2>
 
 <p>當你的程式有很多 thread 的時候<br />
 系統會把它排進一個 Queue<br />
@@ -155,7 +155,7 @@ main 跑完了整個程式就結束<br />
 
 <hr />
 
-<h2 id="thread">如何產生 Thread</h2>
+<h2 id="如何產生-thread">如何產生 Thread</h2>
 
 <p>Java 的 Thread 被定義在 java.lang.Thread<br />
 Thread 的 Constructor 有兩種：<br /></p>
@@ -169,7 +169,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 
 <hr />
 
-<h2 id="section">進入點</h2>
+<h2 id="進入點">進入點</h2>
 
 <p>使用 class Thread 產生的 thread 物件<br />
 會從物件裡的 run() 開始執行<br />
@@ -183,13 +183,13 @@ Thread 的 Constructor 有兩種：<br /></p>
 <span class="c1">// 一個新的 Thread class</span>
 <span class="c1">// 進入點為 run()</span>
 <span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World in MyThread"</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example1</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>   <span class="c1">// 建一個新的 Thread t1</span>
         <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>                   <span class="c1">// 讓 t1 開始執行</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World in main Thread"</span><span class="o">);</span>
@@ -219,18 +219,18 @@ Thread 的 Constructor 有兩種：<br /></p>
 <span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">x</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
         <span class="c1">// turn to string</span>
         <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello I'm "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example2</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
         <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
         <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
@@ -266,7 +266,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 
 <hr />
 
-<h2 id="section-1">優先權</h2>
+<h2 id="優先權">優先權</h2>
 
 <p>可以用<code class="highlighter-rouge">Thread.setPriority(int)</code>來設定優先權<br />
 <code class="highlighter-rouge">priority</code>可以設定 1 ~ 10<br />
@@ -279,18 +279,18 @@ Thread 的 Constructor 有兩種：<br /></p>
 <span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">x</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">MyThread</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
         <span class="c1">// turn to string</span>
         <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello I'm "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example2</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
         <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
         <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
@@ -335,7 +335,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 
 <hr />
 
-<h2 id="section-2">其他改變優先權的方法</h2>
+<h2 id="其他改變優先權的方法">其他改變優先權的方法</h2>
 
 <p>接下來這邊會介紹 sleep, yield, join<br />
 用來等待其他 thread 或是先讓其他 thread 執行<br /></p>
@@ -348,7 +348,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Sleep.java</span>
 
 <span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
             <span class="c1">// 因為 sleep 有可能被中斷</span>
@@ -363,7 +363,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sleep</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
         <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm main thread"</span><span class="o">);</span>
@@ -394,7 +394,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Join.java</span>
 
 <span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
@@ -405,7 +405,7 @@ Thread 的 Constructor 有兩種：<br /></p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Join</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
         <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 
@@ -444,7 +444,7 @@ main thread 又在等 t1 完成<br />
 等下次輪到自己再繼續<br /></p>
 
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
@@ -455,7 +455,7 @@ main thread 又在等 t1 完成<br />
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sleep</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
         <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 
@@ -486,7 +486,7 @@ main thread 又在等 t1 完成<br />
 
 <hr />
 
-<h2 id="section-3">總結</h2>
+<h2 id="總結">總結</h2>
 <p>這邊只提到一些比較常見的用法<br />
 之後會寫一些比較難的還有怎麼應用<br /></p>
 
