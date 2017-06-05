@@ -2,7 +2,7 @@
 layout: post
 title: '[JQuery] 用 JQuery 做出卡片翻動的效果'
 keywords: jquery, flip, css, animation, 翻動, 動畫
-published: true
+published: false
 ---
 
 前陣子在做網頁的想要做卡片翻動的效果<br>
