@@ -1,6 +1,6 @@
 <div class="sidebar">
-    <div class="container sidebar-sticky">
-        <div class="sidebar-about">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
 
       <h1>
         <a style="font-family: serif;" href="https://github.com/Larry850806">
@@ -13,15 +13,10 @@
     <nav class="sidebar-nav">
 
 
-      {% assign pages_list = site.pages %}
-      {% for node in pages_list %}
-        {% if node.title != null %}
-          {% if node.layout == "page" %}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}"> 最新文章 </a>
+      {% assign pages_list = site.pages %} {% for node in pages_list %} {% if node.title != null %} {% if node.layout == "page"
+      %}
+      <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>      {% endif %} {% endif %} {% endfor %}
+      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="/"> 最新文章 </a>
 
     </nav>
 
