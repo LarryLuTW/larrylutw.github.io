@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-18T11:36:59+08:00</updated>
+ <updated>2017-08-18T11:46:35+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Larry Lu</name>
@@ -20,7 +20,9 @@
    <content type="html">&lt;p&gt;俗話說 &lt;strong&gt;「工欲善其事，必先利其器」&lt;/strong&gt;&lt;br /&gt;
 對於工程師來說好的編輯器是很重要的，因為最近剛好很多朋友在問我用什麼編輯器，所以就寫一篇文章來&lt;del&gt;推坑&lt;/del&gt;介紹 vscode。&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;在開始之前先澄清一下，&lt;strong&gt;VSCode&lt;/strong&gt; 跟微軟那套 &lt;strong&gt;Visual Studio&lt;/strong&gt; 一點關係都沒有，而且 &lt;a href=&quot;https://github.com/Microsoft/vscode&quot; target=&quot;_blank&quot;&gt;VSCode&lt;/a&gt; 是完全開源的，社群也非常活絡。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/vscode.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在開始之前先澄清一下，VSCode 跟微軟那套 Visual Studio 一點關係都沒有，而且 &lt;a href=&quot;https://github.com/Microsoft/vscode&quot; target=&quot;_blank&quot;&gt;VSCode&lt;/a&gt; 是完全開源的，社群也非常活絡。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -65,6 +67,8 @@
 
 &lt;h3 id=&quot;5-自定義常用的程式碼片段&quot;&gt;5. 自定義常用的程式碼片段&lt;/h3&gt;
 
+&lt;p&gt;我前端寫 React.js 所以很常用到&lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState(() =&amp;gt; ({ ... }))&lt;/code&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/snippet.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -97,7 +101,8 @@
 
 &lt;h3 id=&quot;9-自動-format&quot;&gt;9. 自動 format&lt;/h3&gt;
 
-&lt;p&gt;不用擔心 code 排版太醜，VSCode 可以自動幫你排版&lt;/p&gt;
+&lt;p&gt;不用擔心 code 排版太醜，VSCode 可以自動幫你排版&lt;br /&gt;
+若團隊有制定 coding style 也可以在 vscode 中設定&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/format.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
 
@@ -123,16 +128,16 @@
 
 &lt;h3 id=&quot;1-vim&quot;&gt;1. Vim&lt;/h3&gt;
 
-&lt;p&gt;在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 &lt;a href=&quot;/2017/02/14/tmux/&quot; target=&quot;_blank&quot;&gt;tmux&lt;/a&gt; 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就會用 vim。&lt;br /&gt;
-如果要從 vim 跳到 vscode 的話也有 &lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot; target=&quot;_blank&quot;&gt;extension&lt;/a&gt; 把 vim shortcut 遷移過來，使用上完全不會有問題。&lt;/p&gt;
+&lt;p&gt;在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 &lt;a href=&quot;/2017/02/14/tmux/&quot; target=&quot;_blank&quot;&gt;tmux&lt;/a&gt; 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就用 vim。&lt;br /&gt;
+在 vscode 上也有 &lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot; target=&quot;_blank&quot;&gt;extension&lt;/a&gt; 把 vim shortcut 遷移過來，使用上完全不會有問題。&lt;/p&gt;
 
 &lt;h3 id=&quot;2-sublime&quot;&gt;2. Sublime&lt;/h3&gt;
 
-&lt;p&gt;我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings&quot; target=&quot;_blank&quot;&gt;Sublime Text Keymap&lt;/a&gt;，雖然我是 vim 派的沒有用過，但評價都還不錯。&lt;/p&gt;
+&lt;p&gt;我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings&quot; target=&quot;_blank&quot;&gt;Sublime Text Keymap&lt;/a&gt; 這個 extension，雖然我是 vim 派的沒有用過，但評價都還不錯。&lt;/p&gt;
 
 &lt;h3 id=&quot;3-atom&quot;&gt;3. Atom&lt;/h3&gt;
 
-&lt;p&gt;我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前有看過介面覺得也滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。&lt;/p&gt;
+&lt;p&gt;我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前看過介面也覺得滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -149,7 +154,7 @@
 &lt;img class=&quot;inline&quot; src=&quot;/public/vscode-introduction/ms_love_open_source.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如果有什麼你覺得超神的功能沒寫到可以跟我說&lt;br /&gt;
-或是有使用上的問題也可以透過⬇下面⬇粉專問我&lt;/p&gt;
+或是有使用上的問題也可以透過⬇下面⬇粉專私訊我&lt;/p&gt;
 </content>
  </entry>
  

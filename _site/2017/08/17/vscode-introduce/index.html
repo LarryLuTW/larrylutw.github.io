@@ -108,7 +108,9 @@
   <p>俗話說 <strong>「工欲善其事，必先利其器」</strong><br />
 對於工程師來說好的編輯器是很重要的，因為最近剛好很多朋友在問我用什麼編輯器，所以就寫一篇文章來<del>推坑</del>介紹 vscode。<br /></p>
 
-<p>在開始之前先澄清一下，<strong>VSCode</strong> 跟微軟那套 <strong>Visual Studio</strong> 一點關係都沒有，而且 <a href="https://github.com/Microsoft/vscode" target="_blank">VSCode</a> 是完全開源的，社群也非常活絡。</p>
+<p><img src="/public/vscode-introduction/vscode.png" width="600" /></p>
+
+<p>在開始之前先澄清一下，VSCode 跟微軟那套 Visual Studio 一點關係都沒有，而且 <a href="https://github.com/Microsoft/vscode" target="_blank">VSCode</a> 是完全開源的，社群也非常活絡。</p>
 
 <hr />
 
@@ -153,6 +155,8 @@
 
 <h3 id="5-自定義常用的程式碼片段">5. 自定義常用的程式碼片段</h3>
 
+<p>我前端寫 React.js 所以很常用到<code class="highlighter-rouge">this.setState(() =&gt; ({ ... }))</code></p>
+
 <p><img src="/public/vscode-introduction/snippet.gif" width="600" /></p>
 
 <p><br /></p>
@@ -185,7 +189,8 @@
 
 <h3 id="9-自動-format">9. 自動 format</h3>
 
-<p>不用擔心 code 排版太醜，VSCode 可以自動幫你排版</p>
+<p>不用擔心 code 排版太醜，VSCode 可以自動幫你排版<br />
+若團隊有制定 coding style 也可以在 vscode 中設定</p>
 
 <p><img src="/public/vscode-introduction/format.gif" width="600" /></p>
 
@@ -211,16 +216,16 @@
 
 <h3 id="1-vim">1. Vim</h3>
 
-<p>在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 <a href="/2017/02/14/tmux/" target="_blank">tmux</a> 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就會用 vim。<br />
-如果要從 vim 跳到 vscode 的話也有 <a href="https://github.com/VSCodeVim/Vim" target="_blank">extension</a> 把 vim shortcut 遷移過來，使用上完全不會有問題。</p>
+<p>在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 <a href="/2017/02/14/tmux/" target="_blank">tmux</a> 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就用 vim。<br />
+在 vscode 上也有 <a href="https://github.com/VSCodeVim/Vim" target="_blank">extension</a> 把 vim shortcut 遷移過來，使用上完全不會有問題。</p>
 
 <h3 id="2-sublime">2. Sublime</h3>
 
-<p>我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings" target="_blank">Sublime Text Keymap</a>，雖然我是 vim 派的沒有用過，但評價都還不錯。</p>
+<p>我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings" target="_blank">Sublime Text Keymap</a> 這個 extension，雖然我是 vim 派的沒有用過，但評價都還不錯。</p>
 
 <h3 id="3-atom">3. Atom</h3>
 
-<p>我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前有看過介面覺得也滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。</p>
+<p>我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前看過介面也覺得滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。</p>
 
 <hr />
 
@@ -237,7 +242,7 @@
 <img class="inline" src="/public/vscode-introduction/ms_love_open_source.png" width="50%" /></p>
 
 <p>如果有什麼你覺得超神的功能沒寫到可以跟我說<br />
-或是有使用上的問題也可以透過⬇下面⬇粉專問我</p>
+或是有使用上的問題也可以透過⬇下面⬇粉專私訊我</p>
 
 </div>
 
