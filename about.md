@@ -73,6 +73,7 @@ title: About Me
 ### 聯絡資訊:
 
 - [GitHub : Larry850806](https://github.com/Larry850806)<br>
-- [FaceBook : 盧承億](https://www.facebook.com/Larry850806)<br>
+- [Resume](https://www.cakeresume.com/larry-lu-f457ca)<br>
+- [Facebook](https://www.facebook.com/Larry850806)<br>
 - [Fan Page : 賴瑞的程式筆記](https://www.facebook.com/賴瑞的程式筆記-1755838524703270/)<br>
 - [Email : pudding850806@gmail.com](mailto:pudding850806@gmail.com)<br>
