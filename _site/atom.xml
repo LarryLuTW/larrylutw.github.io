@@ -4,13 +4,154 @@
  <title>Larry</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-17T18:07:46+08:00</updated>
+ <updated>2017-08-18T11:36:59+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Larry Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>[實用] 新一代的編輯器 - VSCode</title>
+   <link href="http://localhost:4000/2017/08/17/vscode-introduce/"/>
+   <updated>2017-08-17T00:00:00+08:00</updated>
+   <id>http://localhost:4000/2017/08/17/vscode-introduce</id>
+   <content type="html">&lt;p&gt;俗話說 &lt;strong&gt;「工欲善其事，必先利其器」&lt;/strong&gt;&lt;br /&gt;
+對於工程師來說好的編輯器是很重要的，因為最近剛好很多朋友在問我用什麼編輯器，所以就寫一篇文章來&lt;del&gt;推坑&lt;/del&gt;介紹 vscode。&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;在開始之前先澄清一下，&lt;strong&gt;VSCode&lt;/strong&gt; 跟微軟那套 &lt;strong&gt;Visual Studio&lt;/strong&gt; 一點關係都沒有，而且 &lt;a href=&quot;https://github.com/Microsoft/vscode&quot; target=&quot;_blank&quot;&gt;VSCode&lt;/a&gt; 是完全開源的，社群也非常活絡。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以下先介紹 10 個我覺得 VSCode 很強大的地方：&lt;/p&gt;
+
+&lt;h3 id=&quot;1-color-picker&quot;&gt;1. color picker&lt;/h3&gt;
+
+&lt;p&gt;看到色碼時不知道顏色，或是寫 css 時不知道去哪裡挑顏色，不用再 google 找色碼表，直接用內建的 color picker 就可以了~&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/color_pad.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-git-整合&quot;&gt;2. Git 整合&lt;/h3&gt;
+
+&lt;p&gt;還在用&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;看這次到底修改了什麼嗎(本人紅綠色盲看了極度痛苦XD)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/git_1.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;快試試 VSCode 的 diff，連行數都幫你對齊好，改了什麼一目了然&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/git_2.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-emmet&quot;&gt;3. Emmet&lt;/h3&gt;
+
+&lt;p&gt;VSCode 內建 Emmet 省下刻 HTML 的時間&lt;br /&gt;
+&lt;del&gt;慢慢敲 HTML 看起來就很弱阿 XDD&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/emmet.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;4-根據檔名或是引用跳到檔案&quot;&gt;4. 根據檔名或是引用跳到檔案&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/jump_to_definition.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/jump_to_file.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;5-自定義常用的程式碼片段&quot;&gt;5. 自定義常用的程式碼片段&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/snippet.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;6-好看的檔案-icon&quot;&gt;6. 好看的檔案 icon&lt;/h3&gt;
+
+&lt;p&gt;不同檔案類型有不同 icon，一看就知道是什麼檔案&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/folder_file_icon.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;7-強大的-intellisense&quot;&gt;7. 強大的 intellisense&lt;/h3&gt;
+
+&lt;p&gt;不管是變數屬性、或是要帶什麼參數都有很好的提示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/intellisense_1.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/intellisense_2.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;8-multi-cursor&quot;&gt;8. multi cursor&lt;/h3&gt;
+
+&lt;p&gt;多個游標讓你可以一次修改很多地方&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/multi_cursor.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;9-自動-format&quot;&gt;9. 自動 format&lt;/h3&gt;
+
+&lt;p&gt;不用擔心 code 排版太醜，VSCode 可以自動幫你排版&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/format.gif&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;10-debug&quot;&gt;10. debug&lt;/h3&gt;
+
+&lt;p&gt;可以設斷點 debug，查看目前變數值&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/debug.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;社群&quot;&gt;社群&lt;/h2&gt;
+
+&lt;p&gt;除了功能強大之外，VSCode 也有很龐大的社群，有很多擴充功能還有主題可以選，VSCode 本身每個月也會至少更新一次&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/extension.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;跟其他編輯器比較&quot;&gt;跟其他編輯器比較&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-vim&quot;&gt;1. Vim&lt;/h3&gt;
+
+&lt;p&gt;在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 &lt;a href=&quot;/2017/02/14/tmux/&quot; target=&quot;_blank&quot;&gt;tmux&lt;/a&gt; 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就會用 vim。&lt;br /&gt;
+如果要從 vim 跳到 vscode 的話也有 &lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot; target=&quot;_blank&quot;&gt;extension&lt;/a&gt; 把 vim shortcut 遷移過來，使用上完全不會有問題。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-sublime&quot;&gt;2. Sublime&lt;/h3&gt;
+
+&lt;p&gt;我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings&quot; target=&quot;_blank&quot;&gt;Sublime Text Keymap&lt;/a&gt;，雖然我是 vim 派的沒有用過，但評價都還不錯。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-atom&quot;&gt;3. Atom&lt;/h3&gt;
+
+&lt;p&gt;我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前有看過介面覺得也滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;如果你還在各編輯器之間猶豫不決，我真心推薦用用看 vscode，他大概是微軟做過最成功的專案了XD。其實在用 vscode 之前我一直很討厭微軟，什麼 &lt;strong&gt;Microsoft ❤️ Linux&lt;/strong&gt; 一定都是假的XDD，擁抱開源也只是說說而已。雖然我現在還是不太喜歡微軟，不過真的 vscode 真的很好用～&lt;/p&gt;
+
+&lt;style&gt;
+    .inline {
+        display: inline;
+        width: calc(50% - 20px);
+    }
+&lt;/style&gt;
+
+&lt;p&gt;&lt;img class=&quot;inline&quot; src=&quot;/public/vscode-introduction/ms_love_linux.jpg&quot; width=&quot;50%&quot; /&gt;
+&lt;img class=&quot;inline&quot; src=&quot;/public/vscode-introduction/ms_love_open_source.png&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果有什麼你覺得超神的功能沒寫到可以跟我說&lt;br /&gt;
+或是有使用上的問題也可以透過⬇下面⬇粉專問我&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>[React.js] 用 @decorator 來裝飾你的 Component 吧！</title>

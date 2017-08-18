@@ -2,7 +2,7 @@
 layout: post
 title: '[實用] 新一代的編輯器 - VSCode'
 keywords: vscode, visual studio code, visual studio, microsoft, editor, code, edit, editing, 編輯器, 代碼, 程式碼, 編輯, 微軟, redefined, 重新定義, coding, atom, vim, vs, emacs, 跨平台, multi platform
-published: false
+published: true
 ---
 
 俗話說 __「工欲善其事，必先利其器」__<br />
@@ -111,14 +111,30 @@ VSCode 內建 Emmet 省下刻 HTML 的時間<br />
 
 ### 1. Vim
 
-在用 VSCode 之前我有很長一段時間都是用 vim，其實 vim 本身很強可以做很多客製化，但是要花很多時間去配置，熟悉 vim 的話 VSCode 也有 extension 把 vim shortcut 遷移過來，使用上完全不會有問題。
+在用 VSCode 之前我有很長一段時間都是用 vim，vim 可以做很多客製化，但缺點就是學習門檻還滿高的，還有記不完的快捷鍵XD，隨著 plugin 越裝越多設定檔也會越來越複雜，雖然如此它仍然是很好的編輯器，搭配 <a href="/2017/02/14/tmux/" target="_blank">tmux</a> 用起來也很順，我目前是寫大專案就用 vscode，寫一些 script 或改改東西就會用 vim。<br />
+如果要從 vim 跳到 vscode 的話也有 <a href="https://github.com/VSCodeVim/Vim" target="_blank">extension</a> 把 vim shortcut 遷移過來，使用上完全不會有問題。
 
 ### 2. Sublime
 
-有在用 Sublime 的人應該都知道 Sublime 3 從 2013 年到現在都還在 beta 版，而且 Sublime 沒有開源，有 bug 也沒辦法大家送 PR 一起修，所以趕快跳槽過來 VSCode 吧～
+我自己只用過一小陣子 sublime，對他的印象就是 package manager 滿方便的，啟動速度也很快，但缺點就是很少更新而且沒有開源，所以有 bug 也沒辦法大家送 PR 一起修。如果要跳槽過來 vscode 的話可以試試 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings" target="_blank">Sublime Text Keymap</a>，雖然我是 vim 派的沒有用過，但評價都還不錯。
 
 ### 3. Atom
 
-我自己沒用過 Atom，但聽說還不錯，只是開啟大文件的速度有點慢，以後應該會越來越好，我沒用過所以就不說哪個比較好。
+我沒用過 Atom，但因為開源又是 Github 出的所以對他印象一直都不錯，之前有看過介面覺得也滿漂亮，不過聽說開啟大文件的速度有點慢(不確定有沒有改善)，因為我目前 vscode 也用得很好，所以短時間內應該不會去試 atom，如果要從 atom 跳到 vscode 的朋友其實介面滿像的，所以不用太過擔心，而且 vscode 開啟的速度很快XD。
 
+---
 
+如果你還在各編輯器之間猶豫不決，我真心推薦用用看 vscode，他大概是微軟做過最成功的專案了XD。其實在用 vscode 之前我一直很討厭微軟，什麼 __Microsoft ❤️ Linux__ 一定都是假的XDD，擁抱開源也只是說說而已。雖然我現在還是不太喜歡微軟，不過真的 vscode 真的很好用～
+
+<style>
+    .inline {
+        display: inline;
+        width: calc(50% - 20px);
+    }
+</style>
+
+<img class="inline" src="/public/vscode-introduction/ms_love_linux.jpg" width="50%">
+<img class="inline" src="/public/vscode-introduction/ms_love_open_source.png" width="50%">
+
+如果有什麼你覺得超神的功能沒寫到可以跟我說<br />
+或是有使用上的問題也可以透過⬇下面⬇粉專問我
