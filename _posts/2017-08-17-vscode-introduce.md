@@ -14,7 +14,7 @@ published: true
 
 ---
 
-以下先介紹 10 個我覺得 VSCode 很強大的地方：
+先介紹 10 個我覺得 VSCode 很強大的地方：
 
 ### 1. color picker
 
