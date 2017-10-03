@@ -131,7 +131,7 @@ describe('測試標題', function(){
 如果陣列是空的則傳回`NaN`<br>
 
 ```js
-// test/should.js
+// test/average.js
 var should = require('should');
 var average = require('../lib/average');
 
