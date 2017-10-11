@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-10-03T11:25:05+08:00</updated>
+ <updated>2017-10-11T10:06:40+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Larry Lu</name>
@@ -668,7 +668,7 @@ brew install tmux
       &lt;td&gt;進入第 0 個 session&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ tmux kill-session 0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ tmux kill-session -t 0&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;關閉 0 號 session&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
