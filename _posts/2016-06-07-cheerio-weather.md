@@ -32,7 +32,7 @@ Mac 上的快捷鍵是 Cmd + Option + I<br>
 
 ### 找到我們要的區塊
 我們要的主要是中間有氣象資料的那一塊<br>
-從下面 HTML 的往裡面找<br>
+從下面 HTML 往裡面找<br>
 可以找到我們要的這個區塊<br>
 ![](http://imgur.com/fOv7dCG.png)
 被選到的地方在網頁上會反白<br>

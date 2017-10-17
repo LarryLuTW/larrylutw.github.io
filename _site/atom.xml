@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-10-11T10:06:40+08:00</updated>
+ <updated>2017-10-17T15:23:18+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Larry Lu</name>
@@ -3357,7 +3357,7 @@ Mac 上的快捷鍵是 Cmd + Option + I&lt;br /&gt;
 
 &lt;h3 id=&quot;找到我們要的區塊&quot;&gt;找到我們要的區塊&lt;/h3&gt;
 &lt;p&gt;我們要的主要是中間有氣象資料的那一塊&lt;br /&gt;
-從下面 HTML 的往裡面找&lt;br /&gt;
+從下面 HTML 往裡面找&lt;br /&gt;
 可以找到我們要的這個區塊&lt;br /&gt;
 &lt;img src=&quot;http://imgur.com/fOv7dCG.png&quot; alt=&quot;&quot; /&gt;
 被選到的地方在網頁上會反白&lt;br /&gt;&lt;/p&gt;
