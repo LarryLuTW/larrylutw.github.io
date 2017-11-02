@@ -7,11 +7,11 @@ title: 分類文章
 
 ## Javascript
 
-### [[React.js] 用 @decorator 來裝飾你的 Component 吧！](../2017/04/08/decorator-in-react/)
+### [[React.js] 用 @decorator 來裝飾你的 Component 吧！](https://medium.com/larry-blog/react-decorator-hoc-2536db2737cb)
 
-### [[Node.js] 用 mocha 做單元測試並整合 Travis-CI](../2016/10/02/mocha-travis-ci/)
+### [[Node.js] 用 mocha 做單元測試並整合 Travis-CI](https://medium.com/larry-blog/nodejs-mocha-travis-ci-unit-test-e859a9446e16)
 
-### [[Javascript] 關於 JS 中的淺拷貝和深拷貝](../2016/09/20/shallow-vs-deep-copy/)
+### [[Javascript] 關於 JS 中的淺拷貝和深拷貝](https://medium.com/larry-blog/nodejs-request-cheerio-weather-414e33f45c7d)
 
 ### [[Node.js] 自己動手打造 ES7 開發環境](../2016/09/04/es7-environment/)
 
@@ -33,9 +33,9 @@ title: 分類文章
 
 ## 其他
 
-### [[實用] 新一代的編輯器 - VSCode](../2017/08/17/vscode-introduce/)
+### [[實用] 新一代的編輯器 - VSCode](https://medium.com/larry-blog/vscode-1b6f24e082ba)
 
-### [[實用] 終端機 session 管理神器 - tmux](../2017/02/14/tmux/)
+### [[實用] 終端機 session 管理神器 - tmux](https://medium.com/larry-blog/tmux-33a24e595fbc)
 
 ### [[實用] 分享我訂閱的一些期刊跟頻道](../2016/11/15/publication/)
 
