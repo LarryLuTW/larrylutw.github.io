@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
+<body>
 
-    {% include sidebar.html %}
+  {% include sidebar.html %}
 
-    <div class="content container">
-      {{ content }}
-    </div>
+  <div class="content container">
+    <div class="remind">目前這個部落格是用 jekyll 架在 github page 上，但因為 jekyll 功能不多，所以決定把部落格遷移到
+      <a href="https://medium.com/larry-blog">Medium</a> 上，以後這邊就不會再發表新文章，歡迎大家到 Medium 上追蹤我～</div>
+    {{ content }}
+  </div>
 
-  </body>
+</body>
+
+<style>
+  .remind {
+    color: #B9B9BA;
+    position: relative;
+    bottom: 30px;
+  }
+</style>
+
 </html>
