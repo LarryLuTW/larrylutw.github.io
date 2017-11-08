@@ -4,7 +4,7 @@
  <title>Larry</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-11-07T12:58:36+08:00</updated>
+ <updated>2017-11-08T11:12:32+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Larry Lu</name>
@@ -17,7 +17,11 @@
    <link href="http://localhost:4000/2017/08/17/vscode-introduce/"/>
    <updated>2017-08-17T00:00:00+08:00</updated>
    <id>http://localhost:4000/2017/08/17/vscode-introduce</id>
-   <content type="html">&lt;p&gt;俗話說 &lt;strong&gt;「工欲善其事，必先利其器」&lt;/strong&gt;&lt;br /&gt;
+   <content type="html">&lt;script&gt;
+    window.location = &quot;https://larrylu.blog/vscode-1b6f24e082ba&quot;
+&lt;/script&gt;
+
+&lt;p&gt;俗話說 &lt;strong&gt;「工欲善其事，必先利其器」&lt;/strong&gt;&lt;br /&gt;
 對於工程師來說好的編輯器是很重要的，因為最近剛好很多朋友在問我用什麼編輯器，所以就寫一篇文章來&lt;del&gt;推坑&lt;/del&gt;介紹 vscode。&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/vscode-introduction/vscode.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
@@ -163,7 +167,11 @@
    <link href="http://localhost:4000/2017/04/08/decorator-in-react/"/>
    <updated>2017-04-08T00:00:00+08:00</updated>
    <id>http://localhost:4000/2017/04/08/decorator-in-react</id>
-   <content type="html">&lt;p&gt;Decorator 是 JS 以後會有的新語法，它讓我們用更簡單的方法幫類別(class)、函式(function) 添加一些特性，這篇主要講述如何在 React 中使用 decorator 及 HOC 裝飾你的 Component。&lt;/p&gt;
+   <content type="html">&lt;script&gt;
+    window.location = &quot;https://larrylu.blog/react-decorator-hoc-2536db2737cb&quot;
+&lt;/script&gt;
+
+&lt;p&gt;Decorator 是 JS 以後會有的新語法，它讓我們用更簡單的方法幫類別(class)、函式(function) 添加一些特性，這篇主要講述如何在 React 中使用 decorator 及 HOC 裝飾你的 Component。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/yAUPHu6.png&quot; width=&quot;550px&quot; /&gt;&lt;/p&gt;
 
@@ -503,7 +511,11 @@
    <link href="http://localhost:4000/2017/02/14/tmux/"/>
    <updated>2017-02-14T00:00:00+08:00</updated>
    <id>http://localhost:4000/2017/02/14/tmux</id>
-   <content type="html">&lt;p&gt;身為一名開發者對終端機應該不陌生，不管是要用 vim 修改文件內容、執行腳本、ssh 到遠端伺服器都會用到終端機。這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，他除了可以保存 session 外，還有視窗分割、視窗切換、多人共享畫面等等功能，廢話不多說，直接進入正題&lt;/p&gt;
+   <content type="html">&lt;script&gt;
+    window.location = &quot;https://larrylu.blog/tmux-33a24e595fbc&quot;
+&lt;/script&gt;
+
+&lt;p&gt;身為一名開發者對終端機應該不陌生，不管是要用 vim 修改文件內容、執行腳本、ssh 到遠端伺服器都會用到終端機。這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，他除了可以保存 session 外，還有視窗分割、視窗切換、多人共享畫面等等功能，廢話不多說，直接進入正題&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -841,7 +853,11 @@ brew install tmux
    <link href="http://localhost:4000/2016/10/02/mocha-travis-ci/"/>
    <updated>2016-10-02T00:00:00+08:00</updated>
    <id>http://localhost:4000/2016/10/02/mocha-travis-ci</id>
-   <content type="html">&lt;p&gt;單元測試(Unit Test)是對程式中的小單元進行測試&lt;br /&gt;
+   <content type="html">&lt;script&gt;
+    window.location = &quot;https://larrylu.blog/nodejs-mocha-travis-ci-unit-test-e859a9446e16&quot;
+&lt;/script&gt;
+
+&lt;p&gt;單元測試(Unit Test)是對程式中的小單元進行測試&lt;br /&gt;
 目的是確保程式中的每個小螺絲釘都有好好的運作&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/B6LfXre.png&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
@@ -3330,7 +3346,11 @@ main thread 又在等 t1 完成&lt;br /&gt;
    <link href="http://localhost:4000/2016/06/07/cheerio-weather/"/>
    <updated>2016-06-07T00:00:00+08:00</updated>
    <id>http://localhost:4000/2016/06/07/cheerio-weather</id>
-   <content type="html">&lt;h3 id=&quot;cheerio-是什麼&quot;&gt;cheerio 是什麼&lt;/h3&gt;
+   <content type="html">&lt;script&gt;
+    window.location = &quot;https://larrylu.blog/nodejs-request-cheerio-weather-414e33f45c7d&quot;
+&lt;/script&gt;
+
+&lt;h3 id=&quot;cheerio-是什麼&quot;&gt;cheerio 是什麼&lt;/h3&gt;
 &lt;p&gt;cheerio 是一個 Node.js 的 module&lt;br /&gt;
 是可以跑在 server 端的 JQuery&lt;br /&gt;
 可以用來擷取網頁中的資料&lt;br /&gt;&lt;/p&gt;

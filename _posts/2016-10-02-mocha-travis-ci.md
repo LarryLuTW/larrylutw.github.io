@@ -5,6 +5,10 @@ keywords: js, javascript, mocha, unit test, travis ci, 單元測試, 持續整�
 published: true
 ---
 
+<script>
+    window.location = "https://larrylu.blog/nodejs-mocha-travis-ci-unit-test-e859a9446e16"
+</script>
+
 單元測試(Unit Test)是對程式中的小單元進行測試<br>
 目的是確保程式中的每個小螺絲釘都有好好的運作<br>
 

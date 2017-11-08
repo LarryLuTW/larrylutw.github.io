@@ -5,6 +5,10 @@ keywords: vscode, visual studio code, visual studio, microsoft, editor, code, ed
 published: true
 ---
 
+<script>
+    window.location = "https://larrylu.blog/vscode-1b6f24e082ba"
+</script>
+
 俗話說 __「工欲善其事，必先利其器」__<br />
 對於工程師來說好的編輯器是很重要的，因為最近剛好很多朋友在問我用什麼編輯器，所以就寫一篇文章來~~推坑~~介紹 vscode。<br />
 

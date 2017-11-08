@@ -5,6 +5,10 @@ keywords: request, Node.js, Nodejs, module, cheerio, node
 published: true
 ---
 
+<script>
+    window.location = "https://larrylu.blog/nodejs-request-cheerio-weather-414e33f45c7d"
+</script>
+
 ### cheerio 是什麼
 cheerio 是一個 Node.js 的 module<br>
 是可以跑在 server 端的 JQuery<br>
